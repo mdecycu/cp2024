@@ -2,14 +2,13 @@
 <p><a href="https://github.com/mdecycu/cp2024">https://github.com/mdecycu/cp2024</a></p>
 <p><a href="https://mde.tw/cp2024">https://mde.tw/cp2024</a></p>
 <p>課程目標:</p>
-<p style="padding-left: 30px;">利用計算機程式軟硬體協助建立機電資整合系統設計</p>
+<p style="padding-left: 30px;">利用計算機程式軟硬體協助執行機電資整合系統設計範例</p>
 <p>課程評分:</p>
-<p>期中成績:</p>
-<p style="padding-left: 30px;">(50%) - w9 之前完成 5 個與課程教學進度有關的操作示範影片, 每一個影片至少 5 分鐘, 且以"虎尾科技大學機械設計工程系計算機程式" 作為主標題, 影片自選主題作為副標題, 且作者明確標示學號. 每一個影片完成上傳後, 根據各影片內容進行自評, 每一影片最高可佔期中成績 10 分.</p>
-<p style="padding-left: 30px;">(50%) - w9 之前完成 5 個與課程教學進度有關的網誌, 完成後根據各網誌內容進行自評, 每一篇網誌最高可佔期中成績 10 分.</p>
-<p>期末成績:</p>
-<p style="padding-left: 30px;">(50%) - 期中自評成績 X 內容完整度審核比例 (由選課學員整體對所有學員所提供的內容進行審核後評定)</p>
-<p style="padding-left: 30px;">(50%) - 期末報告</p><h1>Topics</h1>
+<p></p>
+<hr/>
+<p>行事曆</p>
+<p><a href="https://calendar.google.com/calendar/embed?src=mde.nfu.edu.tw_3439313938333136353439%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;mode=week&amp;src=mde.nfu.edu.tw_35303530373431313438%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;src=yen%40gm.nfu.edu.tw&amp;ctz=Asia%2FTaipei"> 全頁檢視 </a></p>
+<p><iframe height="600" src="https://calendar.google.com/calendar/embed?src=mde.nfu.edu.tw_3439313938333136353439%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;mode=week&amp;src=mde.nfu.edu.tw_35303530373431313438%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;src=yen%40gm.nfu.edu.tw&amp;ctz=Asia%2FTaipei" width="800"></iframe></p><h1>Topics</h1>
 <p><a href="https://link.springer.com/book/10.1007/978-3-031-49780-3">2023_course_in_python.pdf</a></p>
 <p><a href="https://link.springer.com/book/10.1007/978-1-4842-9660-8">2023_python_graphics.pdf</a></p>
 <p></p><h2>操作系統</h2>
@@ -38,8 +37,26 @@
 <h2>Solvespace</h2>
 <h2>NX</h2>
 <h2>CoppeliaSim</h2>
-<p><a href="/downloads/cad2024_foosball_with_ball_python_script.7z">cad2024_foosball_with_ball_python_script.7z</a></p><h1>Python</h1>
-<p><a href="/downloads/nxopen_base_and_center_pole_python.txt">nxopen_base_and_center_pole_python.txt</a></p><h1>Projects</h1>
+<p><a href="/downloads/cad2024_foosball_with_ball_python_script.7z">cad2024_foosball_with_ball_python_script.7z</a></p><h2>Webots</h2>
+<p><a href="https://www.youtube.com/watch?v=-xBvcOhazeY">How to un simulation on cloud</a></p>
+<p><a href="https://www.youtube.com/watch?v=yi4e5FoVWbQ">Set up environment</a></p>
+<p><a href="https://www.youtube.com/watch?v=wOHXOg2jLmU">Webots and ROS2</a></p>
+<p><a href="https://www.cyberbotics.com/doc/guide/webots-cloud?version=master">Webots.cloud</a> (<a href="https://webots.cloud/">https://webots.cloud/</a>)</p>
+<p><a href="https://github.com/cyberbotics/webots-cloud-simulation-examples">Simulation examples</a></p>
+<p><a href="https://webots.cloud/proto">Webots cloud proto</a></p><h1>Python</h1>
+<p><a href="https://github.com/TheAlgorithms/Python">https://github.com/TheAlgorithms/Python</a> </p>
+<p><a href="/downloads/nxopen_base_and_center_pole_python.txt">nxopen_base_and_center_pole_python.txt</a></p><h2>qrcode</h2>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># pip install qrcode matplotlib
+import qrcode
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+#img=qrcode.make('20240101;5745632912;Steel;---;---')
+img=qrcode.make('虎尾科大機械設計工程系')
+img.save('qrcode_ex1.png')
+img = mpimg.imread('qrcode_ex1.png')
+plt.imshow(img)
+plt.show()</pre>
+<p></p><h1>Projects</h1>
 <h2>Robots</h2>
 <h3>Non-mobile</h3>
 <h3>Mobile</h3>

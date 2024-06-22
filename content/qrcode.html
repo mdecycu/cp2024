@@ -142,8 +142,18 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Github << <a href='Github.html'>Previous</a> <a href='計算機程式.html'>Next</a> >> 計算機程式<br /><h1>虛擬主機</h1>
-<br />Github << <a href='Github.html'>Previous</a> <a href='計算機程式.html'>Next</a> >> 計算機程式</div>
+    <div id="tipue_search_content">Python << <a href='Python.html'>Previous</a> <a href='Projects.html'>Next</a> >> Projects<br /><h1>qrcode</h1>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># pip install qrcode matplotlib
+import qrcode
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+#img=qrcode.make('20240101;5745632912;Steel;---;---')
+img=qrcode.make('虎尾科大機械設計工程系')
+img.save('qrcode_ex1.png')
+img = mpimg.imread('qrcode_ex1.png')
+plt.imshow(img)
+plt.show()</pre>
+<p></p><br />Python << <a href='Python.html'>Previous</a> <a href='Projects.html'>Next</a> >> Projects</div>
         
     <!-- footer -->
       <div class="container">
