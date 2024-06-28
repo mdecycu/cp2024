@@ -131,7 +131,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li><a href='IDE.html'>IDE</a><li><a href='CAD.html'>CAD</a><li><a href='Python.html'>Python</a><li><a href='Brython.html'>Brython</a></li>
+                     <li><a href='About.html'>About</a><li class='has-children'><a href='IDE.html'>IDE</a><ul class='dropdown'><li><a href='Replit.html'>Replit</a><li><a href='Codespaces.html'>Codespaces</a></li></ul><li><a href='CAD.html'>CAD</a><li><a href='Python.html'>Python</a><li><a href='Brython.html'>Brython</a></li>
                       </ul>
                 </nav>
               </div>
@@ -146,6 +146,8 @@ img.add_border {
 <p><a href="https://github.com/TheAlgorithms/Python">https://github.com/TheAlgorithms/Python</a> </p>
 <p><a href="./../downloads/nxopen_base_and_center_pole_python.txt">nxopen_base_and_center_pole_python.txt</a></p>
 <h4>qrcode</h4>
+<p><a href="https://en.wikipedia.org/wiki/QR_code">https://en.wikipedia.org/wiki/QR_code</a> </p>
+<p><a href="https://www.funcode-tech.com/QR_app.html">https://www.funcode-tech.com/QR_app.html</a> </p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># pip install qrcode matplotlib
 import qrcode
 import matplotlib.pyplot as plt
@@ -156,8 +158,16 @@ img.save('qrcode_ex1.png')
 img = mpimg.imread('qrcode_ex1.png')
 plt.imshow(img)
 plt.show()</pre>
-<p></p>
-<br />CAD << <a href='CAD.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython</div>
+<h4>NXOpen Python</h4>
+<p>機械設計工程師若能夠看得懂 <a href="./../downloads/nxopen_base_and_center_pole_python.txt">nxopen_base_and_center_pole_python.txt</a>, 是否能夠將程式碼改寫為 Function 或 Class 架構, 以方便用程式方法建立機電系統設計中的參數式零組件?</p>
+<h4>ZMQ remote API Python for CoppeliaSim</h4>
+<p>可遠端透過 Python 程式控制機電模擬系統的 <a href="./../downloads/cd2023_pj3ag4_zmq_football4.7z">cd2023_pj3ag4_zmq_football4.7z</a>, 則牽涉 ZMQ、IPv4、IPv6 與 <a href="https://docs.python.org/zh-tw/3/library/asyncio.html">asyncio</a> 模組.</p>
+<h4>Python for Webots</h4>
+<p>Python 程式也能用來控制 Webots 機電模擬系統: <a href="https://cyberbotics.com/doc/guide/using-python">https://cyberbotics.com/doc/guide/using-python</a></p>
+<h4>Python 與 CAD 有關的其他應用</h4>
+<p><a href="https://pypi.org/project/python-solvespace/">https://pypi.org/project/python-solvespace/</a> </p>
+<p><a href="https://github.com/jimy-byerley/pymadcad">https://github.com/jimy-byerley/pymadcad</a> </p>
+<p></p><br />CAD << <a href='CAD.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython</div>
         
     <!-- footer -->
       <div class="container">

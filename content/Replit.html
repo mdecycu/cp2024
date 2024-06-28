@@ -2,7 +2,7 @@
         <head>
         <title>cp2024</title>
         <meta charset="utf-8">
-<meta property="head" content="H1">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -142,9 +142,21 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">About << <a href='About.html'>Previous</a> <a href='Replit.html'>Next</a> >> Replit<br /><h1>IDE</h1>
-<p><a href="http://229.cycu.org/Python_for_NX1872.7z">Python_for_NX1872.7z</a></p>
-<br />About << <a href='About.html'>Previous</a> <a href='Replit.html'>Next</a> >> Replit</div>
+    <div id="tipue_search_content">IDE << <a href='IDE.html'>Previous</a> <a href='Codespaces.html'>Next</a> >> Codespaces<br /><h1>Replit</h1>
+<p><a href="https://replit.com">https://replit.com</a> </p>
+<p>Replit 作為一個基於全球資訊網與手機或平板 APP 的整合程式開發環境 (Integrated Development Environment, IDE), 可以用來執行 <a href="https://github.com/mdecycu/cmsimde">cmsimde</a> 網站的動態編輯伺服器, 以及靜態網站.</p>
+<p>所謂 <a href="https://github.com/mdecycu/cmsimde">cmsimde</a> 是利用 Python 與 Javascript 程式語言所編寫的一套簡單網際內容管理系統. 其使用方法?</p>
+<p>當在 Replit 環境中啟動與 Web (即 World Wide Web, 全球資訊網) 有關的程式, 內建會啟動 Webview tab, 若要關閉此設定, 可以透過 Tools 中的 User Settings tab, 將 Automatic Webview 功能關閉. 一旦完成設定將對所有帳號下的 Repls 有效.</p>
+<hr/>
+<p dir="auto">On Replit:</p>
+<p dir="auto">.replit: python3 main.py</p>
+<p dir="auto">chmod u+x cms init_replit</p>
+<p dir="auto">./init_replit</p>
+<p dir="auto" style="padding-left: 30px;">for cmsite: git submodule update --init --recursive</p>
+<p dir="auto" style="padding-left: 30px;">for cmsimde_site: cmsimde is as directory not submodule</p>
+<p dir="auto" style="padding-left: 30px;">for cmsimde: pip install flask flask_cors bs4 lxml pelican markdown gevent</p>
+<p dir="auto">password generator: <a href="https://mde.tw/cmsite/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/b92b16621dd0246c352cf13d6463b333/raw/0bfa669750aba3abe48554509bbd43d65b6e5c82/hashlib_password_generator.py">https://mde.tw/cmsite/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/b92b16621dd0246c352cf13d6463b333/raw/0bfa669750aba3abe48554509bbd43d65b6e5c82/hashlib_password_generator.py</a> </p>
+<p dir="auto">for IPv6 only Ubuntu:<br/><br/>.ssh 目錄中的 config, 將 SSH session 名稱設為 github.com:<br/><br/>Host github.com<br/>User git<br/>Hostname github.com<br/>ProxyCommand /usr/bin/ncat --proxy p4.cycu.org:3128 --proxy-type http %h %p<br/><br/>for Replit:<br/><br/>.ssh 目錄中的 config, 將 SSH session 名稱設為 github.com:<br/><br/>Host github.com<br/>User git<br/>Hostname github.co<br/>#since Replit works for IPv4, therefore no ProxyCommand setting needed<br/>#ProxyCommand /usr/bin/ncat --proxy p4.cycu.org:3128 --proxy-type http %h %p</p><br />IDE << <a href='IDE.html'>Previous</a> <a href='Codespaces.html'>Next</a> >> Codespaces</div>
         
     <!-- footer -->
       <div class="container">
