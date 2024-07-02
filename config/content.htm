@@ -50,8 +50,8 @@
 <p><a href="https://github.com/TheAlgorithms/Python">https://github.com/TheAlgorithms/Python</a> </p>
 <p><a href="/downloads/nxopen_base_and_center_pole_python.txt">nxopen_base_and_center_pole_python.txt</a></p>
 <h4>qrcode</h4>
-<p><a href="https://en.wikipedia.org/wiki/QR_code">https://en.wikipedia.org/wiki/QR_code</a> </p>
-<p><a href="https://www.funcode-tech.com/QR_app.html">https://www.funcode-tech.com/QR_app.html</a> </p>
+<p><a href="https://en.wikipedia.org/wiki/QR_code">https://en.wikipedia.org/wiki/QR_code</a></p>
+<p><a href="https://www.funcode-tech.com/QR_app.html">https://www.funcode-tech.com/QR_app.html</a></p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># pip install qrcode matplotlib
 import qrcode
 import matplotlib.pyplot as plt
@@ -62,6 +62,51 @@ img.save('qrcode_ex1.png')
 img = mpimg.imread('qrcode_ex1.png')
 plt.imshow(img)
 plt.show()</pre>
+<h4>pdf</h4>
+<p>pip install pypdf2</p>
+<p>split pdf file:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># pypdf2_split.py
+import os
+from PyPDF2 import PdfWriter, PdfReader
+
+pdfReader = PdfReader(open("Learn_Autodesk_Inventor_2018_Basics.pdf", "rb"))
+information = [("inventor",18,45)]
+ 
+for page in range(len(information)):
+    pdf_writer = PdfWriter()
+    start = information[page][1]
+    end = information[page][2]
+    while start&lt;=end:
+        pdf_writer.add_page(pdfReader.pages[start-1])
+        start+=1
+    if not os.path.exists("./"):
+        os.makedirs(savepath)
+    output_filename = '{}_{}_page_{}.pdf'.format(information[page][0],information[page][1], information[page][2])
+    with open(output_filename,'wb') as out:
+        pdf_writer.write(out)
+print("已經完成 pdf 切割與存檔")</pre>
+<p>combine pdf file:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import os
+from PyPDF2 import PdfWriter, PdfReader
+
+pdf_write_object = PdfWriter()
+
+pdfFileNames = ["inventor1.pdf", "inventor2.pdf"]
+newFileName = "inventor"
+filenameString = ""
+
+for filename in pdfFileNames:
+    pdf_read_object = PdfReader(open(filename, "rb"))
+    filenameString += filename + ", "
+    for page in range(len(pdf_read_object.pages)):
+        pdf_write_object.add_page(pdf_read_object.pages[page])
+ 
+final_file_object = open(newFileName + ".pdf", 'wb')
+pdf_write_object.write(final_file_object)
+final_file_object.close()
+
+print("已經將 " + filenameString+ " 合併為: "+ newFileName + ".pdf")
+</pre>
 <h4>NXOpen Python</h4>
 <p>機械設計工程師若能夠看得懂 <a href="/downloads/nxopen_base_and_center_pole_python.txt">nxopen_base_and_center_pole_python.txt</a>, 是否能夠將程式碼改寫為 Function 或 Class 架構, 以方便用程式方法建立機電系統設計中的參數式零組件?</p>
 <h4>ZMQ remote API Python for CoppeliaSim</h4>
@@ -69,8 +114,8 @@ plt.show()</pre>
 <h4>Python for Webots</h4>
 <p>Python 程式也能用來控制 Webots 機電模擬系統: <a href="https://cyberbotics.com/doc/guide/using-python">https://cyberbotics.com/doc/guide/using-python</a></p>
 <h4>Python 與 CAD 有關的其他應用</h4>
-<p><a href="https://pypi.org/project/python-solvespace/">https://pypi.org/project/python-solvespace/</a> </p>
-<p><a href="https://github.com/jimy-byerley/pymadcad">https://github.com/jimy-byerley/pymadcad</a> </p>
+<p><a href="https://pypi.org/project/python-solvespace/">https://pypi.org/project/python-solvespace/</a></p>
+<p><a href="https://github.com/jimy-byerley/pymadcad">https://github.com/jimy-byerley/pymadcad</a></p>
 <p></p><h1>Brython</h1>
 <p>從 1 累加到 100:</p>
 <p><button id="add1to100">1 add to 100</button></p>
