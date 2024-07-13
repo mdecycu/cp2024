@@ -47,6 +47,7 @@
 <p><a href="https://github.com/cyberbotics/webots-cloud-simulation-examples">Simulation examples</a></p>
 <p><a href="https://webots.cloud/proto">Webots cloud proto</a></p>
 <h1>Python</h1>
+<p>課程教材: <a href="https://link.springer.com/book/10.1007/978-3-031-49780-3">2023_course_in_python.pdf</a></p>
 <p><a href="https://github.com/TheAlgorithms/Python">https://github.com/TheAlgorithms/Python</a> </p>
 <p><a href="/downloads/nxopen_base_and_center_pole_python.txt">nxopen_base_and_center_pole_python.txt</a></p>
 <h4>qrcode</h4>
@@ -85,6 +86,28 @@ for page in range(len(information)):
     with open(output_filename,'wb') as out:
         pdf_writer.write(out)
 print("已經完成 pdf 切割與存檔")</pre>
+<p>combine pdf file:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import os
+from PyPDF2 import PdfWriter, PdfReader
+
+pdf_write_object = PdfWriter()
+
+pdfFileNames = ["inventor1.pdf", "inventor2.pdf"]
+newFileName = "inventor"
+filenameString = ""
+
+for filename in pdfFileNames:
+    pdf_read_object = PdfReader(open(filename, "rb"))
+    filenameString += filename + ", "
+    for page in range(len(pdf_read_object.pages)):
+        pdf_write_object.add_page(pdf_read_object.pages[page])
+ 
+final_file_object = open(newFileName + ".pdf", 'wb')
+pdf_write_object.write(final_file_object)
+final_file_object.close()
+
+print("已經將 " + filenameString+ " 合併為: "+ newFileName + ".pdf")
+</pre>
 <h4>NXOpen Python</h4>
 <p>機械設計工程師若能夠看得懂 <a href="/downloads/nxopen_base_and_center_pole_python.txt">nxopen_base_and_center_pole_python.txt</a>, 是否能夠將程式碼改寫為 Function 或 Class 架構, 以方便用程式方法建立機電系統設計中的參數式零組件?</p>
 <h4>ZMQ remote API Python for CoppeliaSim</h4>
