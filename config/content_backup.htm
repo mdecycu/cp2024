@@ -50,8 +50,10 @@
 <p><a href="https://manual.coppeliarobotics.com/en/versionInfo.htm">https://manual.coppeliarobotics.com/en/versionInfo.htm</a></p>
 <p>user settings file is C:\Users\%USERNAME%\AppData\Roaming/CoppeliaSim/usrset.txt</p>
 <p>CoppeliaSim 4.5.1 與 4.7.1 使用 ZMQ RemoteAPI Python 程式的差異:</p>
-<p>zmqRemoteApi 模組名稱改為 coppeliasim_zmqremoteapi_client</p>
-<p>sim 物件中的 sim.setJointForce() 方法已經失效, 必須改用 sim.setJointTargetForce()</p>
+<ol>
+<li>zmqRemoteApi 模組名稱改為 coppeliasim_zmqremoteapi_client</li>
+<li>sim 物件中的 sim.setJointForce() 方法已經失效, 必須改用 sim.setJointTargetForce()</li>
+</ol>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># zmqRemoteApi_IPv6 為將 zmq 通訊協定修改為 IPv4 與 IPv6 相容
 # pip install pyzmq cbor keyboard
 # for 4.5.1
