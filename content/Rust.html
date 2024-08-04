@@ -142,32 +142,25 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content"> <a href='W&H.html'>Next</a> >> W&H<br /><h1>About</h1>
-<p>課程倉儲: <a href="https://github.com/mdecycu/cp2024">https://github.com/mdecycu/cp2024</a></p>
-<p>課程網頁: <a href="https://mde.tw/cp2024">https://mde.tw/cp2024</a></p>
-<p>課程目標:</p>
-<p style="padding-left: 30px;">利用程式 (Python and C-like programming languages) 協助執行機電整合系統設計</p>
-<p>課程教材:</p>
-<p style="padding-left: 30px;"><a href="https://github.com/Asabeneh/30-Days-Of-Python">https://github.com/Asabeneh/30-Days-Of-Python</a></p>
-<p style="padding-left: 60px;"><a href="https://www.youtube.com/watch?v=LbPawGKOJoE&amp;list=PLbvhRHYrmshRSX00KYKtG2czimpEjoYO5">Python for Begineers</a> (Video PlayList)</p>
-<p style="padding-left: 30px;"><a href="https://pythontutor.com/">https://pythontutor.com/</a> </p>
-<p style="padding-left: 30px;"><a href="https://cs50.harvard.edu/python/2022/">https://cs50.harvard.edu/python/2022/</a> </p>
-<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-3-031-49780-3">2023_course_in_python.pdf</a> (255頁)</p>
-<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-84996-537-8">2011 Python programming fundamentals.pdf</a> (243頁)</p>
-<p style="padding-left: 60px;"><a href="https://web.archive.org/web/20160412022935/http://knuth.luther.edu/~leekent/IntroToComputing">Intro to Computing</a></p>
-<p style="padding-left: 30px;"><a href="https://pythonnumericalmethods.studentorg.berkeley.edu/notebooks/Index.html">Python Programming And Numerical Methods: A Guide For Engineers And Scientists</a></p>
-<p style="padding-left: 30px;"><a href="https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/">https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/</a> </p>
-<p><span>CAD 套件: </span><a href="https://solvespace.com/">Solvespace</a> and <a href="https://www.onshape.com/">Onshape</a></p>
-<p><span>機電模擬: </span><a href="https://www.coppeliarobotics.com/">CoppeliaSim</a><span> and </span><a href="https://cyberbotics.com/">Webots</a></p>
-<p>課程評分:</p>
-<p style="padding-left: 30px;">全勤出席 (20%)</p>
-<p style="padding-left: 30px;">隔週採網頁與網誌紀錄學習心得 (30%)</p>
-<p style="padding-left: 30px;">期中口頭專題簡報 (25%)</p>
-<p style="padding-left: 30px;">期末口頭專題簡報 (25%)</p>
-<hr/>
-<p>行事曆</p>
-<p><a href="https://calendar.google.com/calendar/embed?src=mde.nfu.edu.tw_3439313938333136353439%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;mode=week&amp;src=mde.nfu.edu.tw_35303530373431313438%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;src=yen%40gm.nfu.edu.tw&amp;ctz=Asia%2FTaipei"> 全頁檢視 </a></p>
-<p><iframe height="600" src="https://calendar.google.com/calendar/embed?src=mde.nfu.edu.tw_3439313938333136353439%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;mode=week&amp;src=mde.nfu.edu.tw_35303530373431313438%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;src=yen%40gm.nfu.edu.tw&amp;ctz=Asia%2FTaipei" width="800"></iframe></p><br /> <a href='W&H.html'>Next</a> >> W&H</div>
+    <div id="tipue_search_content">Python << <a href='Python.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython<br /><h1>Rust</h1>
+<p>有關 Rust 程式語言的發展歷程, 請參考: <a href="https://zh.wikipedia.org/zh-tw/Rust">https://zh.wikipedia.org/zh-tw/Rust</a></p>
+<p>因為要結合 MSYS2 (msys64_20240507 版) 編譯 Rust (1.80.0 版) 程式, 根據<a href="https://stackoverflow.com/questions/47379214/step-by-step-instruction-to-install-rust-and-cargo-for-mingw-with-msys2">這裡</a>的說明, 必須在安裝 Rust 時選擇 <code>x86_64-pc-windows-gnu</code> 作為 host triple 之外, 還需要在 cargo 目錄中設定 config 如下:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">[target.x86_64-pc-windows-gnu]
+linker = "Y:\\msys64\\ucrt64\\bin\\gcc.exe"
+ar = "Y:\\msys64\\ucrt64\\bin\\ar.exe"
+</pre>
+<p>配置完成的可攜 Rust 不含 doc html 與 man 目錄的容量約 760MB: <a href="http://229.cycu.org/Rust_1.80.0.7z">Rust_1.80.0.7z</a> (126MB)</p>
+<p>Rust 程式設計語言: <a href="https://rust-lang.tw/book-tw/">https://rust-lang.tw/book-tw/</a></p>
+<p>從官方 <a href="https://www.rust-lang.org/zh-TW/tools/install">https://www.rust-lang.org/zh-TW/tools/install</a> 下載安裝後, rustup 與 cargo 目錄將會位於 %USERPROFILE% 目錄中的 .rustup 與 .cargo. 為了將 RUST 程式系統與 Windows 可攜系統整合, 將 .rustup 與 .cargo 置於 %Disk%:\Rust 目錄下, 且改為 rustup 與 cargo.</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">REM for Rust
+set MINGW_PATH=%path_msys2%;
+set GIT_PATH=%path_git%;
+set VSCODE_PATH=%path_vscode%
+set RUSTUP_HOME=%Disk%:\Rust\rustup
+set CARGO_HOME=%Disk%:\Rust\cargo
+set RUST_PATH=%CARGO_HOME%\bin
+REM 將 %RUST_PATH% 納入可攜系統的 PATH 設定</pre>
+<p></p><br />Python << <a href='Python.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython</div>
         
     <!-- footer -->
       <div class="container">
