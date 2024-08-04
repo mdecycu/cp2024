@@ -384,7 +384,7 @@ print("已經將 " + filenameString+ " 合併為: "+ newFileName + ".pdf")
 linker = "Y:\\msys64\\ucrt64\\bin\\gcc.exe"
 ar = "Y:\\msys64\\ucrt64\\bin\\ar.exe"
 </pre>
-<p>配置完成的可攜 Rust 不含 doc html 與 man 目錄的容量約 760MB:</p>
+<p>配置完成的可攜 Rust 不含 doc html 與 man 目錄的容量約 760MB: <a href="http://229.cycu.org/Rust_1.80.0.7z">Rust_1.80.0.7z</a> (126MB)</p>
 <p>Rust 程式設計語言: <a href="https://rust-lang.tw/book-tw/">https://rust-lang.tw/book-tw/</a></p>
 <p>從官方 <a href="https://www.rust-lang.org/zh-TW/tools/install">https://www.rust-lang.org/zh-TW/tools/install</a> 下載安裝後, rustup 與 cargo 目錄將會位於 %USERPROFILE% 目錄中的 .rustup 與 .cargo. 為了將 RUST 程式系統與 Windows 可攜系統整合, 將 .rustup 與 .cargo 置於 %Disk%:\Rust 目錄下, 且改為 rustup 與 cargo.</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">REM for Rust
@@ -395,7 +395,9 @@ set RUSTUP_HOME=%Disk%:\Rust\rustup
 set CARGO_HOME=%Disk%:\Rust\cargo
 set RUST_PATH=%CARGO_HOME%\bin
 REM 將 %RUST_PATH% 納入可攜系統的 PATH 設定</pre>
-<p></p><h1>Brython</h1>
+<p>相關電子書:</p>
+<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-7208-4">2022_Beginning_Rust</a> - Get Started with Rust 2021 Edition (<a href="http://229.cycu.org/2022_Beginning_Rust.pdf">local download</a>)</p>
+<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-9331-7">2023_Practical_Rust_Projects</a> - Build Serverless, AI, Machine Learning, Embedded, Game, and Web Applications (<a href="http://229.cycu.org/2023_Practical_Rust_Projects.pdf">local download</a>)</p><h1>Brython</h1>
 <p>從 1 累加到 100:</p>
 <p><button id="add1to100">1 add to 100</button></p>
 <!-- 導入 brython 程式庫 -->
