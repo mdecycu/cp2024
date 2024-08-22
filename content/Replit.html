@@ -131,7 +131,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li class='has-children'><a href='W&H.html'>W&H</a><ul class='dropdown'><li><a href='DC.html'>DC</a></li></ul><li><a href='AI.html'>AI</a></li></ul><li class='has-children'><a href='Topics.html'>Topics</a><ul class='dropdown'><li><a href='Topic 1.html'>Topic 1</a><li><a href='Topic 2.html'>Topic 2</a><li><a href='Topic 3.html'>Topic 3</a><li><a href='Topic 4.html'>Topic 4</a><li><a href='Topic 5.html'>Topic 5</a></li></ul><li class='has-children'><a href='IDE.html'>IDE</a><ul class='dropdown'><li><a href='Replit.html'>Replit</a><li><a href='Codespaces.html'>Codespaces</a></li></ul><li class='has-children'><a href='CAD.html'>CAD</a><ul class='dropdown'><li><a href='CoppeliaSim.html'>CoppeliaSim</a></li></ul><li><a href='Python.html'>Python</a><li><a href='Brython.html'>Brython</a></li>
+                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li class='has-children'><a href='W&H.html'>W&H</a><ul class='dropdown'><li><a href='DC.html'>DC</a></li></ul><li><a href='AI.html'>AI</a></li></ul><li class='has-children'><a href='Topics.html'>Topics</a><ul class='dropdown'><li><a href='Topic 1.html'>Topic 1</a><li><a href='Topic 2.html'>Topic 2</a><li><a href='Topic 3.html'>Topic 3</a><li><a href='Topic 4.html'>Topic 4</a><li><a href='Topic 5.html'>Topic 5</a></li></ul><li class='has-children'><a href='IDE.html'>IDE</a><ul class='dropdown'><li class='has-children'><a href='Replit.html'>Replit</a><ul class='dropdown'><li><a href='Jupyter.html'>Jupyter</a></li></ul><li><a href='Codespaces.html'>Codespaces</a></li></ul><li class='has-children'><a href='CAD.html'>CAD</a><ul class='dropdown'><li><a href='CoppeliaSim.html'>CoppeliaSim</a></li></ul><li><a href='Python.html'>Python</a><li><a href='Brython.html'>Brython</a></li>
                       </ul>
                 </nav>
               </div>
@@ -142,7 +142,7 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">IDE << <a href='IDE.html'>Previous</a> <a href='Codespaces.html'>Next</a> >> Codespaces<br /><h1>Replit</h1>
+    <div id="tipue_search_content">IDE << <a href='IDE.html'>Previous</a> <a href='Jupyter.html'>Next</a> >> Jupyter<br /><h1>Replit</h1>
 <p><a href="https://replit.com">https://replit.com</a> </p>
 <p>Replit 作為一個基於全球資訊網與手機或平板 APP 的整合程式開發環境 (Integrated Development Environment, IDE), 可以用來執行 <a href="https://github.com/mdecycu/cmsimde">cmsimde</a> 網站的動態編輯伺服器, 以及靜態網站.</p>
 <p>所謂 <a href="https://github.com/mdecycu/cmsimde">cmsimde</a> 是利用 Python 與 Javascript 程式語言所編寫的一套簡單網際內容管理系統. 其使用方法?</p>
@@ -155,9 +155,10 @@ img.add_border {
 <p dir="auto" style="padding-left: 30px;">for cmsite: git submodule update --init --recursive</p>
 <p dir="auto" style="padding-left: 30px;">for cmsimde_site: cmsimde is as directory not submodule</p>
 <p dir="auto" style="padding-left: 30px;">for cmsimde: pip install flask flask_cors bs4 lxml pelican markdown gevent</p>
-<p dir="auto">password generator: <a href="https://mde.tw/cmsite/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/b92b16621dd0246c352cf13d6463b333/raw/0bfa669750aba3abe48554509bbd43d65b6e5c82/hashlib_password_generator.py">https://mde.tw/cmsite/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/b92b16621dd0246c352cf13d6463b333/raw/0bfa669750aba3abe48554509bbd43d65b6e5c82/hashlib_password_generator.py</a> </p>
-<p dir="auto">for IPv6 only Ubuntu:<br/><br/>.ssh 目錄中的 config, 將 SSH session 名稱設為 github.com:<br/><br/>Host github.com<br/>User git<br/>Hostname github.com<br/>ProxyCommand /usr/bin/ncat --proxy p4.cycu.org:3128 --proxy-type http %h %p<br/><br/>for Replit:<br/><br/>.ssh 目錄中的 config, 將 SSH session 名稱設為 github.com:<br/><br/>Host github.com<br/>User git<br/>Hostname github.co<br/>#since Replit works for IPv4, therefore no ProxyCommand setting needed<br/>#ProxyCommand /usr/bin/ncat --proxy p4.cycu.org:3128 --proxy-type http %h %p</p>
-<br />IDE << <a href='IDE.html'>Previous</a> <a href='Codespaces.html'>Next</a> >> Codespaces</div>
+<p dir="auto">在先前的 Replit 版本, 免費帳號可以自行 deploy cmimde 動態網站, 因此需要針對網站系統設定管理者密碼如下, 但目前 (2024) 的 Replit 已經不允許免費帳號 deploy 動態網站, 而是採亂數網址, 所以無需設定管理者密碼.</p>
+<p dir="auto" style="padding-left: 30px;">password generator: <a href="https://mde.tw/cmsite/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/b92b16621dd0246c352cf13d6463b333/raw/0bfa669750aba3abe48554509bbd43d65b6e5c82/hashlib_password_generator.py">https://mde.tw/cmsite/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/b92b16621dd0246c352cf13d6463b333/raw/0bfa669750aba3abe48554509bbd43d65b6e5c82/hashlib_password_generator.py</a> </p>
+<p dir="auto">以下為利用 SSH 協定連線 github.com 所需設定:</p>
+<p dir="auto" style="padding-left: 30px;">for IPv6 only Ubuntu:<br/><br/>.ssh 目錄中的 config, 將 SSH session 名稱設為 github.com:<br/><br/>Host github.com<br/>User git<br/>Hostname github.com<br/>ProxyCommand /usr/bin/ncat --proxy p4.cycu.org:3128 --proxy-type http %h %p<br/><br/>for Replit:<br/><br/>.ssh 目錄中的 config, 將 SSH session 名稱設為 github.com:<br/><br/>Host github.com<br/>User git<br/>Hostname github.co<br/>#since Replit works for IPv4, therefore no ProxyCommand setting needed<br/>#ProxyCommand /usr/bin/ncat --proxy p4.cycu.org:3128 --proxy-type http %h %p</p><br />IDE << <a href='IDE.html'>Previous</a> <a href='Jupyter.html'>Next</a> >> Jupyter</div>
         
     <!-- footer -->
       <div class="container">
