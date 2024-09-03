@@ -145,12 +145,23 @@ img.add_border {
     <div id="tipue_search_content">About << <a href='About.html'>Previous</a> <a href='W&H.html'>Next</a> >> W&H<br /><h1>Jupyter</h1>
 <p>USB 隨身碟:</p>
 <p style="padding-left: 30px;">下載 <a href="http://229.cycu.org/python_2025_lite.7z">python_2025_lite.7z</a> (428 MB, 解開壓縮後約 1.5 GB)</p>
-<p>以 start_ipv6.bat 開啟隨身碟中的可攜程式環境後:</p>
-<p>在命令列視窗中, 輸入 jupyter lab --collaborative 可在瀏覽器中開啟 Jupyter lab</p>
-<p>Jupyter lab 的伺服器 ip 設定位於 home_ipv6\.jupyter\jupyter_server_config.py 檔案中的 c.ServerApp.ip 變數</p>
-<p>若希望讓其他用戶透過網路進行協同編輯, 可從命令列視窗中, 輸入 jupyter server list 取得登入所需的 token</p>
-<p>各 Jupyter lab 用戶可從左方的 Collaboration 頁面中檢視參與協同者的名單</p>
-<br />About << <a href='About.html'>Previous</a> <a href='W&H.html'>Next</a> >> W&H</div>
+<p>利用 Jupyter 建立 .ipynb 格式的 notebook 檔案:</p>
+<ol>
+<li>以 start_ipv6.bat 開啟隨身碟中的可攜程式環境</li>
+<li>在命令列視窗中, 輸入 jupyter lab --collaborative 後可在瀏覽器中開啟 Jupyter lab</li>
+<li>系統內定以執行 jupyter lab --collaborative 指令所在目錄作為根目錄</li>
+<li>Jupyter lab 的伺服器 ip 設定位於 home_ipv6\.jupyter\jupyter_server_config.py 檔案中的 c.ServerApp.ip 變數, 內定為 localhost, 使用者可以自行修改為電腦連外 IPv4 或 IPv6 位址</li>
+<li>home_ipv6\.jupyter\jupyter_server_config.py 檔案中的 c.ServerApp.port = 8888 為內定連線埠號</li>
+<li>系統內定使用 http 連線, 使用者可利用 openssl 建立 cert.pem 與 key.pem, 並與 c.ServerApp.certfile 及c.ServerApp.keyfile 等系統變數綁定後, 使用 https 連線</li>
+<li>若希望讓其他用戶透過網路進行協同編輯, 可從命令列視窗中, 輸入 jupyter server list 取得登入所需的 token, 或將設定修改為使用者自訂的密碼登入</li>
+<li>各 Jupyter lab 用戶可從左方的 Collaboration 頁面中檢視參與協同者的名單</li>
+<li>使用結束後, 以 File - Shutdown 關閉 Jupyterlab</li>
+</ol>
+<p>利用 openssl 指令建立 cert.pem 與 key.pem:</p>
+<p style="padding-left: 30px;">openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem</p>
+<p>使用 https 連線時, cert.pem 與 key.pem 設定:</p>
+<p style="padding-left: 30px;">c.ServerApp.certfile = u'y:\home_ipv6\.jupyter\cert.pem'</p>
+<p style="padding-left: 30px;">c.ServerApp.keyfile = u'y:\home_ipv6\.jupyter\key.pem'</p><br />About << <a href='About.html'>Previous</a> <a href='W&H.html'>Next</a> >> W&H</div>
         
     <!-- footer -->
       <div class="container">

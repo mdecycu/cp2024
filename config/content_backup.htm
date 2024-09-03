@@ -2,7 +2,7 @@
 <p>課程倉儲: <a href="https://github.com/mdecycu/cp2024">https://github.com/mdecycu/cp2024</a></p>
 <p>課程網頁: <a href="https://mde.tw/cp2024">https://mde.tw/cp2024</a></p>
 <p>課程目標:</p>
-<p style="padding-left: 30px;">利用 Python 程式協助執行機電整合系統設計</p>
+<p style="padding-left: 30px;">學習如何利用 Python 程式協助執行機電整合系統設計</p>
 <p>課程教材:</p>
 <p style="padding-left: 30px;"><a href="https://blog.jupyter.org/introducing-learn-python-with-jupyter-11214f152159">Learn Python with Jupyter</a></p>
 <p>USB 隨身碟:</p>
@@ -10,24 +10,33 @@
 <p><span>CAD 套件: </span><a href="https://solvespace.com/">Solvespace</a></p>
 <p><span>機電模擬: </span><a href="https://www.coppeliarobotics.com/">CoppeliaSim</a></p>
 <p>課程評分:</p>
-<p style="padding-left: 30px;">全勤出席 (10%)</p>
-<p style="padding-left: 30px;">Github Classroom 作業 (40%)</p>
-<p style="padding-left: 30px;">期末口頭與書面專題報告 (50%)</p>
+<p style="padding-left: 30px;">出席 (10%) - 自行舉證評分</p>
+<p style="padding-left: 30px;">Github Classroom 作業 (40%) - 以 Github 帳號領取作業倉儲後建立網頁, 自評與互評</p>
+<p style="padding-left: 30px;">期末口頭與書面專題報告 (50%) - 利用網頁內容進行簡報並提交 pdf 格式書面報告, 自評與互評</p>
 <hr/>
 <p>行事曆</p>
 <p><a href="https://calendar.google.com/calendar/embed?src=mde.nfu.edu.tw_3439313938333136353439%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;mode=week&amp;src=mde.nfu.edu.tw_35303530373431313438%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;src=yen%40gm.nfu.edu.tw&amp;ctz=Asia%2FTaipei"> 全頁檢視 </a></p>
-<p><iframe height="600" src="https://calendar.google.com/calendar/embed?src=mde.nfu.edu.tw_3439313938333136353439%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;mode=week&amp;src=mde.nfu.edu.tw_35303530373431313438%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;src=yen%40gm.nfu.edu.tw&amp;ctz=Asia%2FTaipei" width="800"></iframe></p>
-<h2>Jupyter</h2>
+<p><iframe height="600" src="https://calendar.google.com/calendar/embed?src=mde.nfu.edu.tw_3439313938333136353439%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;mode=week&amp;src=mde.nfu.edu.tw_35303530373431313438%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;src=yen%40gm.nfu.edu.tw&amp;ctz=Asia%2FTaipei" width="800"></iframe></p><h2>Jupyter</h2>
 <p>USB 隨身碟:</p>
 <p style="padding-left: 30px;">下載 <a href="http://229.cycu.org/python_2025_lite.7z">python_2025_lite.7z</a> (428 MB, 解開壓縮後約 1.5 GB)</p>
-<p>以 start_ipv6.bat 開啟隨身碟中的可攜程式環境後:</p>
-<p>在命令列視窗中, 輸入 jupyter lab --collaborative 可在瀏覽器中開啟 Jupyter lab</p>
-<p>Jupyter lab 的伺服器 ip 設定位於 home_ipv6\.jupyter\jupyter_server_config.py 檔案中的 c.ServerApp.ip 變數</p>
-<p>若希望讓其他用戶透過網路進行協同編輯, 可從命令列視窗中, 輸入 jupyter server list 取得登入所需的 token</p>
-<p>各 Jupyter lab 用戶可從左方的 Collaboration 頁面中檢視參與協同者的名單</p>
-<h2>W&amp;H</h2>
-<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/n8Q7gXwavUU?si=KlzDOIziYoQmXepy" title="YouTube video player" width="560"></iframe></p>
-<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/s4pVFLUlx8g?si=myfiMwfh93eNfHLm" title="YouTube video player" width="560"></iframe></p>
+<p>利用 Jupyter 建立 .ipynb 格式的 notebook 檔案:</p>
+<ol>
+<li>以 start_ipv6.bat 開啟隨身碟中的可攜程式環境</li>
+<li>在命令列視窗中, 輸入 jupyter lab --collaborative 後可在瀏覽器中開啟 Jupyter lab</li>
+<li>系統內定以執行 jupyter lab --collaborative 指令所在目錄作為根目錄</li>
+<li>Jupyter lab 的伺服器 ip 設定位於 home_ipv6\.jupyter\jupyter_server_config.py 檔案中的 c.ServerApp.ip 變數, 內定為 localhost, 使用者可以自行修改為電腦連外 IPv4 或 IPv6 位址</li>
+<li>home_ipv6\.jupyter\jupyter_server_config.py 檔案中的 c.ServerApp.port = 8888 為內定連線埠號</li>
+<li>系統內定使用 http 連線, 使用者可利用 openssl 建立 cert.pem 與 key.pem, 並與 c.ServerApp.certfile 及c.ServerApp.keyfile 等系統變數綁定後, 使用 https 連線</li>
+<li>若希望讓其他用戶透過網路進行協同編輯, 可從命令列視窗中, 輸入 jupyter server list 取得登入所需的 token, 或將設定修改為使用者自訂的密碼登入</li>
+<li>各 Jupyter lab 用戶可從左方的 Collaboration 頁面中檢視參與協同者的名單</li>
+</ol>
+<p>利用 openssl 指令建立 cert.pem 與 key.pem:</p>
+<p style="padding-left: 30px;">openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem</p>
+<p>使用 https 連線時, cert.pem 與 key.pem 設定:</p>
+<p style="padding-left: 30px;">c.ServerApp.certfile = u'y:\home_ipv6\.jupyter\cert.pem'</p>
+<p style="padding-left: 30px;">c.ServerApp.keyfile = u'y:\home_ipv6\.jupyter\key.pem'</p><h2>W&amp;H</h2>
+<p>Why and How?</p>
+<p></p>
 <p><a href="http://229.cycu.org/40723210_2018.7z">40723210_2018.7z</a> (<a href="https://github.com/s40723210/cp2018">https://github.com/s40723210/cp2018</a>)</p>
 <p><a href="https://www.verytechnology.com/iot-insights/why-mechanical-engineers-should-embrace-python-programming">https://www.verytechnology.com/iot-insights/why-mechanical-engineers-should-embrace-python-programming</a></p>
 <p><a href="https://www.udemy.com/course/python-for-mechanical-engineers">Python for Mechanical Engineers</a> (機械工程師 (適用) 的 Python) - <a href="https://youtu.be/WFwH0d-Q2NY">Video1</a>, <a href="https://youtu.be/3RxoTim2PgM">Video2</a></p>
@@ -66,8 +75,7 @@
 <p style="padding-left: 30px;"><a href="https://github.com/mdecycu/pj5073">https://github.com/mdecycu/pj5073</a> (內容管理系統)</p>
 <p>CAD 套件應用延伸:</p>
 <p style="padding-left: 30px;"><a href="https://mde.tw/cad2024/content/NXOpen.html">https://mde.tw/cad2024/content/NXOpen.html</a> (利用程式建立零組件)</p>
-<p style="padding-left: 30px;"><a href="https://github.com/mdecycu/nxopen">https://github.com/mdecycu/nxopen</a></p>
-<h3>DC</h3>
+<p style="padding-left: 30px;"><a href="https://github.com/mdecycu/nxopen">https://github.com/mdecycu/nxopen</a></p><h3>DC</h3>
 <p>Design Calculation</p>
 <p>設計運算:</p>
 <p><a href="https://www.studysmarter.co.uk/explanations/engineering/design-engineering/design-calculation/">https://www.studysmarter.co.uk/explanations/engineering/design-engineering/design-calculation/</a> (一般工程運算)</p>
@@ -141,6 +149,7 @@ plt.show()
 <h4>Topic 1: <span style="background-color: #ffff99;">基於瀏覽器的分散式版次管理與整合程式開發環境</span></h4>
 <p style="padding-left: 30px;">USB 隨身碟:</p>
 <p style="padding-left: 60px;">下載 <a href="http://229.cycu.org/python_2025_lite.7z">python_2025_lite.7z</a> (428 MB, 解開壓縮後約 1.5 GB)</p>
+<p style="padding-left: 30px;"><a href="https://mde.tw/cp2024/content/Jupyter.html">Jupyter</a></p>
 <p style="padding-left: 30px;">What are Github and Codespaces?</p>
 <p style="padding-left: 60px;"><a href="https://docs.github.com/en/get-started/start-your-journey/hello-world">Hello World - GitHub Docs</a></p>
 <p style="padding-left: 30px;">利用包含學號的字串作為帳號, 申請免費使用 Github.</p>
@@ -165,8 +174,7 @@ plt.show()
 <p style="padding-left: 30px;">利用 <a href="https://solvespace.com/">https://solvespace.com/</a> 建立機械系統零組件</p>
 <p style="padding-left: 30px;">利用 <a href="https://www.coppeliarobotics.com/">CoppeliaSim</a> 建立機電模擬系統</p>
 <p style="padding-left: 30px;">利用 <a href="https://manual.coppeliarobotics.com/en/zmqRemoteApiOverview.htm">Python</a> 跨網路控制瀏覽器上的機電模擬系統</p>
-<h4>Topic 5: <span style="background-color: #ffff99;">自選期末專案題目</span></h4>
-<h2>Ebooks</h2>
+<h4>Topic 5: <span style="background-color: #ffff99;">自選期末專案題目</span></h4><h2>Ebooks</h2>
 <p><a href="https://www.git-tower.com/learn/git/ebook/cn/command-line/introduction">Learn Git</a></p>
 <p><a href="https://liaoxuefeng.com/books/git/introduction/index.html">Git 教程</a></p>
 <p><a href="https://liaoxuefeng.com/books/python/introduction/index.html">Python 3 教程</a></p>
@@ -176,6 +184,7 @@ plt.show()
 <p>主題摘要:</p>
 <p style="padding-left: 30px;">USB 隨身碟:</p>
 <p style="padding-left: 60px;">下載 <a href="http://229.cycu.org/python_2025_lite.7z">python_2025_lite.7z</a> (428 MB, 解開壓縮後約 1.5 GB)</p>
+<p style="padding-left: 30px;"><a href="https://mde.tw/cp2024/content/Jupyter.html">Jupyter</a></p>
 <p style="padding-left: 30px;">What are Github and Codespaces?</p>
 <p style="padding-left: 60px;"><a href="https://docs.github.com/en/get-started/start-your-journey/hello-world">Hello World - GitHub Docs</a></p>
 <p style="padding-left: 30px;">利用包含學號的字串作為帳號, 申請免費使用 Github.</p>
@@ -186,11 +195,11 @@ plt.show()
 <p style="padding-left: 60px;">練習過的程式碼應該存在那裡?</p>
 <p style="padding-left: 60px;"><a href="https://brython.info/">Brython</a> 是甚麼? 跟 Python 有何不同?</p>
 <p style="padding-left: 60px;"><a href="https://brython.info/">Brython</a> vs. <a href="https://pyscript.net/">Pyscript</a></p>
+<p style="padding-left: 30px;"><a href="https://mde.tw/cp2024/content/Jupyter.html">Jupyter</a></p>
 <p style="padding-left: 30px;"><a href="https://git-scm.com/download/win">Git</a> 與 <a href="https://en.wikipedia.org/wiki/GitHub">Github</a> 的應用</p>
 <p style="padding-left: 30px;"><a href="https://github.com/features/codespaces">Codespaces</a> 應用</p>
 <p><span>參考資料:</span></p>
-<p style="padding-left: 30px;"><a href="https://www.youtube.com/@-kmolab9376/videos">https://www.youtube.com/@-kmolab9376/videos</a></p>
-<h2>Topic 2</h2>
+<p style="padding-left: 30px;"><a href="https://www.youtube.com/@-kmolab9376/videos">https://www.youtube.com/@-kmolab9376/videos</a></p><h2>Topic 2</h2>
 <h4><span>主題: 計算機程式課程作業與學員網頁</span></h4>
 <p><span>主題摘要:</span></p>
 <p style="padding-left: 30px;">What is <a href="https://classroom.github.com/">GitHub Classroom</a>?</p>
@@ -248,7 +257,7 @@ plt.show()
 <p><a href="/downloads/cad2024_foosball_with_ball_python_script.7z">cad2024_foosball_with_ball_python_script.7z</a></p>
 <h4></h4>
 <h2>CoppeliaSim</h2>
-<p>下載相容於 IPv6 的 CoppeliaSim 4.7.0 rev4: <a href="http://229.cycu.org/CoppeliaSim_Edu_4.7.0_rev4_for_2024Fall.7z">CoppeliaSim_Edu_4.7.0_rev4_for_2024Fall.7z</a></p>
+<p>下載相容於 IPv6 的 CoppeliaSim 4.7.0 rev4: <a href="http://229.cycu.org/CoppeliaSim_Edu_4.7.0_rev4_for_2024Fall.7z">CoppeliaSim_Edu_4.7.0_rev4_for_2024Fall.7z</a>, 已經內建於 <a href="http://229.cycu.org/python_2025_lite.7z">python_2025_lite.7z</a> (428 MB, 解開壓縮後約 1.5 GB)</p>
 <p><a href="https://manual.coppeliarobotics.com/en/versionInfo.htm">https://manual.coppeliarobotics.com/en/versionInfo.htm</a></p>
 <p>user settings file is C:\Users\%USERNAME%\AppData\Roaming/CoppeliaSim/usrset.txt</p>
 <p>CoppeliaSim 4.5.1 與 4.7.1 使用 ZMQ RemoteAPI Python 程式的差異:</p>
@@ -335,34 +344,16 @@ while True:
 sim.stopSimulation()
 
 </pre>
-<p></p>
-<h1>Python</h1>
-<p>課程教材: </p>
-<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-3-031-49780-3">2023_course_in_python.pdf</a></p>
-<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-84996-537-8">2011 Python programming fundamentals.pdf</a></p>
-<p style="padding-left: 60px;"><a href="https://web.archive.org/web/20160412022935/http://knuth.luther.edu/~leekent/IntroToComputing">Intro to Computing</a></p>
-<p style="padding-left: 30px;"><a href="https://docs.python.org/zh-tw/3/index.html">https://docs.python.org/zh-tw/3/index.html</a></p>
-<p><img caption="false" class="add_border" height="409" src="/images/ChatGPT_en_to_zh_TW.png" width="400"/></p>
+<p></p><h1>Python</h1>
 <p>Python 執行環境</p>
 <p style="padding-left: 30px;">Brython (全球資訊網上的 Python)</p>
-<p style="padding-left: 30px;">Cospaces</p>
-<p style="padding-left: 30px;">Gitpod</p>
+<p style="padding-left: 30px;">Github Codespaces</p>
 <p style="padding-left: 30px;">Windows 操作系統</p>
 <p style="padding-left: 60px;">制式安裝 (VSCode and SciTE)</p>
 <p style="padding-left: 60px;">可攜設定 (VSCode and SciTE)</p>
-<p style="padding-left: 60px;">2024 Fall 開始採用的 python_2025.7z (5.2GB), 包含下列模組:</p>
-<p style="padding-left: 90px;">與 NX2406 配合的 <a href="http://229.cycu.org/Python310_pip_only.7z">Python310_pip_only.7z</a> (3.10.11 版)</p>
-<p style="padding-left: 90px;"><a href="http://229.cycu.org/Python310_jupyter_notebook.7z">Python310_jupyter_notebook.7z</a></p>
-<p style="padding-left: 90px;"><a href="http://229.cycu.org/Python310_jupyter_lab_collaborative.7z">Python310_jupyter_lab_collaborative.7z</a></p>
-<p style="padding-left: 90px;"><a href="http://229.cycu.org/python_2025/python_2025_batch_files.7z">python_2025_batch_files.7z</a> (2.64KB)</p>
-<p style="padding-left: 90px;"><a href="http://229.cycu.org/NX2406_CAD.7z">下載</a><span> NX2406 可攜 CAD 壓縮檔案 (1.76 GB, 解開後約 9 GB)</span></p>
-<p style="padding-left: 90px;"><a href="http://229.cycu.org/python_2025/data/CoppeliaSim_Edu_4.7.0_rev4_for_2024Fall.7z">CoppeliaSim_Edu_4.7.0_rev4_for_2024Fall.7z</a> (190MB)</p>
-<p style="padding-left: 90px;"><a href="http://229.cycu.org/python_2025/data/homes_and_tmp.7z">homes_and_tmp.7z</a> (84MB)</p>
-<p style="padding-left: 90px;"><a href="http://229.cycu.org/python_2025/data/msys64_20240507.7z">msys64_20240507.7z</a> (188MB)</p>
-<p style="padding-left: 90px;"><a href="http://229.cycu.org/python_2025/data/git_putty_python.7z">git_putty_python.7z</a> (559MB)</p>
-<p style="padding-left: 90px;"><a href="http://229.cycu.org/python_2025/data/sharex_wscite_wink3.7z">sharex_wscite_wink3.7z</a> (44.2MB)</p>
-<p style="padding-left: 90px;"><a href="http://229.cycu.org/python_2025/data/solvespace_and_utilities.7z">solvespace_and_utilities.7z</a> (7.28MB)</p>
-<p style="padding-left: 90px;"><a href="http://229.cycu.org/kmolab_ex.7z">kmolab_ex.7z</a> (314MB)</p>
+<p style="padding-left: 30px;">USB 隨身碟:</p>
+<p style="padding-left: 60px;">下載 <a href="http://229.cycu.org/python_2025_lite.7z">python_2025_lite.7z</a> (428 MB, 解開壓縮後約 1.5 GB)</p>
+<p style="padding-left: 60px;"><a href="http://229.cycu.org/kmolab_ex.7z">kmolab_ex.7z</a> (314MB)</p>
 <p style="padding-left: 30px;">Ubuntu 操作系統</p>
 <p><a href="https://docs.python.org/zh-tw/3/library/stdtypes.html">Types</a>: Integers, Floats, Strings and Booleans</p>
 <p>Type Conversion</p>
@@ -452,8 +443,7 @@ print("已經將 " + filenameString+ " 合併為: "+ newFileName + ".pdf")
 <p>Python 程式也能用來控制 Webots 機電模擬系統: <a href="https://cyberbotics.com/doc/guide/using-python">https://cyberbotics.com/doc/guide/using-python</a></p>
 <h4>Python 與 CAD 有關的其他應用</h4>
 <p><a href="https://pypi.org/project/python-solvespace/">https://pypi.org/project/python-solvespace/</a></p>
-<p><a href="https://github.com/jimy-byerley/pymadcad">https://github.com/jimy-byerley/pymadcad</a></p>
-<h1>Brython</h1>
+<p><a href="https://github.com/jimy-byerley/pymadcad">https://github.com/jimy-byerley/pymadcad</a></p><h1>Brython</h1>
 <p>從 1 累加到 100:</p>
 <p><button id="add1to100">1 add to 100</button></p>
 <!-- 導入 brython 程式庫 -->
