@@ -11,8 +11,8 @@
 <p><span>機電模擬: </span><a href="https://www.coppeliarobotics.com/">CoppeliaSim</a></p>
 <p>課程評分:</p>
 <p style="padding-left: 30px;">出席 (10%) - 自行舉證評分</p>
-<p style="padding-left: 30px;">Github Classroom 作業 (40%) - 以 Github 帳號領取作業倉儲後建立網頁, 自評與互評</p>
-<p style="padding-left: 30px;">期末口頭與書面專題報告 (50%) - 利用網頁內容進行簡報並提交 pdf 格式書面報告, 自評與互評</p>
+<p style="padding-left: 30px;">Github Classroom 作業與隨堂考試 (70%) - 以 Github 帳號領取作業倉儲後, 建立包含操作流程影片與檔案下載的網頁</p>
+<p style="padding-left: 30px;">期末口頭與書面專題報告 (20%) - 利用網頁內容進行簡報並提交 pdf 格式書面報告</p>
 <hr/>
 <p>行事曆</p>
 <p><a href="https://calendar.google.com/calendar/embed?src=mde.nfu.edu.tw_3439313938333136353439%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;mode=week&amp;src=mde.nfu.edu.tw_35303530373431313438%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;src=yen%40gm.nfu.edu.tw&amp;ctz=Asia%2FTaipei"> 全頁檢視 </a></p>
@@ -35,7 +35,11 @@
 <p style="padding-left: 30px;">openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem</p>
 <p>使用 https 連線時, cert.pem 與 key.pem 設定:</p>
 <p style="padding-left: 30px;">c.ServerApp.certfile = u'y:\home_ipv6\.jupyter\cert.pem'</p>
-<p style="padding-left: 30px;">c.ServerApp.keyfile = u'y:\home_ipv6\.jupyter\key.pem'</p><h2>W&amp;H</h2>
+<p style="padding-left: 30px;">c.ServerApp.keyfile = u'y:\home_ipv6\.jupyter\key.pem'</p>
+<p>Jupyter 中使用 iframe 標註:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from IPython.display import IFrame
+IFrame('https://mde.tw', width=700, height=350)</pre>
+<p></p><h2>W&amp;H</h2>
 <p>Why and How?</p>
 <p></p>
 <p><a href="http://229.cycu.org/40723210_2018.7z">40723210_2018.7z</a> (<a href="https://github.com/s40723210/cp2018">https://github.com/s40723210/cp2018</a>)</p>
@@ -76,7 +80,8 @@
 <p style="padding-left: 30px;"><a href="https://github.com/mdecycu/pj5073">https://github.com/mdecycu/pj5073</a> (內容管理系統)</p>
 <p>CAD 套件應用延伸:</p>
 <p style="padding-left: 30px;"><a href="https://mde.tw/cad2024/content/NXOpen.html">https://mde.tw/cad2024/content/NXOpen.html</a> (利用程式建立零組件)</p>
-<p style="padding-left: 30px;"><a href="https://github.com/mdecycu/nxopen">https://github.com/mdecycu/nxopen</a></p><h3>DC</h3>
+<p style="padding-left: 30px;"><a href="https://github.com/mdecycu/nxopen">https://github.com/mdecycu/nxopen</a></p>
+<h3>DC</h3>
 <p>Design Calculation</p>
 <p>設計運算:</p>
 <p><a href="https://www.studysmarter.co.uk/explanations/engineering/design-engineering/design-calculation/">https://www.studysmarter.co.uk/explanations/engineering/design-engineering/design-calculation/</a> (一般工程運算)</p>
@@ -147,106 +152,49 @@ plt.show()
 <p style="padding-left: 30px;">通過分析歷史數據，公司可以預測未來的螺栓需求，合理安排採購計劃，避免庫存積壓或短缺。例如，如果某些時間段的需求量較大，公司可以提前增加庫存，平衡供需。<br/><br/>4. 供應商評估</p>
 <p style="padding-left: 30px;">根據每個供應商提供螺栓的尺寸穩定性和合格率，公司可以進行供應商評估，選擇優質供應商，建立長期合作關係，同時淘汰質量不穩定的供應商。</p>
 <h1>Topics</h1>
-<h4>Topic 1: <span style="background-color: #ffff99;">基於瀏覽器的分散式版次管理與整合程式開發環境</span></h4>
+<h4>Topic 1: 基於瀏覽器的分散式版次管理與整合程式開發環境 (10%)<span style="background-color: #ffff99;"><br/></span></h4>
 <p style="padding-left: 30px;">USB 隨身碟:</p>
 <p style="padding-left: 60px;">下載 <a href="http://229.cycu.org/python_2025_lite.7z">python_2025_lite.7z</a> (428 MB, 解開壓縮後約 1.5 GB)</p>
 <p style="padding-left: 30px;"><a href="https://mde.tw/cp2024/content/Jupyter.html">Jupyter</a></p>
 <p style="padding-left: 30px;">What are Github and Codespaces?</p>
 <p style="padding-left: 60px;"><a href="https://docs.github.com/en/get-started/start-your-journey/hello-world">Hello World - GitHub Docs</a></p>
 <p style="padding-left: 30px;">利用包含學號的字串作為帳號, 申請免費使用 Github.</p>
-<h4>Topic 2: <span style="background-color: #ffff99;">計算機程式課程作業與學員網頁</span></h4>
-<p style="padding-left: 30px;">What is <a href="https://classroom.github.com/">GitHub Classroom</a>?</p>
-<p style="padding-left: 30px;">Your repository and Web site</p>
-<p style="padding-left: 30px;"><a href="https://www.youtube.com/playlist?list=PL-g0fdC5RMboYEyt6QS2iLb_1m7QcgfHk">線上 Python 教學課程</a> (作者: <a href="https://train.csie.ntu.edu.tw/train/teacher.php?id=19">彭兆蔚</a>)</p>
-<p style="padding-left: 30px;"><a href="https://github.com/jerry-git/learn-python3">https://github.com/jerry-git/learn-python3</a></p>
-<p style="padding-left: 30px;"><a href="https://www.learnpythonwithjupyter.com/assets/book/learn_python_with_jupyter.pdf">Learn Python with Jupyter</a></p>
-<p style="padding-left: 30px;">機械設計工程師的程式設計環境</p>
-<p style="padding-left: 60px;">大多數設計工具都僅支援 Windows 操作系統</p>
-<p style="padding-left: 60px;">大多數的 CAD/CAE/CAM 都是封閉商用套件</p>
-<p style="padding-left: 60px;">Siemens NX 不同版本的 NXOpen Python 程式開發, 必須搭配特定的 Python 版本</p>
-<p style="padding-left: 60px;">Windows 下的可攜或基於瀏覽器的 Python 或 CAD/CAE/CAM 環境較符合協同產品設計開發</p>
-<p style="padding-left: 60px;">基於瀏覽器的程式開發環境已經逐步成為主流 (以 <a href="https://github.com/features/codespaces">Codespaces</a> 為例)</p>
-<p style="padding-left: 60px;">基於瀏覽器的 CAD/CAE 也正逐步成形 (Onshpae, Fusion 360, NX X 等)</p>
-<h4>Topic 3: <span style="background-color: #ffff99;">利用 Python 建立網站內容</span></h4>
-<p style="padding-left: 30px;"><a href="https://realpython.com/python-web-applications/">Python Web Applications: Deploy Your Script as a Flask App – Real Python</a></p>
-<p style="padding-left: 30px;"><a href="https://learn.microsoft.com/zh-tw/windows/python/web-frameworks">在 Windows 上使用 Python 進行 Web 開發 | Microsoft Learn</a></p>
-<p style="padding-left: 30px;">如何使用 <a href="https://github.com/mdecycu/cmsimde">mdecycu/cmsimde (github.com)</a></p>
-<h4>Topic 4: <span style="background-color: #ffff99;">利用 Python 控制機電模擬系統</span></h4>
+<p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 1</p>
+<h4>Topic 2: Python 的數列、判斷式與重複迴圈 (20%)<span style="background-color: #ffff99;"><br/></span></h4>
+<p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 2 and Part 3</p>
+<h4>Topic 3: Python 的數字、演算法與迴圈 (20%)</h4>
+<p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 4 and Part 5</p>
+<h4>Topic 4: 利用 Python 控制機電模擬系統 (20%)</h4>
 <p style="padding-left: 30px;">利用 <a href="https://solvespace.com/">https://solvespace.com/</a> 建立機械系統零組件</p>
 <p style="padding-left: 30px;">利用 <a href="https://www.coppeliarobotics.com/">CoppeliaSim</a> 建立機電模擬系統</p>
 <p style="padding-left: 30px;">利用 <a href="https://manual.coppeliarobotics.com/en/zmqRemoteApiOverview.htm">Python</a> 跨網路控制瀏覽器上的機電模擬系統</p>
-<h4>Topic 5: <span style="background-color: #ffff99;">自選期末專案題目</span></h4><h2>Ebooks</h2>
+<h4>Final Report: 期末口頭與書面專題報告 (20%)</h4><h2>Ebooks</h2>
 <p><a href="https://www.git-tower.com/learn/git/ebook/cn/command-line/introduction">Learn Git</a></p>
 <p><a href="https://liaoxuefeng.com/books/git/introduction/index.html">Git 教程</a></p>
 <p><a href="https://liaoxuefeng.com/books/python/introduction/index.html">Python 3 教程</a></p>
 <p><a href="http://www.pythondoc.com/pythontutorial3/index.html">Python 入門指南</a></p>
 <h2>Topic 1</h2>
-<h4><span>主題: 基於瀏覽器的分散式版次管理與整合程式開發環境</span></h4>
-<p>主題摘要:</p>
+<h4>基於瀏覽器的分散式版次管理與整合程式開發環境 (10%)<span style="background-color: #ffff99;"><br/></span></h4>
 <p style="padding-left: 30px;">USB 隨身碟:</p>
 <p style="padding-left: 60px;">下載 <a href="http://229.cycu.org/python_2025_lite.7z">python_2025_lite.7z</a> (428 MB, 解開壓縮後約 1.5 GB)</p>
 <p style="padding-left: 30px;"><a href="https://mde.tw/cp2024/content/Jupyter.html">Jupyter</a></p>
 <p style="padding-left: 30px;">What are Github and Codespaces?</p>
 <p style="padding-left: 60px;"><a href="https://docs.github.com/en/get-started/start-your-journey/hello-world">Hello World - GitHub Docs</a></p>
 <p style="padding-left: 30px;">利用包含學號的字串作為帳號, 申請免費使用 Github.</p>
-<p>Demo:</p>
-<p style="padding-left: 30px;">利用 <a href="https://github.com/ShareX/ShareX/releases">ShareX</a> 錄製教學內容, 透過 mdecourse 帳號將影片上傳至 <a href="https://www.youtube.com/@-kmolab9376/videos">Youtube</a></p>
-<p style="padding-left: 30px;">利用線上的 <a href="https://mde.tw/cp2024/content/Brython.html">Brython 程式環境</a>, 學習簡單的 Python 程式語法</p>
-<p style="padding-left: 60px;">變數、Print、迴圈、判斷式</p>
-<p style="padding-left: 60px;">練習過的程式碼應該存在那裡?</p>
-<p style="padding-left: 60px;"><a href="https://brython.info/">Brython</a> 是甚麼? 跟 Python 有何不同?</p>
-<p style="padding-left: 60px;"><a href="https://brython.info/">Brython</a> vs. <a href="https://pyscript.net/">Pyscript</a></p>
-<p style="padding-left: 30px;"><a href="https://mde.tw/cp2024/content/Jupyter.html">Jupyter</a></p>
-<p style="padding-left: 30px;"><a href="https://git-scm.com/download/win">Git</a> 與 <a href="https://en.wikipedia.org/wiki/GitHub">Github</a> 的應用</p>
-<p style="padding-left: 30px;"><a href="https://github.com/features/codespaces">Codespaces</a> 應用</p>
+<p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 1</p>
 <p><span>參考資料:</span></p>
 <p style="padding-left: 30px;"><a href="https://www.youtube.com/@-kmolab9376/videos">https://www.youtube.com/@-kmolab9376/videos</a></p><h2>Topic 2</h2>
-<h4><span>主題: 計算機程式課程作業與學員網頁</span></h4>
-<p><span>主題摘要:</span></p>
-<p style="padding-left: 30px;">What is <a href="https://classroom.github.com/">GitHub Classroom</a>?</p>
-<p style="padding-left: 30px;">Your repository and Web site</p>
-<p style="padding-left: 30px;"><a href="https://www.youtube.com/playlist?list=PL-g0fdC5RMboYEyt6QS2iLb_1m7QcgfHk">線上 Python 教學課程</a> (作者:<span> </span><a href="https://train.csie.ntu.edu.tw/train/teacher.php?id=19">彭兆蔚</a>)</p>
-<p style="padding-left: 30px;"><a href="https://github.com/jerry-git/learn-python3">https://github.com/jerry-git/learn-python3</a></p>
-<p style="padding-left: 30px;"><a href="https://www.learnpythonwithjupyter.com/assets/book/learn_python_with_jupyter.pdf">Learn Python with Jupyter</a></p>
-<p style="padding-left: 30px;">機械設計工程師的程式設計環境</p>
-<p style="padding-left: 60px;">大多數設計工具都僅支援 Windows 操作系統</p>
-<p style="padding-left: 60px;">大多數的 CAD/CAE/CAM 都是封閉商用套件</p>
-<p style="padding-left: 60px;">Siemens NX 不同版本的 NXOpen Python 程式開發, 必須搭配特定的 Python 版本</p>
-<p style="padding-left: 60px;">Windows 下的可攜或基於瀏覽器的 Python 或 CAD/CAE/CAM 環境較符合協同產品設計開發</p>
-<p style="padding-left: 60px;">基於瀏覽器的程式開發環境已經逐步成為主流 (以 <a href="https://github.com/features/codespaces">Codespaces</a> 為例)</p>
-<p style="padding-left: 60px;">基於瀏覽器的 CAD/CAE 也正逐步成形 (Onshpae, Fusion 360, NX X 等)</p>
-<p>Demo:</p>
-<p style="padding-left: 30px;">利用 <a href="https://classroom.github.com/">GitHub Classroom</a> 指定各學員的作業倉儲</p>
-<p style="padding-left: 30px;"><span>有了<a href="https://www.youtube.com/playlist?list=PL-g0fdC5RMboYEyt6QS2iLb_1m7QcgfHk">線上 Python 教學課程</a>的教學影片, 以及 <a href="https://github.com/jerry-git/learn-python3">Jupyter Notebook</a>, 我還需要來上課嗎? :-)</span></p>
-<p style="padding-left: 30px;"><span>機械設計工程師的程式設計環境, 與其他工程專業有何不同? 問題就在<a href="https://www.google.com/search?q=%E6%A9%9F%E6%A2%B0%E7%82%BA%E5%B7%A5%E6%A5%AD%E4%B9%8B%E6%AF%8D">這裡</a>!</span></p>
-<p style="padding-left: 30px;"><span>當越來越多的機械設計相關套件逐步轉移到雲端環境:</span></p>
-<p style="padding-left: 60px;"><span>協同設計越來越有效率?</span></p>
-<p style="padding-left: 60px;"><span>最新套件發布後, 不再有盜版軟體?</span></p>
-<p style="padding-left: 60px;"><span>AI 智入產品開發流程, 越來越方便? (<a href="https://claude.ai/">claude.ai</a>, <a href="https://openai.com/chatgpt/">chatgpt</a>, <a href="https://gemini.google.com/">gemini</a>) </span></p>
-<p style="padding-left: 60px;"><span>當<a href="https://www.google.com/search?q=nvidia+jensen+huang+programming+is+no+longer+a+vital+skill">大神如是說</a>, 我還需要學習任何計算機程式語言嗎?</span></p>
-<h2>Topic 3</h2>
-<p><span>驗收 Topic 2 學員簡報</span></p>
-<h4><span>主題: 利用 Python 建立網站內容</span></h4>
-<p><span>主題摘要:</span></p>
-<p style="padding-left: 30px;"><a href="https://realpython.com/python-web-applications/">Python Web Applications: Deploy Your Script as a Flask App – Real Python</a></p>
-<p style="padding-left: 30px;"><a href="https://learn.microsoft.com/zh-tw/windows/python/web-frameworks">在 Windows 上使用 Python 進行 Web 開發 | Microsoft Learn</a></p>
-<p style="padding-left: 30px;">如何使用 <a href="https://github.com/mdecycu/cmsimde">mdecycu/cmsimde (github.com)</a></p>
-<p>Demo:</p>
-<p style="padding-left: 30px;">利用 Brython 建立網站前端內容</p>
-<p style="padding-left: 30px;">利用 Flask 建立網站後端伺服器程式</p>
-<h2>Topic 4</h2>
-<h4>主題: 利用 Python 控制機電模擬系統</h4>
-<p>主題摘要:</p>
+<h4>Python 的數列、判斷式與重複迴圈 (20%)<span style="background-color: #ffff99;"><br/></span></h4>
+<p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 2 and Part 3</p>
+<p></p><h2>Topic 3</h2>
+<h4>Python 的數字、演算法與迴圈 (20%)</h4>
+<p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 4 and Part 5</p>
+<p></p><h2>Topic 4</h2>
+<h4>利用 Python 控制機電模擬系統 (20%)</h4>
 <p style="padding-left: 30px;">利用 <a href="https://solvespace.com/">https://solvespace.com/</a> 建立機械系統零組件</p>
-<p style="padding-left: 30px;">利用<span> </span><a href="https://www.coppeliarobotics.com/">CoppeliaSim</a><span> </span>建立機電模擬系統</p>
-<p style="padding-left: 30px;">利用<span> </span><a href="https://manual.coppeliarobotics.com/en/zmqRemoteApiOverview.htm">Python</a><span> </span>跨網路控制瀏覽器上的機電模擬系統</p>
-<p>Demo:</p>
-<p style="padding-left: 30px;"><span>利用 </span><a href="https://solvespace.com/">https://solvespace.com/</a><span> 建立單軸機械臂系統零組件</span></p>
-<p style="padding-left: 30px;"><span>將單軸機械臂系統零組件轉入 <a href="https://www.coppeliarobotics.com/">CoppeliaSim</a> 建立機電模擬系統</span></p>
-<p style="padding-left: 30px;"><span>利用 <a href="https://manual.coppeliarobotics.com/en/zmqRemoteApiOverview.htm">Python</a> 跨網路控制瀏覽器上的機電模擬系統</span></p>
-<h2>Topic 5</h2>
-<h4>主題: 自選期末專案題目</h4>
-<h1>Codespaces</h1>
+<p style="padding-left: 30px;">利用 <a href="https://www.coppeliarobotics.com/">CoppeliaSim</a> 建立機電模擬系統</p>
+<p style="padding-left: 30px;">利用 <a href="https://manual.coppeliarobotics.com/en/zmqRemoteApiOverview.htm">Python</a> 跨網路控制瀏覽器上的機電模擬系統</p>
+<p></p><h1>Codespaces</h1>
 <p><a href="https://github.com/features/codespaces">https://github.com/features/codespaces</a> </p>
 <h1>CAD</h1>
 <h4>Solvespace</h4>
@@ -345,7 +293,8 @@ while True:
 sim.stopSimulation()
 
 </pre>
-<p></p><h1>Python</h1>
+<p></p>
+<h1>Python</h1>
 <p>Python 執行環境</p>
 <p style="padding-left: 30px;">Brython (全球資訊網上的 Python)</p>
 <p style="padding-left: 30px;">Github Codespaces</p>
@@ -444,7 +393,8 @@ print("已經將 " + filenameString+ " 合併為: "+ newFileName + ".pdf")
 <p>Python 程式也能用來控制 Webots 機電模擬系統: <a href="https://cyberbotics.com/doc/guide/using-python">https://cyberbotics.com/doc/guide/using-python</a></p>
 <h4>Python 與 CAD 有關的其他應用</h4>
 <p><a href="https://pypi.org/project/python-solvespace/">https://pypi.org/project/python-solvespace/</a></p>
-<p><a href="https://github.com/jimy-byerley/pymadcad">https://github.com/jimy-byerley/pymadcad</a></p><h1>Brython</h1>
+<p><a href="https://github.com/jimy-byerley/pymadcad">https://github.com/jimy-byerley/pymadcad</a></p>
+<h1>Brython</h1>
 <p>從 1 累加到 100:</p>
 <p><button id="add1to100">1 add to 100</button></p>
 <!-- 導入 brython 程式庫 -->
