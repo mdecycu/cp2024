@@ -211,6 +211,7 @@ plt.show()
 <p style="padding-left: 30px;">利用 <a href="https://solvespace.com/">https://solvespace.com/</a> 建立機械系統零組件</p>
 <p style="padding-left: 30px;">利用 <a href="https://www.coppeliarobotics.com/">CoppeliaSim</a> 建立機電模擬系統</p>
 <p style="padding-left: 30px;">利用 <a href="https://manual.coppeliarobotics.com/en/zmqRemoteApiOverview.htm">Python</a> 跨網路控制瀏覽器上的機電模擬系統</p>
+<p><a href="/downloads/zmq_remote_api_GPS_ex.7z">zmq_remote_api_GPS_ex.7z</a></p>
 <p></p><h1>Codespaces</h1>
 <p><a href="https://github.com/features/codespaces">https://github.com/features/codespaces</a> </p>
 <h1>CAD</h1>
@@ -511,6 +512,63 @@ def logout():
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
+</pre>
+<p>以下則為寄信範例:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import requests
+import json
+
+# 替換為你的應用程式資訊
+CLIENT_ID = 'your_client_id'
+CLIENT_SECRET = 'your_client_secret'
+TENANT_ID = 'your_tenant_id'
+AUTHORITY = f'https://login.microsoftonline.com/{TENANT_ID}'
+TOKEN_URL = f'{AUTHORITY}/oauth2/v2.0/token'
+SCOPE = 'https://graph.microsoft.com/.default'
+
+# 獲取 OAuth2 訪問令牌
+def get_access_token():
+    token_data = {
+        'grant_type': 'client_credentials',
+        'client_id': CLIENT_ID,
+        'client_secret': CLIENT_SECRET,
+        'scope': SCOPE
+    }
+    token_r = requests.post(TOKEN_URL, data=token_data)
+    token_r.raise_for_status()
+    tokens = token_r.json()
+    return tokens['access_token']
+
+# 發送電子郵件
+def send_email(access_token, to_address, subject, body):
+    headers = {
+        'Authorization': f'Bearer {access_token}',
+        'Content-Type': 'application/json'
+    }
+    email_data = {
+        "message": {
+            "subject": subject,
+            "body": {
+                "contentType": "Text",
+                "content": body
+            },
+            "toRecipients": [
+                {
+                    "emailAddress": {
+                        "address": to_address
+                    }
+                }
+            ]
+        },
+        "saveToSentItems": "true"
+    }
+    email_url = 'https://graph.microsoft.com/v1.0/me/sendMail'
+    response = requests.post(email_url, headers=headers, json=email_data)
+    response.raise_for_status()
+    print("Email sent successfully!")
+
+if __name__ == "__main__":
+    token = get_access_token()
+    send_email(token, 'recipient@example.com', 'Test Subject', 'This is the email body.')
 </pre>
 <p></p><h1>Brython</h1>
 <p>從 1 累加到 100:</p>

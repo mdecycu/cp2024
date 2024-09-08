@@ -421,7 +421,7 @@ print("已經將 " + filenameString+ " 合併為: "+ newFileName + ".pdf")
 <li>當每一階段的學員作業網頁完成後, 若再經由亂數方法, 隨機分配給每一位學員 10 個除自己以外的學員作業網站進行評分, 即可根據既定的評分基準完成自評</li>
 <li>隨機分配的學員作業網址可利用 email 寄出, 而評分回報則可利用 MS 365 的 Forms 表單取回</li>
 </ol>
-<p>以下為上列流程的 step 1 測試程式:</p>
+<p>以下為上列流程的 step 1 測試程式 (<a href="/downloads/teams_oauth2_flask_py.txt">teams_oauth2_flask_py.txt</a>):</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from flask import Flask, redirect, request, session, url_for
 import requests
 import json
@@ -511,6 +511,63 @@ def logout():
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
+</pre>
+<p>以下則為寄信範例:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import requests
+import json
+
+# 替換為你的應用程式資訊
+CLIENT_ID = 'your_client_id'
+CLIENT_SECRET = 'your_client_secret'
+TENANT_ID = 'your_tenant_id'
+AUTHORITY = f'https://login.microsoftonline.com/{TENANT_ID}'
+TOKEN_URL = f'{AUTHORITY}/oauth2/v2.0/token'
+SCOPE = 'https://graph.microsoft.com/.default'
+
+# 獲取 OAuth2 訪問令牌
+def get_access_token():
+    token_data = {
+        'grant_type': 'client_credentials',
+        'client_id': CLIENT_ID,
+        'client_secret': CLIENT_SECRET,
+        'scope': SCOPE
+    }
+    token_r = requests.post(TOKEN_URL, data=token_data)
+    token_r.raise_for_status()
+    tokens = token_r.json()
+    return tokens['access_token']
+
+# 發送電子郵件
+def send_email(access_token, to_address, subject, body):
+    headers = {
+        'Authorization': f'Bearer {access_token}',
+        'Content-Type': 'application/json'
+    }
+    email_data = {
+        "message": {
+            "subject": subject,
+            "body": {
+                "contentType": "Text",
+                "content": body
+            },
+            "toRecipients": [
+                {
+                    "emailAddress": {
+                        "address": to_address
+                    }
+                }
+            ]
+        },
+        "saveToSentItems": "true"
+    }
+    email_url = 'https://graph.microsoft.com/v1.0/me/sendMail'
+    response = requests.post(email_url, headers=headers, json=email_data)
+    response.raise_for_status()
+    print("Email sent successfully!")
+
+if __name__ == "__main__":
+    token = get_access_token()
+    send_email(token, 'recipient@example.com', 'Test Subject', 'This is the email body.')
 </pre>
 <p></p><h1>Brython</h1>
 <p>從 1 累加到 100:</p>
