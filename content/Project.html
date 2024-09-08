@@ -142,28 +142,108 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content"> <a href='Evaluate.html'>Next</a> >> Evaluate<br /><h1>About</h1>
-<p>課程倉儲: <a href="https://github.com/mdecycu/cp2024">https://github.com/mdecycu/cp2024</a></p>
-<p>課程網頁: <a href="https://mde.tw/cp2024">https://mde.tw/cp2024</a></p>
-<p>課程目標:</p>
-<p style="padding-left: 30px;">學習如何利用 Python 程式協助執行機電整合系統設計</p>
-<p>課程教材:</p>
-<p style="padding-left: 30px;"><a href="https://blog.jupyter.org/introducing-learn-python-with-jupyter-11214f152159">Learn Python with Jupyter</a> (<a href="https://www.learnpythonwithjupyter.com/">site</a>, <a href="./../downloads/learn_python_with_jupyter.pdf">ebook</a>)</p>
-<p>Teams 線上教學:</p>
-<p style="padding-left: 30px;">以 "學號@nfu.edu.tw" 登入 <a href="https://login.microsoftonline.com/">https://login.microsoftonline.com/</a> Office 365</p>
-<p style="padding-left: 30px;">Teams 團隊代碼: <span class="fui-Text ___vec8h90 fk6fouc f1pbo8a8 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649 foxqkq2" data-tid="join-team-code">ldodwua</span></p>
-<p>USB 隨身碟:</p>
-<p style="padding-left: 30px;">下載 <a href="http://229.cycu.org/python_2025_lite.7z">python_2025_lite.7z</a> (428 MB, 解開壓縮後約 1.5 GB)</p>
-<p><span>CAD 套件: </span><a href="https://solvespace.com/">Solvespace</a></p>
-<p><span>機電模擬: </span><a href="https://www.coppeliarobotics.com/">CoppeliaSim</a></p>
-<p>課程評分:</p>
-<p style="padding-left: 30px;">出席 (10%) - 自行舉證評分</p>
-<p style="padding-left: 30px;">Github Classroom 作業與隨堂考試 (70%) - 以 Github 帳號領取作業倉儲後, 建立包含操作流程影片與檔案下載的網頁</p>
-<p style="padding-left: 30px;">期末口頭與書面專題報告 (20%) - 利用網頁內容進行簡報並提交 pdf 格式書面報告</p>
-<hr/>
-<p>行事曆</p>
-<p><a href="https://calendar.google.com/calendar/embed?src=mde.nfu.edu.tw_3439313938333136353439%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;mode=week&amp;src=mde.nfu.edu.tw_35303530373431313438%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;src=yen%40gm.nfu.edu.tw&amp;ctz=Asia%2FTaipei"> 全頁檢視 </a></p>
-<p><iframe height="600" src="https://calendar.google.com/calendar/embed?src=mde.nfu.edu.tw_3439313938333136353439%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;mode=week&amp;src=mde.nfu.edu.tw_35303530373431313438%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;src=yen%40gm.nfu.edu.tw&amp;ctz=Asia%2FTaipei" width="800"></iframe></p><br /> <a href='Evaluate.html'>Next</a> >> Evaluate</div>
+    <div id="tipue_search_content">Python << <a href='Python.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython<br /><h1>Project</h1>
+<p>已知:</p>
+<ol>
+<li>修課學員經由 @nfu.edu.tw 網域, 可利用"學號@nfu.edu.tw"經由 <a href="https://login.microsoftonline.com/">https://login.microsoftonline.com/</a> 登入 MS 365.</li>
+<li>登入後, 使用者可以利用"<a href="https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade">應用程式註冊</a>"建立應用程式</li>
+<li>所註冊的延伸應用程式則可以利用 Microsoft Online 主機所提供的 OAuth2 API 程式庫, 取得登入者的 profile</li>
+<li>經由上列步驟取得登入者的 profile 後, 延伸應用程式可設法讀取課程學員的作業倉儲與網站連結</li>
+<li>當每一階段的學員作業網頁完成後, 若再經由亂數方法, 隨機分配給每一位學員 10 個除自己以外的學員作業網站進行評分, 即可根據既定的評分基準完成自評</li>
+<li>隨機分配的學員作業網址可利用 email 寄出, 而評分回報則可利用 MS 365 的 Forms 表單取回</li>
+</ol>
+<p>以下為上列流程的 step 1 測試程式 (<a href="./../downloads/teams_oauth2_flask_py.txt">teams_oauth2_flask_py.txt</a>):</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from flask import Flask, redirect, request, session, url_for
+import requests
+import json
+
+app = Flask(__name__)
+app.secret_key = 'your_secret_key'  # 用於 Flask session 的秘密金鑰
+
+# 替換成你的 Azure AD 應用程式資訊
+'''
+CLIENT_ID 為"應用程式 (用戶端) 識別碼"
+CLIENT_SECRET 則為"憑證及秘密"中"用戶端密碼"的"值"
+'''
+CLIENT_ID = 'id'
+CLIENT_SECRET = 'secret'
+TENANT_ID = 'id'
+AUTHORITY = f'https://login.microsoftonline.com/{TENANT_ID}'
+REDIRECT_URI = 'http://localhost:8000/callback'
+SCOPE = 'User.Read'
+
+# 用於登錄和取得授權碼
+@app.route('/')
+def index():
+    auth_url = (f'{AUTHORITY}/oauth2/v2.0/authorize'
+                f'?client_id={CLIENT_ID}'
+                f'&amp;response_type=code'
+                f'&amp;redirect_uri={REDIRECT_URI}'
+                f'&amp;response_mode=query'
+                f'&amp;scope={SCOPE}')
+    return redirect(auth_url)
+
+# 處理回調和交換授權碼
+@app.route('/callback')
+def callback():
+    code = request.args.get('code')
+    token_url = f'{AUTHORITY}/oauth2/v2.0/token'
+    token_data = {
+        'grant_type': 'authorization_code',
+        'code': code,
+        'redirect_uri': REDIRECT_URI,
+        'client_id': CLIENT_ID,
+        'client_secret': CLIENT_SECRET,
+        'scope': SCOPE
+    }
+    token_r = requests.post(token_url, data=token_data)
+    token_r.raise_for_status()
+    tokens = token_r.json()
+    session['access_token'] = tokens['access_token']
+    return redirect(url_for('profile'))
+
+# 使用訪問令牌呼叫 Microsoft Graph API 來獲取用戶資料
+@app.route('/profile')
+def profile():
+    access_token = session.get('access_token')
+    if not access_token:
+        return redirect(url_for('index'))
+
+    headers = {
+        'Authorization': f'Bearer {access_token}',
+        'Content-Type': 'application/json'
+    }
+    graph_url = 'https://graph.microsoft.com/v1.0/me'
+    graph_r = requests.get(graph_url, headers=headers)
+    graph_r.raise_for_status()
+    user_info = graph_r.json()
+    user_email = str(user_info["mail"])
+    user_id = user_email.split("@")[0]
+    session["user_id"] = user_id
+    # 登出 MS Online 並重定向回首頁
+    # 返回 HTML 及 JavaScript 以進行自動登出
+    return (f'Hello, {user_id} &lt;br&gt;'
+            f'&lt;script type="text/javascript"&gt;'
+            f'  window.location = "https://login.microsoftonline.com/common/oauth2/v2.0/logout";'
+            f'&lt;/script&gt;')
+
+@app.route('/userid')
+def userid():
+    return session["user_id"]
+    
+
+# 登出功能
+@app.route('/logout')
+def logout():
+    # 清除 session 中的訪問令牌
+    session.pop('access_token', None)
+    # 重定向到 MS Online 登出 URL
+    return redirect('https://login.microsoftonline.com/common/oauth2/v2.0/logout')
+
+if __name__ == '__main__':
+    app.run(debug=True, port=8000)
+</pre>
+<p></p><br />Python << <a href='Python.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython</div>
         
     <!-- footer -->
       <div class="container">
