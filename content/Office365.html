@@ -2,7 +2,7 @@
         <head>
         <title>cp2024</title>
         <meta charset="utf-8">
-<meta property="head" content="H1">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -142,107 +142,25 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">CoppeliaSim << <a href='CoppeliaSim.html'>Previous</a> <a href='Project.html'>Next</a> >> Project<br /><h1>Python</h1>
-<p>Python 執行環境</p>
-<p style="padding-left: 30px;">Brython (全球資訊網上的 Python)</p>
-<p style="padding-left: 30px;">Github Codespaces</p>
-<p style="padding-left: 30px;">Windows 操作系統</p>
-<p style="padding-left: 60px;">制式安裝 (VSCode and SciTE)</p>
-<p style="padding-left: 60px;">可攜設定 (VSCode and SciTE)</p>
-<p style="padding-left: 30px;">USB 隨身碟:</p>
-<p style="padding-left: 60px;">下載 <a href="http://229.cycu.org/python_2025_lite.7z">python_2025_lite.7z</a> (428 MB, 解開壓縮後約 1.5 GB)</p>
-<p style="padding-left: 60px;"><a href="http://229.cycu.org/kmolab_ex.7z">kmolab_ex.7z</a> (314MB)</p>
-<p style="padding-left: 30px;">Ubuntu 操作系統</p>
-<p><a href="https://docs.python.org/zh-tw/3/library/stdtypes.html">Types</a>: Integers, Floats, Strings and Booleans</p>
-<p>Type Conversion</p>
-<p>Variables and Assignment</p>
-<p>Arithmetic Operators</p>
-<p>Comparison Operators</p>
-<p>Logical Operators</p>
-<p>Conditional Statements (if, elif, else)</p>
-<p>Loops (for, while)</p>
-<p>break, continue and pass</p>
-<p>Lists</p>
-<p>Tuples</p>
-<p>Sets</p>
-<p>Dictionaries</p>
-<p>Defining and Calling Functions</p>
-<p>Arguments and Return Values</p>
-<p>Local and Global Variables</p>
-<p>Importing <a href="https://docs.python.org/zh-tw/3/tutorial/modules.html">Modules</a></p>
-<p><a href="https://docs.python.org/zh-tw/3/library/index.html">Standard Library</a></p>
-<p><a href="https://github.com/TheAlgorithms/Python">https://github.com/TheAlgorithms/Python</a> </p>
-<p><a href="./../downloads/nxopen_base_and_center_pole_python.txt">nxopen_base_and_center_pole_python.txt</a></p>
-<h4>qrcode</h4>
-<p><a href="https://en.wikipedia.org/wiki/QR_code">https://en.wikipedia.org/wiki/QR_code</a></p>
-<p><a href="https://www.funcode-tech.com/QR_app.html">https://www.funcode-tech.com/QR_app.html</a></p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># pip install qrcode matplotlib
-import qrcode
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
-#img=qrcode.make('20240101;5745632912;Steel;---;---')
-img=qrcode.make('虎尾科大機械設計工程系')
-img.save('qrcode_ex1.png')
-img = mpimg.imread('qrcode_ex1.png')
-plt.imshow(img)
-plt.show()</pre>
-<h4>pdf</h4>
-<p>pip install pypdf2</p>
-<p>split pdf file:</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># pypdf2_split.py
-import os
-from PyPDF2 import PdfWriter, PdfReader
-
-pdfReader = PdfReader(open("Learn_Autodesk_Inventor_2018_Basics.pdf", "rb"))
-information = [("inventor",18,45)]
- 
-for page in range(len(information)):
-    pdf_writer = PdfWriter()
-    start = information[page][1]
-    end = information[page][2]
-    while start&lt;=end:
-        pdf_writer.add_page(pdfReader.pages[start-1])
-        start+=1
-    if not os.path.exists("./"):
-        os.makedirs(savepath)
-    output_filename = '{}_{}_page_{}.pdf'.format(information[page][0],information[page][1], information[page][2])
-    with open(output_filename,'wb') as out:
-        pdf_writer.write(out)
-print("已經完成 pdf 切割與存檔")</pre>
-<p>combine pdf file:</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import os
-from PyPDF2 import PdfWriter, PdfReader
-
-pdf_write_object = PdfWriter()
-
-pdfFileNames = ["inventor1.pdf", "inventor2.pdf"]
-newFileName = "inventor"
-filenameString = ""
-
-for filename in pdfFileNames:
-    pdf_read_object = PdfReader(open(filename, "rb"))
-    filenameString += filename + ", "
-    for page in range(len(pdf_read_object.pages)):
-        pdf_write_object.add_page(pdf_read_object.pages[page])
- 
-final_file_object = open(newFileName + ".pdf", 'wb')
-pdf_write_object.write(final_file_object)
-final_file_object.close()
-
-print("已經將 " + filenameString+ " 合併為: "+ newFileName + ".pdf")
-</pre>
-<h4>Pelican Blog md generator</h4>
-<p><a href="https://github.com/mdecycu/pelican_md_generator">https://github.com/mdecycu/pelican_md_generator</a></p>
-<h4>NXOpen Python</h4>
-<p>機械設計工程師若能夠看得懂 <a href="./../downloads/nxopen_base_and_center_pole_python.txt">nxopen_base_and_center_pole_python.txt</a>, 是否能夠將程式碼改寫為 Function 或 Class 架構, 以方便用程式方法建立機電系統設計中的參數式零組件?</p>
-<h4>ZMQ remote API Python for CoppeliaSim</h4>
-<p>可遠端透過 Python 程式控制機電模擬系統的 <a href="./../downloads/cd2023_pj3ag4_zmq_football4.7z">cd2023_pj3ag4_zmq_football4.7z</a>, 則牽涉 ZMQ、IPv4、IPv6 與 <a href="https://docs.python.org/zh-tw/3/library/asyncio.html">asyncio</a> 模組.</p>
-<h4>Python for Webots</h4>
-<p>Python 程式也能用來控制 Webots 機電模擬系統: <a href="https://cyberbotics.com/doc/guide/using-python">https://cyberbotics.com/doc/guide/using-python</a></p>
-<h4>Python 與 CAD 有關的其他應用</h4>
-<p><a href="https://pypi.org/project/python-solvespace/">https://pypi.org/project/python-solvespace/</a></p>
-<p><a href="https://github.com/jimy-byerley/pymadcad">https://github.com/jimy-byerley/pymadcad</a></p>
-<br />CoppeliaSim << <a href='CoppeliaSim.html'>Previous</a> <a href='Project.html'>Next</a> >> Project</div>
+    <div id="tipue_search_content">About << <a href='About.html'>Previous</a> <a href='Evaluate.html'>Next</a> >> Evaluate<br /><h1>Office365</h1>
+<p>請參考下列步驟登入計算機程式課程的 MS Teams:</p>
+<ol>
+<li>學校 web mail: <a href="https://mail.nfu.edu.tw">https://mail.nfu.edu.tw</a></li>
+<li>密碼重置系統: <a href="https://pwd.nfu.edu.tw/">https://pwd.nfu.edu.tw/</a></li>
+<li>登入 <a href="https://mail.nfu.edu.tw">https://mail.nfu.edu.tw</a> 後收信匣中, 可看到校方寄出的 "Office 365 學生帳號說明"信件, 說明如何登入 Office 365</li>
+<li>登入 Office 365 後, 若在電腦教室可以選擇使用網頁版</li>
+<li>線上課程將使用 Office 365 的 Teams, 計算機程式課程的 Teams 團隊代碼: <span class="fui-Text ___vec8h90 fk6fouc f1pbo8a8 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649 foxqkq2" data-tid="join-team-code">ldodwua</span></li>
+</ol>
+<p><span class="fui-Text ___vec8h90 fk6fouc f1pbo8a8 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649 foxqkq2" data-tid="join-team-code">申請 Github 帳號步驟:</span></p>
+<ol>
+<li><span class="fui-Text ___vec8h90 fk6fouc f1pbo8a8 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649 foxqkq2" data-tid="join-team-code">連結至 <a href="https://github.com/join">https://github.com/join</a></span></li>
+<li><span class="fui-Text ___vec8h90 fk6fouc f1pbo8a8 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649 foxqkq2" data-tid="join-team-code">填寫基本資訊:<br/>   - Username：輸入希望採用的用戶名稱, 若無法使用自己的學號, 可以在學號前加入英文姓名三個簡寫字母<br/>   - Email address：輸入電子郵件地址, 可以使用上列學校配發的電子郵件地址<br/>   - Password：設定密碼</span></li>
+<li><span class="fui-Text ___vec8h90 fk6fouc f1pbo8a8 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649 foxqkq2" data-tid="join-team-code">完成驗證: GitHub 會要求完成驗證以確認不是機器人, 通常需要選擇或標記圖片來完成這個步驟</span></li>
+<li><span class="fui-Text ___vec8h90 fk6fouc f1pbo8a8 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649 foxqkq2" data-tid="join-team-code">選擇 Free 方案後可以選擇是否願意訂閱電子報</span></li>
+<li><span class="fui-Text ___vec8h90 fk6fouc f1pbo8a8 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649 foxqkq2" data-tid="join-team-code">點擊 Create account 按鈕以完成註冊</span></li>
+<li><span class="fui-Text ___vec8h90 fk6fouc f1pbo8a8 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649 foxqkq2" data-tid="join-team-code">帳號建立後, GitHub 會發送一封驗證郵件, 必須點擊其中的驗證連結才能開始使用 Github 建立倉儲與 Gist</span></li>
+<li><span class="fui-Text ___vec8h90 fk6fouc f1pbo8a8 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649 foxqkq2" data-tid="join-team-code">驗證郵件後, 可以登入 GitHub 進行基本設置, 例如:個人資料、SSH 金鑰配置等<br/><br/></span></li>
+</ol><br />About << <a href='About.html'>Previous</a> <a href='Evaluate.html'>Next</a> >> Evaluate</div>
         
     <!-- footer -->
       <div class="container">
