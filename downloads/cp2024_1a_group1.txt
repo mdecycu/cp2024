@@ -1,0 +1,49 @@
+from browser import document, ajax, html
+
+def draw_students(evt):
+    data = evt.text
+    students = data.strip().split('\n')  # 以換行符分割
+    
+    # 檢查是否存在 brython_div1，如果不存在則創建
+    if 'brython_div1' not in document:
+        div = html.DIV(id='brython_div1')
+        document <= div
+    
+    canvas = html.CANVAS(width=900, height=600)
+    document['brython_div1'] <= canvas
+    ctx = canvas.getContext('2d')
+    
+    x, y = 890, 20  # 稍微調整起始 x 位置
+    col_count = 0
+    box_width = 80  # 減小框寬
+    
+    for student in students:
+        student = student.strip()
+        if not student:
+            continue
+        
+        # 繪製外框
+        ctx.strokeRect(x-box_width, y-15, box_width, 30)
+        
+        # 繪製學號
+        ctx.font = '14px Arial'  # 稍微減小字體大小
+        ctx.fillText(student, x-box_width+5, y+5)
+        
+        x -= box_width + 10  # 框之間的間距設為 10
+        col_count += 1
+        
+        if col_count == 9:
+            x = 890  # 重置 x 位置
+            y += 40
+            col_count = 0
+    
+    print(f"Total students drawn: {len(students)}")
+    print("done")
+
+def load_data(url):
+    req = ajax.ajax()
+    req.bind('complete', draw_students)
+    req.open('GET', url, True)
+    req.send()
+
+load_data('https://mde.tw/2024/1a.txt')
