@@ -419,6 +419,67 @@ def load_data(url):
 
 load_data('https://mde.tw/2024/1a.txt')  # 加載指定 URL 的數據
 </pre>
+<p>group1 Brython 假如不使用 AJAX, 直接利用 open().read() 讀取網站資料:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 從 Brython 的瀏覽器模組中導入所需的功能
+from browser import document, html
+
+url = 'https://mde.tw/2024/1b.txt'
+data = open(url).read()
+
+# 定義一個名為 `draw_students` 的函數，用於處理數據並進行繪製
+def draw_students(data):
+    # 根據換行符將數據分割成學生名稱的列表
+    students = data.strip().split('\n')  # 以換行符分割
+     
+    # 檢查是否存在 ID 為 'brython_div1' 的 div，如果不存在則創建
+    if 'brython_div1' not in document:
+        # 創建一個新的 DIV 元素，並設置其 ID
+        div = html.DIV(id='brython_div1')
+        # 將新創建的 DIV 元素添加到文檔中
+        document &lt;= div
+     
+    # 創建一個畫布元素，並設置其寬度和高度
+    canvas = html.CANVAS(width=900, height=600)
+    # 將畫布元素添加到 ID 為 'brython_div1' 的 DIV 中
+    document['brython_div1'] &lt;= canvas
+    # 獲取畫布的 2D 渲染上下文
+    ctx = canvas.getContext('2d')
+     
+    # 設置初始繪製位置
+    x, y = 890, 20  # 稍微調整起始 x 位置
+    col_count = 0  # 計數器，用於跟踪當前列數
+    box_width = 80  # 設置每個學生姓名框的寬度
+     
+    # 利用迴圈取出每個學生姓名
+    for student in students:
+        student = student.strip()  # 去除多餘的空白字符
+        if not student:  # 如果學生姓名為空，則跳過
+            continue
+         
+        # 繪製學生姓名框的邊框
+        ctx.strokeRect(x-box_width, y-15, box_width, 30)
+         
+        # 設置繪製文字的字體大小
+        ctx.font = '14px Arial'  # 稍微減小字體大小
+        # 在指定位置繪製學生姓名
+        ctx.fillText(student, x-box_width+5, y+5)
+         
+        # 更新繪製位置，準備繪製下一個框
+        x -= box_width + 10  # 框之間的間距設為 10
+        col_count += 1  # 更新列計數器
+         
+        # 因為每一列有 9 台電腦
+        # 如果列計數器達到 9，則換行
+        if col_count == 9:
+            x = 890  # 重置 x 位置到最右側
+            y += 40  # 增加 y 位置，移動到下一行
+            col_count = 0  # 重置列計數器
+     
+    # 打印繪製的學生總數
+    print(f"Total students drawn: {len(students)}")
+    print("done")  # 打印“完成”信息
+ 
+draw_students(data)</pre>
 <p></p><h2>Topic 2</h2>
 <h4>Python 的數列、判斷式與重複迴圈 (20%)<span style="background-color: #ffff99;"><br/></span></h4>
 <p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 2 and Part 3</p>
