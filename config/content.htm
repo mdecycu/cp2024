@@ -243,7 +243,33 @@ plt.show()
 <p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 1</p>
 <p><span>參考資料:</span></p>
 <p style="padding-left: 30px;"><a href="https://www.youtube.com/@-kmolab9376/videos">https://www.youtube.com/@-kmolab9376/videos</a></p>
-<h2>上課內容</h2>
+<h3>Codespaces</h3>
+<p>由於 Codespaces 中的操作系統為 Linux, 進行編輯網頁啟動、靜態網站啟動與改版內容新增提交與推送時, 必須了解與 Linux 有關的基本概念:</p>
+<p>Codespaces 啟動後, 其終端機的回應 (Prompt) 會位於對應倉儲所在的目錄.</p>
+<p>每一個檔案與目錄都利用 10 個字元來表示其屬性, 例如:</p>
+<p>drwxrwxrwx 或 -rwxrwxrwx 等十個字元, 其中第一個字元若為 d, 表示為目錄 (directory), 其餘 9 個字元則每一組三個字元, 分別從左至右, 依序表示為 user, group 或 other 等三種身分的 r (read) 權限、w (write) 權限 以及 x (execution) 權限, 也就是讀、寫以及執行的權限.</p>
+<p>若要改變某一檔案或目錄的權限, 可以使用:</p>
+<p>chmod u+x acp 表示要針對 acp 檔案, 令 user 擁有執行 (x) 的權限.</p>
+<p>利用 Codespaces 維護作業倉儲的相關資料與步驟:</p>
+<p><span style="background-color: #fdd472;">執行環境</span>所需模組:</p>
+<ol>
+<li>作業倉儲是採 <a href="https://github.com/mdecycu/cmsimde" rel="noreferrer noopener" target="_blank" title="https://github.com/mdecycu/cmsimde">cmsimde</a> 網際內容管理搭建, 以 Python 編寫, 需要 flask flask_cors bs4 lxml pelican markdown 等模組才能執行. 有關這些模組的功能與用法可以透過 AI 詢問: "請用繁體中文用語回答, 以下 Python 模組分別有哪些功能? flask flask_cors bs4 lxml pelican markdown gevent".</li>
+<li>在可攜程式環境中的 Python 10 已經事先安裝這些模組, 而 Codespaces 虛擬主機中, 使用者必須自行透過 "pip install flask flask_cors bs4 lxml pelican markdown gevent" 指令安裝這些模組, 其中的 pip 是 Python 模組安裝指令, 利用 pip install 加上模組名稱指定安裝.</li>
+</ol>
+<p>如何啟動<span style="background-color: #fdd472;">編輯網站</span>, 如何觀看轉檔後的<span style="background-color: #fdd472;">靜態網站</span>:</p>
+<ol>
+<li>一旦工作環境允許啟動作業倉儲中的編輯網站, 在 Codespaces 必須利用 python main.py 執行編輯網站, 並且利用 python main2.py 觀看當時已經編輯告一段落的靜態網站. </li>
+<li>假如是在近端, 則可以利用 python cmsimde/wsgi.py 直接啟動, 或者利用 cms 批次檔案啟動編輯網站.</li>
+<li>另外, 在可攜程式環境則可以利用 python -m http.server 直接在倉儲根目錄觀看當時的靜態網站內容.</li>
+</ol>
+<p><span style="background-color: #fdd472;">提交</span>時綁定的 Github 使用者<span style="background-color: #fdd472;">身分</span>, 以及是否具有<span style="background-color: #fdd472;">推送</span>該倉儲至 Github 的<span style="background-color: #fdd472;">權限</span>:</p>
+<ol>
+<li>當使用者結束某一階段的作業網站編輯, 可以利用 git 指令將改版內容推向 Github 倉儲:</li>
+<li>假如是在 Codespaces, 因為使用者必須登入 Github 才能使用 Codespaces, 因此執行 git add, git  commit 與 git push 時, 無需表明身分, 也不用設定對提交推送倉儲的管理權限.</li>
+<li>但是若在可攜程式環境中, 使用者必須透過 git config 設定提交身分,並且需要使用 https 或 SSH 方法設定對該目標倉儲的管理權限.</li>
+</ol>
+<p>最後要提醒的是: 為了取分, 請在每週<span style="background-color: #fdd472;">上課前後至少各提交推送一次版本</span>, 而且要<span style="background-color: #fdd472;">具體說明</span>該次提交的改版摘要說明.</p>
+<p></p><h2>上課內容</h2>
 <p>1b w1</p>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/n95FYV0uUg0?si=S_s-Jt0N-pVUtD0S" title="YouTube video player" width="560"></iframe></p>
 <p>作業 template: <a href="https://mde.tw/cp2024_hw">https://mde.tw/cp2024_hw</a> </p>
