@@ -243,6 +243,7 @@ plt.show()
 <p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 1</p>
 <p><span>參考資料:</span></p>
 <p style="padding-left: 30px;"><a href="https://www.youtube.com/@-kmolab9376/videos">https://www.youtube.com/@-kmolab9376/videos</a></p>
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 <h3>Codespaces</h3>
 <p>由於 Codespaces 中的操作系統為 Linux, 進行編輯網頁啟動、靜態網站啟動與改版內容新增提交與推送時, 必須了解與 Linux 有關的基本概念:</p>
 <p>Codespaces 啟動後, 其終端機的回應 (Prompt) 會位於對應倉儲所在的目錄.</p>
@@ -252,22 +253,17 @@ plt.show()
 <p>chmod u+x acp 表示要針對 acp 檔案, 令 user 擁有執行 (x) 的權限.</p>
 <p>利用 Codespaces 維護作業倉儲的相關資料與步驟:</p>
 <p><span style="background-color: #fdd472;">執行環境</span>所需模組:</p>
-<p> </p>
 <ol>
 <li>作業倉儲是採 <a href="https://github.com/mdecycu/cmsimde" rel="noreferrer noopener" target="_blank" title="https://github.com/mdecycu/cmsimde">cmsimde</a> 網際內容管理搭建, 以 Python 編寫, 需要 flask flask_cors bs4 lxml pelican markdown 等模組才能執行. 有關這些模組的功能與用法可以透過 AI 詢問: "請用繁體中文用語回答, 以下 Python 模組分別有哪些功能? flask flask_cors bs4 lxml pelican markdown gevent".</li>
 <li>在可攜程式環境中的 Python 10 已經事先安裝這些模組, 而 Codespaces 虛擬主機中, 使用者必須自行透過 "pip install flask flask_cors bs4 lxml pelican markdown gevent" 指令安裝這些模組, 其中的 pip 是 Python 模組安裝指令, 利用 pip install 加上模組名稱指定安裝.</li>
 </ol>
-<p> </p>
 <p>如何啟動<span style="background-color: #fdd472;">編輯網站</span>, 如何觀看轉檔後的<span style="background-color: #fdd472;">靜態網站</span>:</p>
-<p> </p>
 <ol>
 <li>一旦工作環境允許啟動作業倉儲中的編輯網站, 在 Codespaces 必須利用 python main.py 執行編輯網站, 並且利用 python main2.py 觀看當時已經編輯告一段落的靜態網站. </li>
 <li>假如是在近端, 則可以利用 python cmsimde/wsgi.py 直接啟動, 或者利用 cms 批次檔案啟動編輯網站.</li>
 <li>另外, 在可攜程式環境則可以利用 python -m http.server 直接在倉儲根目錄觀看當時的靜態網站內容.</li>
 </ol>
-<p> </p>
 <p><span style="background-color: #fdd472;">提交</span>時綁定的 Github 使用者<span style="background-color: #fdd472;">身分</span>, 以及是否具有<span style="background-color: #fdd472;">推送</span>該倉儲至 Github 的<span style="background-color: #fdd472;">權限</span>:</p>
-<p> </p>
 <ol>
 <li>當使用者結束某一階段的作業網站編輯, 可以利用 git 指令將改版內容推向 Github 倉儲:</li>
 <li>假如是在 Codespaces, 因為使用者必須登入 Github 才能使用 Codespaces, 因此執行 git add, git  commit 與 git push 時, 無需表明身分, 也不用設定對提交推送倉儲的管理權限.</li>
@@ -275,6 +271,26 @@ plt.show()
 </ol>
 <p>最後要提醒的是: 為了取分, 請在每週<span style="background-color: #fdd472;">上課前後至少各提交推送一次版本</span>, 而且要<span style="background-color: #fdd472;">具體說明</span>該次提交的改版摘要說明.</p>
 <p></p><h2>上課內容</h2>
+=======
+<h3>w2</h3>
+<p>1b</p>
+<p>第二週起請按照下列座位表入座:</p>
+<p><img alt="" height="286" src="/images/cp2024_1b_seat_table.png" width="800"/></p>
+<p>請利用"學號@nfu.edu.tw" 登入 Office 365 後, 利用 Teams 團隊代碼: <span>fqpabi8 進入線上課程</span></p>
+<p>透過新的團隊中"一般"頻道中連結取得個人的作業倉儲, 統一位於 <a href="https://github.com/mdecp2024">https://github.com/mdecp2024</a> 中的 Repositories</p>
+<p>接下來學習如何利用 Github Codespaces: <a href="https://github.com/codespaces">https://github.com/codespaces</a> 直接在線上維護作業倉儲, 唯一的限制是每月免費帳號只能使用 120 core hours, 因此使用最小的虛擬主機 2 cores, 每月限制只能使用 60 小時. 因此沒有進行操作時要關閉作業倉儲對應的 Codespaces 虛擬主機.</p>
+<p>新增一個 Codespaces 後, 必須先安裝可以執行啟動作業倉儲編輯的環境, 也就是安裝需要的 Python 模組:</p>
+<div>
+<div><span>pip</span><span> </span><span>install</span><span> </span><span>flask</span><span> </span><span>flask_cors</span><span> </span><span>bs4</span><span> </span><span>lxml</span><span> </span><span>pelican</span><span> </span><span>markdown</span><span> </span><span>gevent</span></div>
+<div><span></span></div>
+<div><span>模組安裝結束後, 以 python main.py 啟動編輯</span></div>
+</div>
+<p>也可以利用可攜程式系統在近端電腦上進行作業倉儲維護 (沒有時間限制, 但要設定維護倉儲的權限):</p>
+<ol>
+<li>啟動可以完全依賴隨身碟中的檔案</li>
+<li>也可以設法將可攜程式下載到 c:\ (固態硬碟) 後, 利用 Hybrid (複合) 方式啟動</li>
+</ol><h2>class_materials</h2>
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 0430fc71cfb432eebdac766cf41bd9718f2c4bff
 <p>1b w1</p>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/n95FYV0uUg0?si=S_s-Jt0N-pVUtD0S" title="YouTube video player" width="560"></iframe></p>
 <p>作業 template: <a href="https://mde.tw/cp2024_hw">https://mde.tw/cp2024_hw</a> </p>
@@ -282,16 +298,25 @@ plt.show()
 <p style="padding-left: 30px;">耳機</p>
 <p style="padding-left: 30px;">usb 隨身碟 (3.0 以上, 32 gb 以上)</p>
 <p>使用者必須參考 <a href="https://mde.tw/cp2024/content/Office365.html">https://mde.tw/cp2024/content/Office365.html</a> 完成:</p>
-<p style="padding-left: 30px;">登入 MS Teams 後透過<span>團隊代碼: </span><span class="fui-Text ___vec8h90 fk6fouc f1pbo8a8 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649 foxqkq2" data-tid="join-team-code">ldodwua 進入上課畫面</span></p>
+<p style="padding-left: 30px;">登入 MS Teams 後透過<span>團隊代碼: </span><span class="fui-Text ___vec8h90 fk6fouc f1pbo8a8 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649 foxqkq2" data-tid="join-team-code">fqpabi8 進入上課畫面</span></p>
 <p style="padding-left: 30px;"><span class="fui-Text ___vec8h90 fk6fouc f1pbo8a8 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649 foxqkq2" data-tid="join-team-code">設法利用學號或帶有學號的字串, 作為<a href="https://github.com/join">申請 Github</a> 的帳號.</span></p>
 <p><span class="fui-Text ___vec8h90 fk6fouc f1pbo8a8 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1mtd64y f1y7q3j9 f2jf649 foxqkq2" data-tid="join-team-code">下週將透過 <a href="https://classroom.github.com/">Github Classroom</a> 派送作業倉儲, 使用者必須完成 Github 帳號中的兩段式認證, 若希望使用手錶認證, 可以使用 <a href="https://authy.com/">Authy app</a>.</span></p>
 <hr/>
 <p>1a w1</p>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/U8wbLiC7ynI?si=rQhm6PvwhunJNh78" title="YouTube video player" width="560"></iframe></p>
-<h3>Seat</h3>
+<p>以下影片說明與 TCP/IP 有關的基本用法:</p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/cOU_MvCb__s?si=bjJunQ4KfguPbL2r" title="YouTube video player" width="560"></iframe></p>
+<p>以下影片為 mdecad2024 org 有關的 Codespaces 維護作業網站的說明:</p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/zRcEB9ac5hk?si=61x7D25PAItl88ag" title="YouTube video player" width="560"></iframe></p>
+<p>以下則為 mdecad2024 org 有關的可攜程式維護作業網站的說明：</p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/P6EQkLQ5nhw?si=us89Mwkqb1UhCWGC" title="YouTube video player" width="560"></iframe></p><h3>Seat</h3>
 <p>1a <a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/eb2e4327b65a0fe5c307ea329ef2f69c/raw/e51dbbc23766cfcce98198d1ef4343e90ba62a4e/cp2024_1a_group1_brython.py">座位表1</a>, <a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/eb2e4327b65a0fe5c307ea329ef2f69c/raw/e51dbbc23766cfcce98198d1ef4343e90ba62a4e/cp2024_1a_group2_brython.py">分組座位表</a></p>
 <p>1b <a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/eb2e4327b65a0fe5c307ea329ef2f69c/raw/4ed15bcc8ec61a971558f00ee95b6d686739b4ba/cp2024_1b_group1_brython.py">座位表1</a>, <a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/eb2e4327b65a0fe5c307ea329ef2f69c/raw/4ed15bcc8ec61a971558f00ee95b6d686739b4ba/cp2024_1b_group2_brython.py">分組座位表</a></p>
 <hr/>
+<p>計算機程式 1a 座位表:</p>
+<p><img alt="" height="296" src="/images/cp2024_1a_seat_table.png" width="800"/></p>
+<p>計算機程式 1b 座位表:</p>
+<p><img alt="" height="286" src="/images/cp2024_1b_seat_table.png" width="800"/></p>
 <p>上述程式透過與 claude.ai 進行以下對話後產生：</p>
 <p>問題: <br/><br/>https://mde.tw/2024/1a.txt 為一行學員的學號資料, 請用 Brython open().read() 讀取後, 利用 Canvas 在 id 為 brython_div 的超文件位置上, 採由上而下, 由右而左的次序, 用每一個學員除畫出學號外, 還加上外方框線, 且每一列共列出 9 位學員, 畫完後,以print() 印出 "done"<br/><br/>問: 怎麼只列出一位學員? (因為 AI 沒有用跳行隔開學員學號, 而是用 "," 隔開資料)<br/><br/>說明: 因為 AI 沒能正確解讀資料, 因此提供資料格式供其參考:<br/><br/>問: <br/><br/>40831154<br/>40932134<br/>41023249<br/>41031136<br/>41036112 這是前面五行資料, 請修改程式<br/><br/>說明: 接下來 AI 已經能夠正確解讀資料, 但因為提供錯誤的 html id 字串因此產生下列錯誤,<br/><br/>File "&lt;string&gt;", line 8, in draw_students<br/>KeyError: brython_div<br/><br/>問: id 為 brython_div1, x 方向的框寬可以小一點, 否則最左邊顯示不出來<br/><br/>說明: 這時 AI 已經正確完成任務 (也就是修正各學員外框寬度後, 存為 group1), 但因所選的外框太寬, 因此最左邊的學號沒有完全顯示出來, 要求針對這個問題進行處理<br/><br/>問: 可不可以從最右邊開始, 第一列前三個與第二列前三個學員為同一組, 其框內背景請塗上同一個淡顏色辨識, 若至最後一列, 並沒有前三與後三作為同一組, 請就剩下的組員若少於 6 名則設為同一組, 若大於 6 則儘量平均方為兩組.<br/><br/>問: 是原則上同一列三位與下一列對齊的三位為同一組<br/><br/>問: 每一列不是有 9 位學員, 第二列也是有 9 位學員, 第一列的前三個學員與第二列的前三位為同一組, 接下來則是第一列的第 4, 5,6 位學員與第二列的第 4,5,6 位學員則也是同一組, 然後剩下的學員依照這個次序分組, 同一組的塗上相同的背景顏色. 最後因為可能剩下一個列的組員, 因此沒有辦法與下一列的組員進行分組, 因此只能就同一列每六位學員一組, 但若只剩下假設 9 位, 則一組 5 位同學,另一組 4 位, 表示一組至少要有 4 位學員的意思.<br/><br/>問: 原先的學員位置弄亂了, 目前第一列至第六列,只有從右邊算來前 6 位學員進行分組塗色, 各列 7,8,9 並沒有進行分組塗色<br/><br/>說明: 結果 AI 完成 group2 Brython 程式的編寫</p>
 <p>以下為 group1 Brython 程式碼:</p>
@@ -511,8 +536,127 @@ def draw_students(data):
     print("done")  # 打印“完成”信息
  
 draw_students(data)</pre>
+<p></p><h3>cmsimde</h3>
+<p><a href="https://github.com/mdecycu/cmsimde">https://github.com/mdecycu/cmsimde</a> 是一套利用 Python + Flask 編寫的網際內容管理系統, 將網頁編輯程式與靜態網站放在同一個倉儲中.</p>
+<p>Flask 啟動 https 連線可以採 adhoc 與使用 key.pem, cert.pem 等兩種方式, 其中採 key.pem, cert.pem 的執行無需每次連線都生成數位簽章, 因此速度較快.</p>
+<p>cert.pem 與 key.pem 可以利用可攜程式中的 openssl.exe 建立:</p>
+<p>openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem</p>
+<p>放入倉儲根目錄, 並修改 cmsimde 目錄中的 wsgi.py:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">#!/usr/bin/python
+ 
+"""Flask startup script
+"""
+ 
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__)))
+# import flaskapp at the same directory
+import flaskapp
+ 
+# get uwsgi, ip and port variable values of flaskapp.py
+uwsgi = flaskapp.uwsgi
+ip = flaskapp.ip
+port = flaskapp.dynamic_port
+ 
+if uwsgi:
+    # run on remote site
+    application = flaskapp.app
+else:
+    # on localhost, on Linux or Mac need to use python3 wsgi.py to execute
+    #flaskapp.app.run(host=ip, port=port, debug=True, ssl_context="adhoc")
+    flaskapp.app.run(host=ip, port=port, debug=True, ssl_context=('cert.pem', 'key.pem'))</pre>
+<p>此外, 為了加快 USB 中編輯動態網站與生成靜態網站的速度, 可以每次啟動電腦後下載 python_2025_lite.7z 後解開至 C:\, 使用 batch file 執行如下:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">@echo off
+ 
+REM 下載 python_2025_lite.7z
+ 
+curl --user kmolab:kmolab --output C:\Users\%USERNAME%\Downloads\python_2025_lite.7z "http://229.cycu.org/python_2025_lite.7z"
+ 
+REM 解開壓縮檔案至 C:\
+ 
+"C:\Program Files\7-Zip\7z" x C:\Users\%USERNAME%\Downloads\python_2025_lite.7z -oC:\ -y</pre>
+<p>並僅將 SSH 認證檔案、額外安裝的 Python 模組與 Github 倉儲放在 USB 隨身碟, 其餘執行檔案則使用 C:\ 固態硬碟中下載或既有的檔案, 以加快執行速度, 其對應的啟動批次檔案 start_ipv6_hybrid.bat 如下:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">@echo off
+set Disk=y
+subst %Disk%: "data"
+ 
+%Disk%:
+ 
+REM 請先將 python_2025_lite 下載到 C:\
+REM 除了個人作業倉儲與  ssh key 之外, 其他執行都使用 C:\ 中的檔案
+set Local=C:\python_2025_lite\data
+REM for cadlab
+REM set NX_location="C:\Program Files\Siemens\NX2312"
+set NX_location=E:\NX2312_CAD
+ 
+REM python 執行將使用 C:\, 但是額外的 Python 模組將存至隨身碟
+REM pip install &lt;package&gt; --target  Y:\extra_python_modules, 但必須將此額外模組路徑納入 PYTHONPATH
+ 
+set HomePath=%Disk%:\home_ipv6
+set HomeDrive=%Disk%:\home_ipv6
+set Home=%Disk%:\home_ipv6
+set USERPROFILE=%Disk%:\home_ipv6
+ 
+REM 將系統 Python 程式的 io 設為 utf-8
+set PYTHONIOENCODING="utf-8"
+ 
+set PYTHONPATH=%Local%\Python310\DLLs;%Local%\Python310\Lib;%Local%\Python310\Lib\site-packages;%NX_location%\NXBIN\python;%Disk%:\extra_python_modules;
+set PYTHONHOME=%Local%\Python310
+ 
+REM for putty
+set GIT_SSH=%Local%\PuTTY\plink.exe
+ 
+REM 設定跟 Python 有關的命令搜尋路徑
+set path_python=%Local%\Python310;%Local%\Python310\Scripts;
+REM 設定跟Git 有關的命令搜尋路徑
+set path_git=%Local%\portablegit\bin;
+
+REM proxy can not use with fossil scm
+REM set HTTP_PROXY=http://[2001:288:6004:xx::42]:3128
+REM set HTTPS_PROXY=http://[2001:288:6004:xx::42]:3128
+ 
+REM for PyRep
+set VREP_PATH=%Local%\CoppeliaSim
+ 
+REM for execute scite directly
+set path_scite=%Local%\wscite\;
+ 
+REM for simExtZMQ
+set path_xsltproc=%Local%\xsltproc;
+ 
+REM for OpenSSL
+Set OPENSSL_CONF=%Local%\OpenSSL-Win64\SSL\openssl.cnf
+set path_openssl=%Local%\OpenSSL-Win64\bin;
+ 
+path=%Local%;%path_python%;%path_git%;%path_putty%;%path_scite%;%path_openssl%;%path%;
+ 
+REM for NX2312, must after path setup 
+set SPLM_LICENSE_SERVER=29000@192.168.56.3
+set UGII_LANG=english
+set UGS_LICENSE_BUNDLE=ACD11,ACD10
+set UGII_BASE_DIR=%NX_location%
+set UGII_TMP_DIR=%Local%\tmp
+set UGII_LIB_PATH=%NX_location%\NXBIN\python
+set ugii=%NX_location%\ugii;%NX_location%\nxbin;
+path = %ugii%;%path%
+REM Xcopy %Local%\home_ipv6\AppData\Local\Siemens\NX2312 C:\users\%USERNAME%\AppData\Local\Siemens\NX2312 /E /H /C /I /Y
+ 
+REM start ugraf -nx
+ 
+REM python %Local%\tmp\nx_ex\new_part.py
+ 
+start /MIN cmd.exe
+start /MIN cmd.exe
+start /MIN cmd.exe
+start /MIN cmd.exe
+ 
+start /MIN %Local%\wscite\SciTE.exe
+start /MIN %Local%\wscite\SciTE.exe
+ 
+ 
+Exit</pre>
 <p></p><h3>String</h3>
-<p><a href="https://mde.tw/cp2024/downloads/learn_python_with_jupyter.pdf#chapter.1">https://mde.tw/cp2024/downloads/learn_python_with_jupyter.pdf#chapter.1</a> </p>
+<p><a href="https://mde.tw/cp2024/downloads/learn_python_with_jupyter.pdf#chapter.1">https://mde.tw/cp2024/downloads/learn_python_with_jupyter.pdf#chapter.1</a></p>
 <p>在 Python 中，字串（strings）就是用引號括起來的文本。它們是處理文字數據的基本方式。字串可以用單引號 (')、雙引號 (")，或三重引號 (''' 或 """) 括起來。這些引號的使用方式有各自的特點和用途：<br/>1. 單引號 (')<br/><br/>單引號用於定義簡單的字串，適合沒有包含單引號字符的情境。<br/><br/>python<br/><br/># 定義一個單引號字串<br/>single_quote_string = 'Hello, World!'<br/>print(single_quote_string)<br/><br/>2. 雙引號 (")<br/><br/>雙引號也用於定義字串，它們的主要好處是當字串中包含單引號時，可以避免使用轉義字符。<br/><br/>python<br/><br/># 定義一個雙引號字串<br/>double_quote_string = "Python's syntax is simple."<br/>print(double_quote_string)<br/><br/>3. 三重引號 (''' 或 """)<br/><br/>三重引號用於定義多行字串，也可以用於包含單引號和雙引號的情境。<br/><br/>python<br/><br/># 使用三重單引號定義多行字串<br/>multi_line_string = '''This is a string<br/>that spans multiple lines.<br/>It can also include 'single' and "double" quotes.'''<br/>print(multi_line_string)<br/><br/># 使用三重雙引號定義多行字串<br/>another_multi_line_string = """Here is another example<br/>of a multi-line string.<br/>It also allows for 'single' and "double" quotes."""<br/>print(another_multi_line_string)<br/><br/>常見字串操作<br/><br/>    拼接字串<br/><br/>    使用 + 來拼接多個字串。<br/><br/>    python<br/><br/>greeting = "Hello, " + "World!"<br/>print(greeting)<br/><br/>重複字串<br/><br/>使用 * 來重複字串。<br/><br/>python<br/><br/>echo = "Hello! " * 3<br/>print(echo)<br/><br/>字串長度<br/><br/>使用 len() 函數來獲取字串的長度。<br/><br/>python<br/><br/>length = len("Hello, World!")<br/>print(length)  # 13<br/><br/>字串方法<br/><br/>Python 字串有許多內建的方法，如 upper(), lower(), strip(), replace(), find() 等。<br/><br/>python<br/><br/># 轉換為大寫<br/>upper_case = "hello".upper()<br/>print(upper_case)  # "HELLO"<br/><br/># 移除首尾空白字符<br/>stripped_string = "   text with spaces   ".strip()<br/>print(stripped_string)  # "text with spaces"<br/><br/># 替換字串中的字符<br/>replaced_string = "hello world".replace("world", "Python")<br/>print(replaced_string)  # "hello Python"<br/><br/>格式化字串<br/><br/>使用 f-strings（Python 3.6 及更高版本）或 format() 方法進行格式化。<br/><br/>python<br/><br/>    name = "Alice"<br/>    age = 30<br/>    formatted_string = f"Name: {name}, Age: {age}"<br/>    print(formatted_string)<br/><br/>    # 使用 format() 方法<br/>    formatted_string = "Name: {}, Age: {}".format(name, age)<br/>    print(formatted_string)<br/><br/>結論<br/><br/>字串是 Python 中處理文字的基本單位，無論是單行還是多行，都可以用不同的引號來表示。了解如何操作字串是掌握 Python 的重要基礎。</p><h2>Topic 2</h2>
 <h4>Python 的數列、判斷式與重複迴圈 (20%)<span style="background-color: #ffff99;"><br/></span></h4>
 <p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 2 and Part 3</p>

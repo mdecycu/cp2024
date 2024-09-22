@@ -130,7 +130,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li><a href='Office365.html'>Office365</a><li><a href='Evaluate.html'>Evaluate</a><li><a href='Jupyter.html'>Jupyter</a><li class='has-children'><a href='W&H.html'>W&H</a><ul class='dropdown'><li><a href='DC.html'>DC</a></li></ul><li><a href='AI.html'>AI</a></li></ul><li class='has-children'><a href='Topics.html'>Topics</a><ul class='dropdown'><li><a href='Repository.html'>Repository</a><li class='has-children'><a href='Topic 1.html'>Topic 1</a><ul class='dropdown'><li><a href='Codespaces.html'>Codespaces</a></li></ul><li class='has-children'><a href='上課內容.html'>上課內容</a><ul class='dropdown'><li><a href='Seat.html'>Seat</a><li><a href='String.html'>String</a></li></ul><li><a href='Topic 2.html'>Topic 2</a><li><a href='Topic 3.html'>Topic 3</a><li><a href='Topic 4.html'>Topic 4</a></li></ul><li class='has-children'><a href='CAD.html'>CAD</a><ul class='dropdown'><li><a href='CoppeliaSim.html'>CoppeliaSim</a></li></ul><li><a href='Python.html'>Python</a><li><a href='Project.html'>Project</a><li><a href='Brython.html'>Brython</a></li>
+                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li><a href='Office365.html'>Office365</a><li><a href='Evaluate.html'>Evaluate</a><li><a href='Jupyter.html'>Jupyter</a><li class='has-children'><a href='W&H.html'>W&H</a><ul class='dropdown'><li><a href='DC.html'>DC</a></li></ul><li><a href='AI.html'>AI</a></li></ul><li class='has-children'><a href='Topics.html'>Topics</a><ul class='dropdown'><li><a href='Repository.html'>Repository</a><li class='has-children'><a href='Topic 1.html'>Topic 1</a><ul class='dropdown'><li><a href='Codespaces.html'>Codespaces</a><li><a href='w2.html'>w2</a></li></ul><li class='has-children'><a href='class_materials.html'>class_materials</a><ul class='dropdown'><li><a href='Seat.html'>Seat</a><li><a href='cmsimde.html'>cmsimde</a><li><a href='String.html'>String</a></li></ul><li><a href='Topic 2.html'>Topic 2</a><li><a href='Topic 3.html'>Topic 3</a><li><a href='Topic 4.html'>Topic 4</a></li></ul><li class='has-children'><a href='CAD.html'>CAD</a><ul class='dropdown'><li><a href='CoppeliaSim.html'>CoppeliaSim</a></li></ul><li><a href='Python.html'>Python</a><li><a href='Project.html'>Project</a><li><a href='Brython.html'>Brython</a></li>
                       </ul>
                 </nav>
               </div>
@@ -141,10 +141,14 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">上課內容 << <a href='上課內容.html'>Previous</a> <a href='String.html'>Next</a> >> String<br /><h1>Seat</h1>
+    <div id="tipue_search_content">class_materials << <a href='class_materials.html'>Previous</a> <a href='cmsimde.html'>Next</a> >> cmsimde<br /><h1>Seat</h1>
 <p>1a <a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/eb2e4327b65a0fe5c307ea329ef2f69c/raw/e51dbbc23766cfcce98198d1ef4343e90ba62a4e/cp2024_1a_group1_brython.py">座位表1</a>, <a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/eb2e4327b65a0fe5c307ea329ef2f69c/raw/e51dbbc23766cfcce98198d1ef4343e90ba62a4e/cp2024_1a_group2_brython.py">分組座位表</a></p>
 <p>1b <a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/eb2e4327b65a0fe5c307ea329ef2f69c/raw/4ed15bcc8ec61a971558f00ee95b6d686739b4ba/cp2024_1b_group1_brython.py">座位表1</a>, <a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/eb2e4327b65a0fe5c307ea329ef2f69c/raw/4ed15bcc8ec61a971558f00ee95b6d686739b4ba/cp2024_1b_group2_brython.py">分組座位表</a></p>
 <hr/>
+<p>計算機程式 1a 座位表:</p>
+<p><img alt="" height="296" src="./../images/cp2024_1a_seat_table.png" width="800"/></p>
+<p>計算機程式 1b 座位表:</p>
+<p><img alt="" height="286" src="./../images/cp2024_1b_seat_table.png" width="800"/></p>
 <p>上述程式透過與 claude.ai 進行以下對話後產生：</p>
 <p>問題: <br/><br/>https://mde.tw/2024/1a.txt 為一行學員的學號資料, 請用 Brython open().read() 讀取後, 利用 Canvas 在 id 為 brython_div 的超文件位置上, 採由上而下, 由右而左的次序, 用每一個學員除畫出學號外, 還加上外方框線, 且每一列共列出 9 位學員, 畫完後,以print() 印出 "done"<br/><br/>問: 怎麼只列出一位學員? (因為 AI 沒有用跳行隔開學員學號, 而是用 "," 隔開資料)<br/><br/>說明: 因為 AI 沒能正確解讀資料, 因此提供資料格式供其參考:<br/><br/>問: <br/><br/>40831154<br/>40932134<br/>41023249<br/>41031136<br/>41036112 這是前面五行資料, 請修改程式<br/><br/>說明: 接下來 AI 已經能夠正確解讀資料, 但因為提供錯誤的 html id 字串因此產生下列錯誤,<br/><br/>File "&lt;string&gt;", line 8, in draw_students<br/>KeyError: brython_div<br/><br/>問: id 為 brython_div1, x 方向的框寬可以小一點, 否則最左邊顯示不出來<br/><br/>說明: 這時 AI 已經正確完成任務 (也就是修正各學員外框寬度後, 存為 group1), 但因所選的外框太寬, 因此最左邊的學號沒有完全顯示出來, 要求針對這個問題進行處理<br/><br/>問: 可不可以從最右邊開始, 第一列前三個與第二列前三個學員為同一組, 其框內背景請塗上同一個淡顏色辨識, 若至最後一列, 並沒有前三與後三作為同一組, 請就剩下的組員若少於 6 名則設為同一組, 若大於 6 則儘量平均方為兩組.<br/><br/>問: 是原則上同一列三位與下一列對齊的三位為同一組<br/><br/>問: 每一列不是有 9 位學員, 第二列也是有 9 位學員, 第一列的前三個學員與第二列的前三位為同一組, 接下來則是第一列的第 4, 5,6 位學員與第二列的第 4,5,6 位學員則也是同一組, 然後剩下的學員依照這個次序分組, 同一組的塗上相同的背景顏色. 最後因為可能剩下一個列的組員, 因此沒有辦法與下一列的組員進行分組, 因此只能就同一列每六位學員一組, 但若只剩下假設 9 位, 則一組 5 位同學,另一組 4 位, 表示一組至少要有 4 位學員的意思.<br/><br/>問: 原先的學員位置弄亂了, 目前第一列至第六列,只有從右邊算來前 6 位學員進行分組塗色, 各列 7,8,9 並沒有進行分組塗色<br/><br/>說明: 結果 AI 完成 group2 Brython 程式的編寫</p>
 <p>以下為 group1 Brython 程式碼:</p>
@@ -364,7 +368,8 @@ def draw_students(data):
     print("done")  # 打印“完成”信息
  
 draw_students(data)</pre>
-<p></p><br />上課內容 << <a href='上課內容.html'>Previous</a> <a href='String.html'>Next</a> >> String</div>
+<p></p>
+<br />class_materials << <a href='class_materials.html'>Previous</a> <a href='cmsimde.html'>Next</a> >> cmsimde</div>
         
     <!-- footer -->
       <div class="container">
