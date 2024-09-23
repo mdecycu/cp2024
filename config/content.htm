@@ -255,8 +255,14 @@ plt.show()
 <p>討論:</p>
 <p style="padding-left: 30px;">目前的作業倉儲編輯程式, 使用 https adhoc 動態授權, 請深入了解若改用靜態 https 授權, 執行速度會快多少?</p>
 <p style="padding-left: 60px;">透過 ChatGPT 提問: 大約縮短 20%-50% 執行時間</p>
+<p style="padding-left: 60px;">將 cmsimde\wsgi.py 中的 adhoc https 改為靜態檔案授權:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">#flaskapp.app.run(host=ip, port=port, debug=True, ssl_context="adhoc")
+flaskapp.app.run(host=ip, port=port, debug=True, ssl_context=('cert.pem', 'key.pem'))</pre>
+<p style="padding-left: 60px;">必須在倉儲根目錄提供 cert.pem 與 key.pem:</p>
+<p style="padding-left: 60px;">openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem</p>
 <p style="padding-left: 30px;">使用 USB 隨身碟執行作業倉儲內容改版的速度, 與直接利用 C:\ 固態硬碟執行的速度差多少? 假如可攜程式系統希望儘量使用 C:\ 固態硬碟執行, 但需要作業倉儲與其他必須自行帶著的資料放入 USB 隨身碟, 該如何進行?</p>
-<p style="padding-left: 60px;">透過 ChatGPt 提問: 固態硬碟執行速度可能快 USB 3.0 隨身碟快 3-10 倍.</p><h3>Codespaces</h3>
+<p style="padding-left: 60px;">透過 ChatGPt 提問: 固態硬碟執行速度可能快 USB 3.0 隨身碟快 3-10 倍.</p>
+<p style="padding-left: 60px;">有關如何利用電腦輔助設計室中電腦固態硬碟提升執行速度, 請參考: <a href="https://mde.tw/cp2024/content/cmsimde.html">https://mde.tw/cp2024/content/cmsimde.html</a> 中的說明.</p><h3>Codespaces</h3>
 <p>由於 Codespaces 中的操作系統為 Linux, 進行編輯網頁啟動、靜態網站啟動與改版內容新增提交與推送時, 必須了解與 Linux 有關的基本概念:</p>
 <p>Codespaces 啟動後, 其終端機的回應 (Prompt) 會位於對應倉儲所在的目錄.</p>
 <p>每一個檔案與目錄都利用 10 個字元來表示其屬性, 例如:</p>
