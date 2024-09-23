@@ -252,7 +252,11 @@ plt.show()
 <p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 1</p>
 <p><span>參考資料:</span></p>
 <p style="padding-left: 30px;"><a href="https://www.youtube.com/@-kmolab9376/videos">https://www.youtube.com/@-kmolab9376/videos</a></p>
-<h3>Codespaces</h3>
+<p>討論:</p>
+<p style="padding-left: 30px;">目前的作業倉儲編輯程式, 使用 https adhoc 動態授權, 請深入了解若改用靜態 https 授權, 執行速度會快多少?</p>
+<p style="padding-left: 60px;">透過 ChatGPT 提問: 大約縮短 20%-50% 執行時間</p>
+<p style="padding-left: 30px;">使用 USB 隨身碟執行作業倉儲內容改版的速度, 與直接利用 C:\ 固態硬碟執行的速度差多少? 假如可攜程式系統希望儘量使用 C:\ 固態硬碟執行, 但需要作業倉儲與其他必須自行帶著的資料放入 USB 隨身碟, 該如何進行?</p>
+<p style="padding-left: 60px;">透過 ChatGPt 提問: 固態硬碟執行速度可能快 USB 3.0 隨身碟快 3-10 倍.</p><h3>Codespaces</h3>
 <p>由於 Codespaces 中的操作系統為 Linux, 進行編輯網頁啟動、靜態網站啟動與改版內容新增提交與推送時, 必須了解與 Linux 有關的基本概念:</p>
 <p>Codespaces 啟動後, 其終端機的回應 (Prompt) 會位於對應倉儲所在的目錄.</p>
 <p>每一個檔案與目錄都利用 10 個字元來表示其屬性, 例如:</p>
@@ -279,25 +283,19 @@ plt.show()
 </ol>
 <p>最後要提醒的是: 為了取分, 請在每週<span style="background-color: #fdd472;">上課前後至少各提交推送一次版本</span>, 而且要<span style="background-color: #fdd472;">具體說明</span>該次提交的改版摘要說明.</p>
 <p></p>
-<h3>w2</h3>
-<p>1b</p>
-<p>第二週起請按照下列座位表入座:</p>
-<p><img alt="" height="286" src="/images/cp2024_1b_seat_table.png" width="800"/></p>
-<p>請利用"學號@nfu.edu.tw" 登入 Office 365 後, 利用 Teams 團隊代碼: <span>fqpabi8 進入線上課程</span></p>
-<p>透過新的團隊中"一般"頻道中連結取得個人的作業倉儲, 統一位於 <a href="https://github.com/mdecp2024">https://github.com/mdecp2024</a> 中的 Repositories</p>
-<p>接下來學習如何利用 Github Codespaces: <a href="https://github.com/codespaces">https://github.com/codespaces</a> 直接在線上維護作業倉儲, 唯一的限制是每月免費帳號只能使用 120 core hours, 因此使用最小的虛擬主機 2 cores, 每月限制只能使用 60 小時. 因此沒有進行操作時要關閉作業倉儲對應的 Codespaces 虛擬主機.</p>
-<p>新增一個 Codespaces 後, 必須先安裝可以執行啟動作業倉儲編輯的環境, 也就是安裝需要的 Python 模組:</p>
-<div>
-<div><span>pip</span><span> </span><span>install</span><span> </span><span>flask</span><span> </span><span>flask_cors</span><span> </span><span>bs4</span><span> </span><span>lxml</span><span> </span><span>pelican</span><span> </span><span>markdown</span><span> </span><span>gevent</span></div>
-<div><span></span></div>
-<div><span>模組安裝結束後, 以 python main.py 啟動編輯</span></div>
-</div>
-<p>也可以利用可攜程式系統在近端電腦上進行作業倉儲維護 (沒有時間限制, 但要設定維護倉儲的權限):</p>
-<ol>
-<li>啟動可以完全依賴隨身碟中的檔案</li>
-<li>也可以設法將可攜程式下載到 c:\ (固態硬碟) 後, 利用 Hybrid (複合) 方式啟動</li>
-</ol>
-<h2>class_materials</h2>
+<p>以下兩個影片說明如何利用 Codespaces 維護個人的作業倉儲 (影片中以 mdecad2024 作業團隊為例, 配合計算機程式課程使用, 作業倉儲則位於 mdecp2024 團隊帳號下)</p>
+<p>Codespaces 維護作業倉儲教學片一:</p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/zRcEB9ac5hk?si=y6uTZhoL1T48_R4e" title="YouTube video player" width="560"></iframe></p>
+<p>Codespaces 維護作業倉儲教學影片二:</p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/a0u8eD3GWAc?si=5CUlpQoTu8TGLW8b" title="YouTube video player" width="560"></iframe></p><h3>Portable</h3>
+<p>使用 Codespaces 雲端整合程式環境維護作業倉儲的好處是, 近端電腦只需要開啟瀏覽器, 不需要準備任何執行編輯網站的程式, 但是連線的電腦必須全時上網, 而且使用免費的 Github 帳號登入後, 啟動 Codespaces 的每月免費 core hours 目前只有 120 個單位, 以最小的 2 core 虛擬主機計, 每一個免費 Github 帳號每月可免費使用 Codespaces 的時數只有 60 小時.</p>
+<p>使用時數受限的問題, 若利用近端電腦中的可攜程式套件維護作業倉儲, 只要在 git clone 作業倉儲到近端, 以及將改版的單一提交或多次提交 push 到 Github 時連網, 其餘使用者進行作業網頁編輯、轉靜態網頁、git add 以及 git commit, 都可以在不連網的情況下進行.</p>
+<p>另外, 由於可攜程式環境已經事先安裝能夠執行網頁編輯所需的 Python 模組, 因此使用者只要將個人的作業倉儲 git clone 到 USB 隨身碟、桌上或筆電中的磁碟, 就可以直接啟動後進行網頁改版.</p>
+<p>以下兩個影片說明如何利用可攜程式環境在近端電腦維護作業倉儲內容:</p>
+<p>Localhost 維護作業倉儲教學影片一:</p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/P6EQkLQ5nhw?si=qJqCrjDAbHNrC2SA" title="YouTube video player" width="560"></iframe></p>
+<p>Localhost 維護作業倉儲教學影片二:</p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/gZMqQMMXEfc?si=EZSYz-lAQ8pCeGbF" title="YouTube video player" width="560"></iframe></p><h2>class_materials</h2>
 <p>1b w1</p>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/n95FYV0uUg0?si=S_s-Jt0N-pVUtD0S" title="YouTube video player" width="560"></iframe></p>
 <p>作業 template: <a href="https://mde.tw/cp2024_hw">https://mde.tw/cp2024_hw</a> </p>
