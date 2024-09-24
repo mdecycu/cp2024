@@ -1,0 +1,19 @@
+# pip install textract, pip < 24.1
+# python get-pip.py pip==21.1.2
+# python -m pip install pip==21.1.2
+
+import textract
+
+filename = "learn_python_with_jupyter"
+
+# 提取 PDF 文件中的文本
+text = textract.process(filename + ".pdf")
+
+# 確保 text 不為空
+if text:
+    # 將提取的文本內容寫入 1.txt 文件
+    with open(filename + ".txt", "wb") as f:
+        f.write(text)
+    print("文本已成功存儲到 " + filename + ".txt")
+else:
+    print("未能提取任何文本。")
