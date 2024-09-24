@@ -672,9 +672,9 @@ Exit</pre>
 <h3>Vocabulary</h3>
 <p>這裡將要利用 Python 程式, 從電子書: <a href="/downloads/learn_python_with_jupyter.pdf">Learn Python with Jupyter</a> (5.6MB), 擷取出英文單字, 並建立查詢中英文字典的網頁.</p>
 <p>所使用的 Python 模組為 <a href="https://github.com/deanmalmgren/textract">textract</a> 結合 <a href="https://github.com/oschwartz10612/poppler-windows/releases">poppler</a> 中的 pdftotext.exe 工具, 先利用 <a href="/downloads/extract_text_from_pdf.txt">extract_text_from_pdf.txt</a> 將電子書的內容取出後, 再利用 <a href="/downloads/check_vocabulary_from_cdit_net.txt">check_vocabulary_from_cdit_net.txt</a> 建立單字查詢超文件: <a href="/downloads/words_learn_python_with_jupyter.html">words_learn_python_with_jupyter.html</a></p>
-<p>由於可攜程式套件 <a href="http://229.cycu.org/python_2025_lite.7z">python_2025_lite.7z</a> 中的 pip 版本高於 24.1, 導致無法正常安裝 textract 模組, 因此利用:  </p>
+<p>由於可攜程式套件 <a href="http://229.cycu.org/python_2025_lite.7z">python_2025_lite.7z</a> 中的 pip 版本高於 24.1, 導致無法正常安裝 <a href="https://github.com/deanmalmgren/textract">textract</a> 模組, 因此利用:  </p>
 <p>python get-pip.py pip==21.1.2</p>
-<p>將 pip 版本退至 21.1.2 後, 利用 pip install textract, 然後下載 poppler 工具, 讓 pdftotext.exe 可以在可攜程式幻境的 path 中執行.</p>
+<p>將 pip 版本退至 21.1.2 後, 利用 pip install textract, 然後下載 <a href="https://github.com/oschwartz10612/poppler-windows/releases">poppler</a> 工具, 讓 pdftotext.exe 可以在可攜程式幻境的 path 中執行.</p>
 <p></p>
 <p></p><h3>String</h3>
 <p><a href="https://mde.tw/cp2024/downloads/learn_python_with_jupyter.pdf#chapter.1">https://mde.tw/cp2024/downloads/learn_python_with_jupyter.pdf#chapter.1</a></p>
