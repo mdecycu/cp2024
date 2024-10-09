@@ -837,14 +837,52 @@ class range(object)
 <p style="padding-left: 30px;">能夠生成從 0 到 4 的整數序列, 所以可以稱 range(5) 為甚麼?</p>
 <p data-pm-slice="0 0 []" style="padding-left: 30px;">請舉 10 個可以協助使用者理解 for range 與 print 等關鍵字的範例</p>
 <p data-pm-slice="0 0 []" style="padding-left: 30px;">請用 Python 的 for 跟 print 印出五行的 * 排列成的三角形金字塔, 也就是 * 在最中間, 第二行為正中央的 *** 然後第三行 *****, 總共五行.</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">n = 5  # 總共的行數
+<p data-pm-slice="0 0 []" style="padding-left: 30px;">請詳細解釋你的解法過程</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">問題分析
 
-for i in range(n):
+我們希望生成一個由星號 * 組成的金字塔，總共 5 行，並且使星號在每一行中間對齊。金字塔的形狀如下：
+
+    *
+   ***
+  *****
+ *******
+*********
+
+解法步驟
+
+    設定行數： 我們首先定義金字塔的行數。這裡我們設置 n = 5，代表金字塔有 5 行。
+
+    使用 for 迴圈： 我們將使用 for 迴圈來迭代每一行。range(n) 會生成從 0 到 4 的整數，對應於每一行的索引。
+
+    計算空格數： 為了使星號在每一行中間對齊，我們需要在星號前面印出一些空格。
+        在第 i 行，前面需要印出 n - i - 1 個空格。這樣可以確保每一行的星號都在金字塔的中間位置。
+        例如，在第 0 行（第一行）需要 4 個空格，在第 1 行需要 3 個空格，以此類推。
+
+    計算星號數： 每一行的星號數量是 2 * i + 1。
+        在第 0 行有 1 個星號，第一行有 3 個星號，第二行有 5 個星號，依此類推，這樣的模式使得每行的星號數量都是奇數並且增加。
+
+    印出結果： 使用 print() 函數印出計算得出的空格和星號。在第一個 print 中使用 end='' 是為了避免換行，使得空格和星號能在同一行內輸出。
+
+程式碼實現
+
+以下是完整的程式碼和註解：
+
+python
+
+n = 5  # 總共的行數
+
+for i in range(n):  # 對於每一行
     # 印出空格
     print(' ' * (n - i - 1), end='')  # 在每行前面印出空格
     # 印出星號
     print('*' * (2 * i + 1))  # 每行印出 2*i + 1 個星號
-</pre>
+
+執行結果
+
+當你執行這段程式碼時，它會輸出一個對稱的金字塔，每一行的星號數量和位置都符合我們的要求。</pre>
+<p><a href="/downloads/help_print.txt">help_print.txt</a></p>
+<p><a href="/downloads/help_range.txt">help_range.txt</a> (<a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/f18194c5712971ba9a89123d74378cfa/raw/d3b2374917b6fb25dd9a7f83cbd4f371fd8caa85/help_range.py">在 Brython 環境執行</a>)</p>
+<p><a href="/downloads/triangle_star_2.txt">triangle_star_2.txt</a></p>
 <hr/>
 <p><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/eb2e4327b65a0fe5c307ea329ef2f69c/raw/18b3cdd1f9bbef6ff913cc88293a8ebb7e028520/1a_w3_site_repo_brython.py">1a site and repo</a></p>
 <p><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/eb2e4327b65a0fe5c307ea329ef2f69c/raw/502faba5a396f671622c3ff2b89d741a466752be/1b_w3_site_repo_brython.py">1b site and repo</a></p><h3>String</h3>

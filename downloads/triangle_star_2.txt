@@ -1,0 +1,13 @@
+'''
+triangle 三角形
+squre 正方形
+rectangle 長方形
+'''
+
+n = 5  # 總共的行數
+ 
+for i in range(n):  # 對於每一行
+    # 印出空格
+    print(' ' * (n - i - 1), end='')  # 在每行前面印出空格
+    # 印出星號
+    print('*' * (2 * i + 1))  # 每行印出 2*i + 1 個星號

@@ -1,0 +1,11 @@
+# 單行註解
+#help(print)
+'''這個三引號所界定的區域
+被 Python 視為多行註解
+'''
+a = "一個字串"
+a = 24
+a = 24.5
+print(a)
+b = print(a, a, a, sep='*')
+print(b)

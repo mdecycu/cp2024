@@ -1,0 +1,5 @@
+for i in range(5):
+	"""
+	需要將 SciTEGlobal.properties 中的 code.page 設為 65001 才能使用 UTF-8 編碼
+	"""
+	print("done 中文")
