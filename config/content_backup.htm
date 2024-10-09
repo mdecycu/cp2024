@@ -15,10 +15,11 @@
 <p><span>零組件繪圖套件: </span><a href="https://solvespace.com/">Solvespace</a> (已包含在可攜程式套件中)</p>
 <p><span>機電模擬套件: </span><a href="https://www.coppeliarobotics.com/">CoppeliaSim</a> (已包含在可攜程式套件中)</p>
 <p>Reference:</p>
-<p style="padding-left: 30px;"><a href="https://formosa.oj.cs.nycu.edu.tw/signin/">https://formosa.oj.cs.nycu.edu.tw/signin/</a> </p>
-<p style="padding-left: 30px;"><a href="https://leetcode.com/">https://leetcode.com/</a> </p>
-<p style="padding-left: 30px;"><a href="https://www.hackerrank.com/domains/python">https://www.hackerrank.com/domains/python</a> </p>
-<p style="padding-left: 30px;"><a href="https://py.checkio.org/">https://py.checkio.org/</a> </p>
+<p style="padding-left: 30px;"><a href="https://github.com/microsoft/pybryt">https://github.com/microsoft/pybryt</a> (auto-assessment Python library for teaching and learning)</p>
+<p style="padding-left: 30px;"><a href="https://formosa.oj.cs.nycu.edu.tw/signin/">https://formosa.oj.cs.nycu.edu.tw/signin/</a></p>
+<p style="padding-left: 30px;"><a href="https://leetcode.com/">https://leetcode.com/</a></p>
+<p style="padding-left: 30px;"><a href="https://www.hackerrank.com/domains/python">https://www.hackerrank.com/domains/python</a></p>
+<p style="padding-left: 30px;"><a href="https://py.checkio.org/">https://py.checkio.org/</a></p>
 <p style="padding-left: 30px;">清大資工大一的 C++ 計算機程式課程(<a href="https://www.youtube.com/@vllabnthu1164/videos">兩個學期</a>)</p>
 <p style="padding-left: 30px;">東吳<a href="http://163.14.73.18/">自動化程式評測系統</a></p>
 <p>課程評分:</p>
@@ -835,6 +836,15 @@ class range(object)
 <p style="padding-left: 30px;">range(5) 是數列嗎?</p>
 <p style="padding-left: 30px;">能夠生成從 0 到 4 的整數序列, 所以可以稱 range(5) 為甚麼?</p>
 <p data-pm-slice="0 0 []" style="padding-left: 30px;">請舉 10 個可以協助使用者理解 for range 與 print 等關鍵字的範例</p>
+<p data-pm-slice="0 0 []" style="padding-left: 30px;">請用 Python 的 for 跟 print 印出五行的 * 排列成的三角形金字塔, 也就是 * 在最中間, 第二行為正中央的 *** 然後第三行 *****, 總共五行.</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">n = 5  # 總共的行數
+
+for i in range(n):
+    # 印出空格
+    print(' ' * (n - i - 1), end='')  # 在每行前面印出空格
+    # 印出星號
+    print('*' * (2 * i + 1))  # 每行印出 2*i + 1 個星號
+</pre>
 <hr/>
 <p><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/eb2e4327b65a0fe5c307ea329ef2f69c/raw/18b3cdd1f9bbef6ff913cc88293a8ebb7e028520/1a_w3_site_repo_brython.py">1a site and repo</a></p>
 <p><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/eb2e4327b65a0fe5c307ea329ef2f69c/raw/502faba5a396f671622c3ff2b89d741a466752be/1b_w3_site_repo_brython.py">1b site and repo</a></p><h3>String</h3>
