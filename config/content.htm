@@ -212,7 +212,88 @@ plt.show()
 <p style="padding-left: 30px;">如果某一批次的螺栓尺寸分佈偏離設計規格，公司可以立即通知供應商，要求進行改進，並且可以拒收不合格的產品，確保進入生產線的零件都符合標準。<br/><br/>3. 庫存管理</p>
 <p style="padding-left: 30px;">通過分析歷史數據，公司可以預測未來的螺栓需求，合理安排採購計劃，避免庫存積壓或短缺。例如，如果某些時間段的需求量較大，公司可以提前增加庫存，平衡供需。<br/><br/>4. 供應商評估</p>
 <p style="padding-left: 30px;">根據每個供應商提供螺栓的尺寸穩定性和合格率，公司可以進行供應商評估，選擇優質供應商，建立長期合作關係，同時淘汰質量不穩定的供應商。</p>
-<h1>Topics</h1>
+<h2>Servers</h2>
+<p>在 Windows 中由管理者身分啟動的命令列, 可以利用 net user username password /add 建立登入帳號.</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false"># Switching to openssl
+# https://github.com/desktop/desktop/issues/3260
+[http "https://github.com"]
+    sslVerify = false</pre>
+<p>Windows 的啟動目錄:</p>
+<p>C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup</p>
+<p>read_stud_id.ps1</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false"># 讀取檔案，使用 -Delimiter 參數以 Tab 隔開
+$data = Import-Csv -Path "Y:\tmp\create_users\list_2b.txt" -Delimiter "`t" -Header "Column1", "StudentID"
+
+# 提取第二個欄位（學號）並將結果存儲到新檔案
+$data.StudentID | Set-Content -Path "Y:\tmp\create_users\user_id.txt"
+
+Write-Host "學號已成功提取並儲存到 user_id.txt"
+</pre>
+<p>gen_stud_id_password.ps1</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false"># 讀取學號檔案
+$studentIds = Get-Content -Path "Y:\tmp\create_users\2b_user_id.txt"
+
+# 初始化結果陣列
+$results = @()
+
+# 隨機生成密碼的函數
+function Generate-RandomPassword {
+    $length = 4
+    # 排除容易混淆的字符
+    $characters = 'abcdeghkmnpqrstuvwxyABCDEFGHKLMNPQRSTUVWXY3456789'
+    $password = -join ((Get-Random -Count $length -InputObject $characters.ToCharArray()) | ForEach-Object { $_ })
+    return $password
+}
+
+# 遍歷每個學號並生成密碼
+foreach ($id in $studentIds) {
+    $password = Generate-RandomPassword
+    $results += "$id,$password"
+}
+
+# 將結果寫入檔案
+$results | Set-Content -Path "Y:\tmp\create_users\2b_id_pass_name.txt"
+
+Write-Host "學號和密碼已成功生成並儲存到 output.txt"
+</pre>
+<p>create_users.ps1</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false"># 讀取檔案
+$users = Get-Content -Path "Y:\tmp\create_users\users.txt"
+
+foreach ($user in $users) {
+    # 分割行資料
+    $parts = $user -split ","
+    $account = $parts[0]
+    $password = $parts[1]
+    $name = $parts[2]
+
+    # 檢查用戶是否已存在
+    if (-not (Get-LocalUser -Name $account -ErrorAction SilentlyContinue)) {
+        # 創建用戶
+        New-LocalUser -Name $account -Password (ConvertTo-SecureString $password -AsPlainText -Force) -FullName $name -Description "User account for $name"
+        
+        # 創建用戶目錄
+        $userFolder = "C:\Users\$account"
+        New-Item -Path $userFolder -ItemType Directory -Force
+
+        # 設定目錄權限
+        $acl = Get-Acl $userFolder
+        $acl.SetOwner([System.Security.Principal.NTAccount]::new($account))
+        Set-Acl -Path $userFolder -AclObject $acl
+        
+        # 設定用戶對資料夾的訪問權限
+        $accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule($account, "FullControl", "Allow")
+        $acl.AddAccessRule($accessRule)
+        Set-Acl -Path $userFolder -AclObject $acl
+        
+        # 可選：將用戶添加到特定群組
+        # Add-LocalGroupMember -Group "Users" -Member $account
+    } else {
+        Write-Host "用戶 $account 已存在，跳過..."
+    }
+}
+</pre>
+<p></p><h1>Topics</h1>
 <h4>Topic 1: 基於瀏覽器的分散式版次管理與整合程式開發環境 (10%)<span style="background-color: #ffff99;"><br/></span></h4>
 <p style="padding-left: 30px;">USB 隨身碟:</p>
 <p style="padding-left: 60px;">下載可攜程式套件 <a href="http://229.cycu.org/python_2025_lite.7z">python_2025_lite.7z</a> (428 MB, 解開壓縮後約 1.5 GB)</p>
@@ -281,6 +362,14 @@ flaskapp.app.run(host=ip, port=port, debug=True, ssl_context=('cert.pem', 'key.p
 <p style="padding-left: 30px;">使用 USB 隨身碟執行作業倉儲內容改版的速度, 與直接利用 C:\ 固態硬碟執行的速度差多少? 假如可攜程式系統希望儘量使用 C:\ 固態硬碟執行, 但需要作業倉儲與其他必須自行帶著的資料放入 USB 隨身碟, 該如何進行?</p>
 <p style="padding-left: 60px;">透過 ChatGPt 提問: 固態硬碟執行速度可能快 USB 3.0 隨身碟快 3-10 倍.</p>
 <p style="padding-left: 60px;">有關如何利用電腦輔助設計室中電腦固態硬碟提升執行速度, 請參考: <a href="https://mde.tw/cp2024/content/cmsimde.html">https://mde.tw/cp2024/content/cmsimde.html</a> 中的說明.</p><h3>Codespaces</h3>
+<p>登入 Github 帳號後, 可以至 <a href="https://github.com/codespaces">https://github.com/codespaces</a> 檢查所建立的 Codespaces.</p>
+<p>Codespaces 是附屬在 Github 倉儲下的雲端整合開發環境, 首次建立時系統會主動安裝特定的 Python 模組, 但若需要在 Codespaces 中執行 python main.py 啟動編輯網頁, 則必須利用:</p>
+<p>pip install flask flask_cors bs4 lxml pelican markdown gevent</p>
+<p>安裝啟動 cmsimde 編輯網頁所需的 Python 模組. 安裝結束後, 就可以利用 python main.py 執行動態編輯網站, 而 python main2.py 則可以啟動目前位於 Codespaces 環境中的靜態網站.</p>
+<hr/>
+<p>當使用者完成動態網站內容的編輯後, 必須利用 Convert 將 /config/content.htm 進行分頁, 並將各頁面超文件檔案存入 content 目錄中.</p>
+<p>若使用者在多個地方維護倉儲, 例如: Codespaces 與近端可攜程式環境, 執行動態網站編輯之前, 可以利用 git pull 從 Github 倉儲取下目前最新的版本資料.</p>
+<hr/>
 <p>由於 Codespaces 中的操作系統為 Linux, 進行編輯網頁啟動、靜態網站啟動與改版內容新增提交與推送時, 必須了解與 Linux 有關的基本概念:</p>
 <p>Codespaces 啟動後, 其終端機的回應 (Prompt) 會位於對應倉儲所在的目錄.</p>
 <p>每一個檔案與目錄都利用 10 個字元來表示其屬性, 例如:</p>

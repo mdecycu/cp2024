@@ -130,7 +130,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li><a href='Links.html'>Links</a><li><a href='Office365.html'>Office365</a><li><a href='Evaluate.html'>Evaluate</a><li><a href='Jupyter.html'>Jupyter</a><li class='has-children'><a href='W&H.html'>W&H</a><ul class='dropdown'><li><a href='DC.html'>DC</a></li></ul><li><a href='AI.html'>AI</a></li></ul><li class='has-children'><a href='Topics.html'>Topics</a><ul class='dropdown'><li><a href='Repository.html'>Repository</a><li class='has-children'><a href='Topic 1.html'>Topic 1</a><ul class='dropdown'><li><a href='Codespaces.html'>Codespaces</a><li><a href='Portable.html'>Portable</a></li></ul><li class='has-children'><a href='class_materials.html'>class_materials</a><ul class='dropdown'><li><a href='Seat.html'>Seat</a><li><a href='cmsimde.html'>cmsimde</a><li><a href='Vocabulary.html'>Vocabulary</a><li><a href='Environment.html'>Environment</a><li><a href='String.html'>String</a></li></ul><li><a href='Topic 2.html'>Topic 2</a><li><a href='Topic 3.html'>Topic 3</a><li><a href='Topic 4.html'>Topic 4</a></li></ul><li class='has-children'><a href='CAD.html'>CAD</a><ul class='dropdown'><li><a href='CoppeliaSim.html'>CoppeliaSim</a></li></ul><li><a href='Python.html'>Python</a><li><a href='Project.html'>Project</a><li><a href='Brython.html'>Brython</a></li>
+                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li><a href='Links.html'>Links</a><li><a href='Office365.html'>Office365</a><li><a href='Evaluate.html'>Evaluate</a><li><a href='Jupyter.html'>Jupyter</a><li class='has-children'><a href='W&H.html'>W&H</a><ul class='dropdown'><li><a href='DC.html'>DC</a></li></ul><li><a href='AI.html'>AI</a><li><a href='Servers.html'>Servers</a></li></ul><li class='has-children'><a href='Topics.html'>Topics</a><ul class='dropdown'><li><a href='Repository.html'>Repository</a><li class='has-children'><a href='Topic 1.html'>Topic 1</a><ul class='dropdown'><li><a href='Codespaces.html'>Codespaces</a><li><a href='Portable.html'>Portable</a></li></ul><li class='has-children'><a href='class_materials.html'>class_materials</a><ul class='dropdown'><li><a href='Seat.html'>Seat</a><li><a href='cmsimde.html'>cmsimde</a><li><a href='Vocabulary.html'>Vocabulary</a><li><a href='Environment.html'>Environment</a><li><a href='String.html'>String</a></li></ul><li><a href='Topic 2.html'>Topic 2</a><li><a href='Topic 3.html'>Topic 3</a><li><a href='Topic 4.html'>Topic 4</a></li></ul><li class='has-children'><a href='CAD.html'>CAD</a><ul class='dropdown'><li><a href='CoppeliaSim.html'>CoppeliaSim</a></li></ul><li><a href='Python.html'>Python</a><li><a href='Project.html'>Project</a><li><a href='Brython.html'>Brython</a></li>
                       </ul>
                 </nav>
               </div>
@@ -142,6 +142,14 @@ img.add_border {
           
         </header>
     <div id="tipue_search_content">Topic 1 << <a href='Topic 1.html'>Previous</a> <a href='Portable.html'>Next</a> >> Portable<br /><h1>Codespaces</h1>
+<p>登入 Github 帳號後, 可以至 <a href="https://github.com/codespaces">https://github.com/codespaces</a> 檢查所建立的 Codespaces.</p>
+<p>Codespaces 是附屬在 Github 倉儲下的雲端整合開發環境, 首次建立時系統會主動安裝特定的 Python 模組, 但若需要在 Codespaces 中執行 python main.py 啟動編輯網頁, 則必須利用:</p>
+<p>pip install flask flask_cors bs4 lxml pelican markdown gevent</p>
+<p>安裝啟動 cmsimde 編輯網頁所需的 Python 模組. 安裝結束後, 就可以利用 python main.py 執行動態編輯網站, 而 python main2.py 則可以啟動目前位於 Codespaces 環境中的靜態網站.</p>
+<hr/>
+<p>當使用者完成動態網站內容的編輯後, 必須利用 Convert 將 /config/content.htm 進行分頁, 並將各頁面超文件檔案存入 content 目錄中.</p>
+<p>若使用者在多個地方維護倉儲, 例如: Codespaces 與近端可攜程式環境, 執行動態網站編輯之前, 可以利用 git pull 從 Github 倉儲取下目前最新的版本資料.</p>
+<hr/>
 <p>由於 Codespaces 中的操作系統為 Linux, 進行編輯網頁啟動、靜態網站啟動與改版內容新增提交與推送時, 必須了解與 Linux 有關的基本概念:</p>
 <p>Codespaces 啟動後, 其終端機的回應 (Prompt) 會位於對應倉儲所在的目錄.</p>
 <p>每一個檔案與目錄都利用 10 個字元來表示其屬性, 例如:</p>

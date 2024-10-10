@@ -2,7 +2,7 @@
         <head>
         <title>cp2024</title>
         <meta charset="utf-8">
-<meta property="head" content="H3">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
@@ -141,198 +141,88 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Vocabulary << <a href='Vocabulary.html'>Previous</a> <a href='String.html'>Next</a> >> String<br /><h1>Environment</h1>
-<p>執行 Python 的環境:</p>
-<ol>
-<li>Brython 環境: <a href="https://mde.tw/cp2024/content/Brython.html">https://mde.tw/cp2024/content/Brython.html</a> </li>
-<li>可攜環境的 SciTE 編輯器</li>
-<li>可攜環境的命令提示字元視窗</li>
-<li>Jupyter lab</li>
-<li>Codespaces 環境中的 Visual Studio Code</li>
-</ol>
-<p>Strings, input(), and print()</p>
-<p>首先必須瞭解  Python 變數命名法則:</p>
-<p style="padding-left: 30px;">必須以英文字母或 _ 作為開頭, 隨後可以接上任何數字、英文字母或 _</p>
-<p style="padding-left: 30px;">但變數名稱區分英文字母的大小寫, 變數也可以使用中文命名, 但一般並不建議使用英文以外的多 byte 語系命名.</p>
-<p>String 為字串, 可以用單引號、雙引號或三引號隔開. 例如:</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">"this is a string's " 使用雙引號將字串區隔
+    <div id="tipue_search_content">AI << <a href='AI.html'>Previous</a> <a href='Topics.html'>Next</a> >> Topics<br /><h1>Servers</h1>
+<p>在 Windows 中由管理者身分啟動的命令列, 可以利用 net user username password /add 建立登入帳號.</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false"># Switching to openssl
+# https://github.com/desktop/desktop/issues/3260
+[http "https://github.com"]
+    sslVerify = false</pre>
+<p>Windows 的啟動目錄:</p>
+<p>C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup</p>
+<p>read_stud_id.ps1</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false"># 讀取檔案，使用 -Delimiter 參數以 Tab 隔開
+$data = Import-Csv -Path "Y:\tmp\create_users\list_2b.txt" -Delimiter "`t" -Header "Column1", "StudentID"
 
-'this is a string' 使用單引號將字串區隔
+# 提取第二個欄位（學號）並將結果存儲到新檔案
+$data.StudentID | Set-Content -Path "Y:\tmp\create_users\user_id.txt"
 
-當字串超過一行時, 可以使用三引號:
+Write-Host "學號已成功提取並儲存到 user_id.txt"
+</pre>
+<p>gen_stud_id_password.ps1</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false"># 讀取學號檔案
+$studentIds = Get-Content -Path "Y:\tmp\create_users\2b_user_id.txt"
 
-'''
+# 初始化結果陣列
+$results = @()
 
-這裡面是用來說明程式目的或紀錄
+# 隨機生成密碼的函數
+function Generate-RandomPassword {
+    $length = 4
+    # 排除容易混淆的字符
+    $characters = 'abcdeghkmnpqrstuvwxyABCDEFGHKLMNPQRSTUVWXY3456789'
+    $password = -join ((Get-Random -Count $length -InputObject $characters.ToCharArray()) | ForEach-Object { $_ })
+    return $password
+}
 
-相關事項的多行文字
+# 遍歷每個學號並生成密碼
+foreach ($id in $studentIds) {
+    $password = Generate-RandomPassword
+    $results += "$id,$password"
+}
 
-'''</pre>
-<p>print 與 for 重複迴圈</p>
-<p>help(print)</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">Help on built-in function print in module builtins:
+# 將結果寫入檔案
+$results | Set-Content -Path "Y:\tmp\create_users\2b_id_pass_name.txt"
 
-print(...)
-    print(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
-    
-    Prints the values to a stream, or to sys.stdout by default.
-    Optional keyword arguments:
-    file:  a file-like object (stream); defaults to the current sys.stdout.
-    sep:   string inserted between values, default a space.
-    end:   string appended after the last value, default a newline.
-    flush: whether to forcibly flush the stream.</pre>
-<p>help(range)</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">Help on class range in module builtins:
+Write-Host "學號和密碼已成功生成並儲存到 output.txt"
+</pre>
+<p>create_users.ps1</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false"># 讀取檔案
+$users = Get-Content -Path "Y:\tmp\create_users\users.txt"
 
-class range(object)
- |  range(stop) -&gt; range object
- |  range(start, stop[, step]) -&gt; range object
- |  
- |  Return an object that produces a sequence of integers from start (inclusive)
- |  to stop (exclusive) by step.  range(i, j) produces i, i+1, i+2, ..., j-1.
- |  start defaults to 0, and stop is omitted!  range(4) produces 0, 1, 2, 3.
- |  These are exactly the valid indices for a list of 4 elements.
- |  When step is given, it specifies the increment (or decrement).
- |  
- |  Methods defined here:
- |  
- |  __bool__(self, /)
- |      True if self else False
- |  
- |  __contains__(self, key, /)
- |      Return key in self.
- |  
- |  __eq__(self, value, /)
- |      Return self==value.
- |  
- |  __ge__(self, value, /)
- |      Return self&gt;=value.
- |  
- |  __getattribute__(self, name, /)
- |      Return getattr(self, name).
- |  
- |  __getitem__(self, key, /)
- |      Return self[key].
- |  
- |  __gt__(self, value, /)
- |      Return self&gt;value.
- |  
- |  __hash__(self, /)
- |      Return hash(self).
- |  
- |  __iter__(self, /)
- |      Implement iter(self).
- |  
- |  __le__(self, value, /)
- |      Return self&lt;=value.
- |  
- |  __len__(self, /)
- |      Return len(self).
- |  
- |  __lt__(self, value, /)
- |      Return self&lt;value.
- |  
- |  __ne__(self, value, /)
- |      Return self!=value.
- |  
- |  __reduce__(...)
- |      Helper for pickle.
- |  
- |  __repr__(self, /)
- |      Return repr(self).
- |  
- |  __reversed__(...)
- |      Return a reverse iterator.
- |  
- |  count(...)
- |      rangeobject.count(value) -&gt; integer -- return number of occurrences of value
- |  
- |  index(...)
- |      rangeobject.index(value) -&gt; integer -- return index of value.
- |      Raise ValueError if the value is not present.
- |  
- |  ----------------------------------------------------------------------
- |  Static methods defined here:
- |  
- |  __new__(*args, **kwargs) from builtins.type
- |      Create and return a new object.  See help(type) for accurate signature.
- |  
- |  ----------------------------------------------------------------------
- |  Data descriptors defined here:
- |  
- |  start
- |  
- |  step
- |  
- |  stop</pre>
-<p>與 ChatGPT 對話:</p>
-<p style="padding-left: 30px;">可以解釋一下help(range) 傳回來的內容嗎?</p>
-<p>將 help(range) 傳回的內容貼給 ChatGPT, 然後問:</p>
-<p style="padding-left: 30px;">可以舉例詳細說明以下 help(range) 傳回來的內容嗎? 然後貼上 help 傳回的資料.</p>
-<p>詢問 for i in range():</p>
-<p style="padding-left: 30px;">如何解釋 Python 中的 for i in range(5):</p>
-<p style="padding-left: 30px;">如何解釋 range(5) ?</p>
-<p style="padding-left: 30px;">range(5) 是數列嗎?</p>
-<p style="padding-left: 30px;">能夠生成從 0 到 4 的整數序列, 所以可以稱 range(5) 為甚麼?</p>
-<p data-pm-slice="0 0 []" style="padding-left: 30px;">請舉 10 個可以協助使用者理解 for range 與 print 等關鍵字的範例</p>
-<p data-pm-slice="0 0 []" style="padding-left: 30px;">請用 Python 的 for 跟 print 印出五行的 * 排列成的三角形金字塔, 也就是 * 在最中間, 第二行為正中央的 *** 然後第三行 *****, 總共五行.</p>
-<p data-pm-slice="0 0 []" style="padding-left: 30px;">請詳細解釋你的解法過程</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">問題分析
+foreach ($user in $users) {
+    # 分割行資料
+    $parts = $user -split ","
+    $account = $parts[0]
+    $password = $parts[1]
+    $name = $parts[2]
 
-我們希望生成一個由星號 * 組成的金字塔，總共 5 行，並且使星號在每一行中間對齊。金字塔的形狀如下：
+    # 檢查用戶是否已存在
+    if (-not (Get-LocalUser -Name $account -ErrorAction SilentlyContinue)) {
+        # 創建用戶
+        New-LocalUser -Name $account -Password (ConvertTo-SecureString $password -AsPlainText -Force) -FullName $name -Description "User account for $name"
+        
+        # 創建用戶目錄
+        $userFolder = "C:\Users\$account"
+        New-Item -Path $userFolder -ItemType Directory -Force
 
-    *
-   ***
-  *****
- *******
-*********
-
-解法步驟
-
-    設定行數： 我們首先定義金字塔的行數。這裡我們設置 n = 5，代表金字塔有 5 行。
-
-    使用 for 迴圈： 我們將使用 for 迴圈來迭代每一行。range(n) 會生成從 0 到 4 的整數，對應於每一行的索引。
-
-    計算空格數： 為了使星號在每一行中間對齊，我們需要在星號前面印出一些空格。
-        在第 i 行，前面需要印出 n - i - 1 個空格。這樣可以確保每一行的星號都在金字塔的中間位置。
-        例如，在第 0 行（第一行）需要 4 個空格，在第 1 行需要 3 個空格，以此類推。
-
-    計算星號數： 每一行的星號數量是 2 * i + 1。
-        在第 0 行有 1 個星號，第一行有 3 個星號，第二行有 5 個星號，依此類推，這樣的模式使得每行的星號數量都是奇數並且增加。
-
-    印出結果： 使用 print() 函數印出計算得出的空格和星號。在第一個 print 中使用 end='' 是為了避免換行，使得空格和星號能在同一行內輸出。
-
-程式碼實現
-
-以下是完整的程式碼和註解：
-
-python
-
-n = 5  # 總共的行數
-
-for i in range(n):  # 對於每一行
-    # 印出空格
-    print(' ' * (n - i - 1), end='')  # 在每行前面印出空格
-    # 印出星號
-    print('*' * (2 * i + 1))  # 每行印出 2*i + 1 個星號
-
-執行結果
-
-當你執行這段程式碼時，它會輸出一個對稱的金字塔，每一行的星號數量和位置都符合我們的要求。</pre>
-<p><a href="./../downloads/help_print.txt">help_print.txt</a></p>
-<p><a href="./../downloads/help_range.txt">help_range.txt</a> (<a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/f18194c5712971ba9a89123d74378cfa/raw/d3b2374917b6fb25dd9a7f83cbd4f371fd8caa85/help_range.py">在 Brython 環境執行</a>)</p>
-<p><a href="./../downloads/triangle_star_2.txt">triangle_star_2.txt</a> (<a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/f18194c5712971ba9a89123d74378cfa/raw/c44b9f215f131d426d5ec7d8c4f1c3366c08c218/triangle_print_2.py">在 Brython 環境執行</a>)</p>
-<p>在 AI 以及積極學習的動機下 (查英文單字、練習英打、學會與 AI 互動), 儘快了解 <a href="./../downloads/zmq_remote_api_ex.7z">zmq_remote_api_ex.7z</a></p>
-<p>利用 Python 將正方體物件排列進入 CoppeliaSim 模擬場景: <a href="./../downloads/zmq_remote_api_ex_cube_triangle.7z">zmq_remote_api_ex_cube_triangle.7z</a></p>
-<p>機械設計工程師學習計算機程式的目的之一: 設計與模擬運算, 希望在產品零組件實體製作之前, 可以事先了解或評量設計流程各階段事物的特性, 並提供關鍵設計尺寸進行客製化調控.</p>
-<p>CoppeliaSim API constants: <a href="https://manual.coppeliarobotics.com/en/apiConstants.htm">https://manual.coppeliarobotics.com/en/apiConstants.htm</a></p>
-<p>在模擬場景中的 cubes 排列:</p>
-<p><img caption="false" height="307" src="./../images/triangle_cube_on_copsim1.png" width="400"/></p>
-<p>在瀏覽器中的 cubes 排列:</p>
-<p><img alt="" height="307" src="./../images/triangle_cube_on_copsim2.png" width="400"/></p>
-<hr/>
-<p><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/eb2e4327b65a0fe5c307ea329ef2f69c/raw/18b3cdd1f9bbef6ff913cc88293a8ebb7e028520/1a_w3_site_repo_brython.py">1a site and repo</a></p>
-<p><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/eb2e4327b65a0fe5c307ea329ef2f69c/raw/502faba5a396f671622c3ff2b89d741a466752be/1b_w3_site_repo_brython.py">1b site and repo</a></p><br />Vocabulary << <a href='Vocabulary.html'>Previous</a> <a href='String.html'>Next</a> >> String</div>
+        # 設定目錄權限
+        $acl = Get-Acl $userFolder
+        $acl.SetOwner([System.Security.Principal.NTAccount]::new($account))
+        Set-Acl -Path $userFolder -AclObject $acl
+        
+        # 設定用戶對資料夾的訪問權限
+        $accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule($account, "FullControl", "Allow")
+        $acl.AddAccessRule($accessRule)
+        Set-Acl -Path $userFolder -AclObject $acl
+        
+        # 可選：將用戶添加到特定群組
+        # Add-LocalGroupMember -Group "Users" -Member $account
+    } else {
+        Write-Host "用戶 $account 已存在，跳過..."
+    }
+}
+</pre>
+<p></p><br />AI << <a href='AI.html'>Previous</a> <a href='Topics.html'>Next</a> >> Topics</div>
         
     <!-- footer -->
       <div class="container">
