@@ -256,6 +256,43 @@ $results | Set-Content -Path "Y:\tmp\create_users\2b_id_pass_name.txt"
 
 Write-Host "學號和密碼已成功生成並儲存到 output.txt"
 </pre>
+<p>create_users.ps1</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false"># 讀取檔案
+$users = Get-Content -Path "Y:\tmp\create_users\users.txt"
+
+foreach ($user in $users) {
+    # 分割行資料
+    $parts = $user -split ","
+    $account = $parts[0]
+    $password = $parts[1]
+    $name = $parts[2]
+
+    # 檢查用戶是否已存在
+    if (-not (Get-LocalUser -Name $account -ErrorAction SilentlyContinue)) {
+        # 創建用戶
+        New-LocalUser -Name $account -Password (ConvertTo-SecureString $password -AsPlainText -Force) -FullName $name -Description "User account for $name"
+        
+        # 創建用戶目錄
+        $userFolder = "C:\Users\$account"
+        New-Item -Path $userFolder -ItemType Directory -Force
+
+        # 設定目錄權限
+        $acl = Get-Acl $userFolder
+        $acl.SetOwner([System.Security.Principal.NTAccount]::new($account))
+        Set-Acl -Path $userFolder -AclObject $acl
+        
+        # 設定用戶對資料夾的訪問權限
+        $accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule($account, "FullControl", "Allow")
+        $acl.AddAccessRule($accessRule)
+        Set-Acl -Path $userFolder -AclObject $acl
+        
+        # 可選：將用戶添加到特定群組
+        # Add-LocalGroupMember -Group "Users" -Member $account
+    } else {
+        Write-Host "用戶 $account 已存在，跳過..."
+    }
+}
+</pre>
 <p></p><h1>Topics</h1>
 <h4>Topic 1: 基於瀏覽器的分散式版次管理與整合程式開發環境 (10%)<span style="background-color: #ffff99;"><br/></span></h4>
 <p style="padding-left: 30px;">USB 隨身碟:</p>
