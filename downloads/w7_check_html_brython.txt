@@ -1,0 +1,25 @@
+url = "https://mde.tw/list/1b.txt"
+data = open(url).read()
+#print(data)
+line_data = data.split("\n")[1:]
+#print(line_data)
+for line in line_data[:-1]:
+    #print(line)
+    stud_data = line.split("\t")
+    stud_num = stud_data[1]
+    github = stud_data[2]
+    w7 = "https://mdecp2024.github.io/hw-" + github + "/content/w7.html"
+    try:
+        w7_html = open(w7).read()
+        #print(w7_html)
+        print(stud_num)
+    except:
+        #print(stud_num)
+        pass
+    #print(stud_num, github)
+    '''
+    if github == "":
+        print(stud_num)
+    '''
+
+
