@@ -1,0 +1,32 @@
+from browser import document  # 從瀏覽器模組導入 document，方便操作網頁的 DOM 元素
+
+# 建立下拉選單
+dropdown = document.createElement("div")  # 創建一個新的 div 元素作為下拉選單的容器
+dropdown.className = "dropdown"  # 設定 div 的類名為 "dropdown"，用於 CSS 樣式
+
+button = document.createElement("button")  # 創建一個新的按鈕元素
+button.textContent = "Select an Option"  # 設定按鈕的文本為 "Select an Option"
+button.className = "dropbtn"  # 設定按鈕的類名為 "dropbtn"，用於 CSS 樣式
+
+dropdown_content = document.createElement("div")  # 創建一個新的 div 元素用來放置下拉內容
+dropdown_content.className = "dropdown-content"  # 設定下拉內容 div 的類名為 "dropdown-content"
+
+# 創建選項
+options = ["Option 1", "Option 2", "Option 3"]  # 定義一個包含選項的列表
+
+for option in options:  # 遍歷每一個選項
+    link = document.createElement("a")  # 創建一個新的 a 元素用來表示每個選項
+    link.href = "#"  # 設定鏈接的 href 屬性為 "#"
+    link.textContent = option  # 將鏈接的文本設置為當前選項的名稱
+
+    # 綁定點擊事件，調用 select_option 函數並傳遞當前選項
+    link.bind("click", lambda event, selected_option=option: select_option(selected_option))  
+    dropdown_content <= link  # 將鏈接添加到下拉內容中
+
+dropdown <= button  # 將按鈕添加到下拉選單容器中
+dropdown <= dropdown_content  # 將下拉內容添加到下拉選單容器中
+document["brython_div1"] <= dropdown  # 將下拉選單容器添加到 ID 為 "brython_div1" 的元素中
+
+# 處理選項選擇的函數
+def select_option(option):  # 定義選項選擇的處理函數
+    print(f"You selected: {option}")  # 在控制台打印所選的選項
