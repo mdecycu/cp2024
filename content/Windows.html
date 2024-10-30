@@ -2,7 +2,7 @@
         <head>
         <title>cp2024</title>
         <meta charset="utf-8">
-<meta property="head" content="H2">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
@@ -141,102 +141,11 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">AI << <a href='AI.html'>Previous</a> <a href='Topics.html'>Next</a> >> Topics<br /><h1>Servers</h1>
-<p>在 Windows 中由管理者身分啟動的命令列, 可以利用 net user username password /add 建立登入帳號.</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false"># Switching to openssl
-# https://github.com/desktop/desktop/issues/3260
-[http "https://github.com"]
-    sslVerify = false</pre>
-<p>Windows 的啟動目錄:</p>
-<p>C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup</p>
-<p>read_stud_id.ps1</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false"># 讀取檔案，使用 -Delimiter 參數以 Tab 隔開
-$data = Import-Csv -Path "Y:\tmp\create_users\list_2b.txt" -Delimiter "`t" -Header "Column1", "StudentID"
-
-# 提取第二個欄位（學號）並將結果存儲到新檔案
-$data.StudentID | Set-Content -Path "Y:\tmp\create_users\user_id.txt"
-
-Write-Host "學號已成功提取並儲存到 user_id.txt"
-</pre>
-<p>gen_stud_id_password.ps1</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false"># 讀取學號檔案
-$studentIds = Get-Content -Path "Y:\tmp\create_users\2b_user_id.txt"
-
-# 初始化結果陣列
-$results = @()
-
-# 隨機生成密碼的函數
-function Generate-RandomPassword {
-    $length = 4
-    # 排除容易混淆的字符
-    $characters = 'abcdeghkmnpqrstuvwxyABCDEFGHKLMNPQRSTUVWXY3456789'
-    $password = -join ((Get-Random -Count $length -InputObject $characters.ToCharArray()) | ForEach-Object { $_ })
-    return $password
-}
-
-# 遍歷每個學號並生成密碼
-foreach ($id in $studentIds) {
-    $password = Generate-RandomPassword
-    $results += "$id,$password"
-}
-
-# 將結果寫入檔案
-$results | Set-Content -Path "Y:\tmp\create_users\2b_id_pass_name.txt"
-
-Write-Host "學號和密碼已成功生成並儲存到 output.txt"
-</pre>
-<p>create_users.ps1</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false"># 讀取檔案
-$users = Get-Content -Path "Y:\tmp\create_users\users.txt"
-
-foreach ($user in $users) {
-    # 分割行資料
-    $parts = $user -split ","
-    $account = $parts[0]
-    $password = $parts[1]
-    $name = $parts[2]
-
-    # 檢查用戶是否已存在
-    if (-not (Get-LocalUser -Name $account -ErrorAction SilentlyContinue)) {
-        # 創建用戶
-        New-LocalUser -Name $account -Password (ConvertTo-SecureString $password -AsPlainText -Force) -FullName $name -Description "User account for $name"
-        
-        # 創建用戶目錄
-        $userFolder = "C:\Users\$account"
-        New-Item -Path $userFolder -ItemType Directory -Force
-
-        # 設定目錄權限
-        $acl = Get-Acl $userFolder
-        $acl.SetOwner([System.Security.Principal.NTAccount]::new($account))
-        Set-Acl -Path $userFolder -AclObject $acl
-        
-        # 設定用戶對資料夾的訪問權限
-        $accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule($account, "FullControl", "Allow")
-        $acl.AddAccessRule($accessRule)
-        Set-Acl -Path $userFolder -AclObject $acl
-        
-        # 可選：將用戶添加到特定群組
-        # Add-LocalGroupMember -Group "Users" -Member $account
-    } else {
-        Write-Host "用戶 $account 已存在，跳過..."
-    }
-}
-</pre>
-<p>install_and_setup_openssh_server.ps1</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH*'
-
-Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
-
-Start-Service sshd
-
-Set-Service -Name sshd -StartupType 'Automatic'
-
-New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22
-
-Get-Service sshd
-</pre>
-<p></p>
-<br />AI << <a href='AI.html'>Previous</a> <a href='Topics.html'>Next</a> >> Topics</div>
+    <div id="tipue_search_content">Vocabulary << <a href='Vocabulary.html'>Previous</a> <a href='Environment.html'>Next</a> >> Environment<br /><h1>Windows</h1>
+<p>使用 VPN 或位於校網, 下載 <a href="https://software.nfu.edu.tw/Windows/tw/Win_Pro_Ent_Edu_N_10_1809_64bit_Chinese_Traditional.iso">Windows 1809 ISO</a>, 然後利用 <a href="https://www.virtualbox.org/wiki/Downloads">Virtualbox</a> 以虛擬主機安裝 Windows 操作系統.</p>
+<p>其他教育版軟體下載: <a href="https://software.nfu.edu.tw/">https://software.nfu.edu.tw/</a> </p>
+<p>安裝完成後, 可以直接利用 <a href="http://229.cycu.org/win10_2024.vdi">win10_2024.vdi</a> 建立一個虛擬的 Windows 10 操作系統環境.</p>
+<p>接下來就可以利用虛擬主機自行配置計算機程式所需的網路與 Python 可攜套件.</p><br />Vocabulary << <a href='Vocabulary.html'>Previous</a> <a href='Environment.html'>Next</a> >> Environment</div>
         
     <!-- footer -->
       <div class="container">
