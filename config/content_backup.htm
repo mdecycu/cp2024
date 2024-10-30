@@ -832,7 +832,7 @@ Exit</pre>
 <h3>Windows</h3>
 <p>使用 VPN 或位於校網, 下載 <a href="https://software.nfu.edu.tw/Windows/tw/Win_Pro_Ent_Edu_N_10_1809_64bit_Chinese_Traditional.iso">Windows 1809 ISO</a>, 然後利用 <a href="https://www.virtualbox.org/wiki/Downloads">Virtualbox</a> 以虛擬主機安裝 Windows 操作系統.</p>
 <p>其他教育版軟體下載: <a href="https://software.nfu.edu.tw/">https://software.nfu.edu.tw/</a> </p>
-<p>安裝完成後, 可以直接利用 <a href="http://229.cycu.org/win10_2024.vdi">win10_2024.vdi</a> 建立一個虛擬的 Windows 10 操作系統環境.</p>
+<p>安裝完成後, 可以直接利用 <a href="http://229.cycu.org/win10_2024.vdi">win10_2024.vdi</a> 建立一個虛擬的 Windows 10 操作系統環境. 或者下載 win10_2024_vdi.7z, 使用已經配置 Firefox, 7zip, 以及 <a href="http://229.cycu.org/python_2025_lite.7z">python_2025_lite.7z</a><span> 的虛擬主機檔案.</span></p>
 <p>接下來就可以利用虛擬主機自行配置計算機程式所需的網路與 Python 可攜套件.</p>
 <p>建立使用者:</p>
 <p style="padding-left: 30px;">利用指令建立 Windows 10 下的使用者帳號:</p>
@@ -844,9 +844,9 @@ Exit</pre>
 <p>下載安裝 SolidWorks 2023 教育版:</p>
 <p style="padding-left: 30px;">請參考電腦輔助設計實習課程中的 <a href="https://mde.tw/cad2024/content/SolidWorks.html">SolidWorks 頁面</a>說明.</p>
 <p>虛擬主機上的網路卡設定:</p>
-<p style="padding-left: 30px;">希望虛擬主機可以上網, 但無需做為伺服器 - 採 NAT 設定, 可以利用宿主 (實體 Windows 或 Linux 操作系統) 的網路連外, 但是外網電腦無法直接對此虛擬主機連線.</p>
-<p style="padding-left: 30px;">希望虛擬主機可以上網, 並且充當伺服器 - 採 Bridge Adaptor, 虛擬主機的網路卡位階與宿主的網路卡連線相當, 若宿主有兩片實體網路卡, 則虛擬主機可以將 Bridge Adaptor 轉接到第宿主的第二片實體網路卡, 可以取得與宿主相同的網路連線頻寬.</p>
-<p style="padding-left: 30px;">希望虛擬主機僅能與宿主網路連線, 不會受到外部網路干擾 - 採 Host-Only Adaptor, 虛擬主機僅能與宿主透過內部的網路設定連線, 虛擬主機無法對外連線.</p>
+<p style="padding-left: 30px;">希望虛擬主機可以上網, 但無需做為伺服器 - <span style="background-color: #ffff00;">採 NAT 設定</span>, 可以利用宿主 (實體 Windows 或 Linux 操作系統) 的網路連外, 但是外網電腦無法直接對此虛擬主機連線.</p>
+<p style="padding-left: 30px;">希望虛擬主機可以上網, 並且充當伺服器 - <span style="background-color: #ffff00;">採 Bridge Adaptor 設定</span>, 虛擬主機的網路卡位階與宿主的網路卡連線相當, 若宿主有兩片實體網路卡, 則虛擬主機可以將 Bridge Adaptor 轉接到第宿主的第二片實體網路卡, 可以取得與宿主相同的網路連線頻寬.</p>
+<p style="padding-left: 30px;">希望虛擬主機僅能與宿主網路連線, 不會受到外部網路干擾 - <span style="background-color: #ffff00;">採 Host-Only Adaptor 設定</span>, 虛擬主機僅能與宿主透過內部的網路設定連線, 虛擬主機無法對外連線.</p>
 <p></p>
 <p style="padding-left: 30px;"></p>
 <p></p>
