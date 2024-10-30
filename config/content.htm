@@ -841,6 +841,13 @@ Exit</pre>
 <p>修改 <a href="https://zh.wikipedia.org/wiki/%E9%80%9A%E7%94%A8%E5%94%AF%E4%B8%80%E8%AF%86%E5%88%AB%E7%A0%81">uuid</a>:</p>
 <p style="padding-left: 30px;">利用 <span>VBoxManage.exe 修改 win10_2024.vdi 的 uuid, 因為在同一套 Virtualbox 上的各個虛擬主機檔案, 必須要有不同的 uuid.</span></p>
 <p style="padding-left: 30px;">D:\VirtualBox\VBoxManage internalcommands sethduuid "c:\tmp\win10_2024.vdi"</p>
+<p>下載安裝 SolidWorks 2023 教育版:</p>
+<p style="padding-left: 30px;">請參考電腦輔助設計實習課程中的 <a href="https://mde.tw/cad2024/content/SolidWorks.html">SolidWorks 頁面</a>說明.</p>
+<p>虛擬主機上的網路卡設定:</p>
+<p style="padding-left: 30px;">希望虛擬主機可以上網, 但無需做為伺服器 - <span style="background-color: #ffff00;">採 NAT 設定</span>, 可以利用宿主 (實體 Windows 或 Linux 操作系統) 的網路連外, 但是外網電腦無法直接對此虛擬主機連線.</p>
+<p style="padding-left: 30px;">希望虛擬主機可以上網, 並且充當伺服器 - <span style="background-color: #ffff00;">採 Bridge Adaptor 設定</span>, 虛擬主機的網路卡位階與宿主的網路卡連線相當, 若宿主有兩片實體網路卡, 則虛擬主機可以將 Bridge Adaptor 轉接到第宿主的第二片實體網路卡, 可以取得與宿主相同的網路連線頻寬.</p>
+<p style="padding-left: 30px;">希望虛擬主機僅能與宿主網路連線, 不會受到外部網路干擾 - <span style="background-color: #ffff00;">採 Host-Only Adaptor 設定</span>, 虛擬主機僅能與宿主透過內部的網路設定連線, 虛擬主機無法對外連線.</p>
+<p></p>
 <p style="padding-left: 30px;"></p>
 <p></p>
 <p></p><h3>Environment</h3>
