@@ -831,6 +831,8 @@ Exit</pre>
 <p></p>
 <h3>Windows</h3>
 <p>使用 VPN 或位於校網, 下載 <a href="https://software.nfu.edu.tw/Windows/tw/Win_Pro_Ent_Edu_N_10_1809_64bit_Chinese_Traditional.iso">Windows 1809 ISO</a>, 然後利用 <a href="https://www.virtualbox.org/wiki/Downloads">Virtualbox</a> 以虛擬主機安裝 Windows 操作系統.</p>
+<p>說明如何安裝與配置虛擬主機的影片:</p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/zwrxuXz39PM?si=nyaWvLHYNRKDJpDa" title="YouTube video player" width="560"></iframe></p>
 <p>其他教育版軟體下載: <a href="https://software.nfu.edu.tw/">https://software.nfu.edu.tw/</a> </p>
 <p>安裝完成後, 可以直接利用 <a href="http://229.cycu.org/win10_2024.vdi">win10_2024.vdi</a> 建立一個虛擬的 Windows 10 操作系統環境. 或者下載 <a href="http://229.cycu.org/win10_2024_vdi.7z">win10_2024_vdi.7z</a>, 使用已經配置 Firefox, 7zip, 以及 <a href="http://229.cycu.org/python_2025_lite.7z">python_2025_lite.7z</a><span> 的虛擬主機檔案.</span></p>
 <p>接下來就可以利用虛擬主機自行配置計算機程式所需的網路與 Python 可攜套件.</p>
@@ -847,7 +849,16 @@ Exit</pre>
 <p style="padding-left: 30px;">希望虛擬主機可以上網, 但無需做為伺服器 - <span style="background-color: #ffff00;">採 NAT 設定</span>, 可以利用宿主 (實體 Windows 或 Linux 操作系統) 的網路連外, 但是外網電腦無法直接對此虛擬主機連線.</p>
 <p style="padding-left: 30px;">希望虛擬主機可以上網, 並且充當伺服器 - <span style="background-color: #ffff00;">採 Bridge Adaptor 設定</span>, 虛擬主機的網路卡位階與宿主的網路卡連線相當, 若宿主有兩片實體網路卡, 則虛擬主機可以將 Bridge Adaptor 轉接到第宿主的第二片實體網路卡, 可以取得與宿主相同的網路連線頻寬.</p>
 <p style="padding-left: 30px;">希望虛擬主機僅能與宿主網路連線, 不會受到外部網路干擾 - <span style="background-color: #ffff00;">採 Host-Only Adaptor 設定</span>, 虛擬主機僅能與宿主透過內部的網路設定連線, 虛擬主機無法對外連線.</p>
-<p></p>
+<hr/>
+<p>由於 <a href="/get_page/Windows/Virtualbox">Virtualbox</a> 虛擬機屬於 Type 2 Hypervisor, 因此與原生機的效能差別較大, 有同學建議使用 <a href="https://proxmox.com/en/downloads/proxmox-virtual-environment">Proxmox Virtual Environment</a> (PVE) , 但 PVE 屬於 Type 1 Hypervisor, 是一套分別整合 KVM hypervisor、Linux Container (LXC)、軟體定義儲存與網路功能的虛擬機器管理平台, 本身就是一套基於 <a href="https://www.debian.org/">Debian</a> 的完整操作系統, 因此必須要下載 .iso 檔案放入 USB, 然後對實體電腦開機後使用. 以下將介紹其使用方法:</p>
+<p><a href="https://enterprise.proxmox.com/iso/proxmox-ve_8.2-2.iso">proxmox-ve_8.2-2.iso</a> 容量為 1.39GB, <a href="https://proxmox.com/en/proxmox-virtual-environment/overview">使用說明</a>.</p>
+<p>上述採用 Virtualbox 所建立的 .vdi 虛擬機器檔案, 可以經過轉換後用來建立 Proxmox VE 的虛擬機器, 其步驟如下:</p>
+<ol>
+<li>將 .vdi 檔案上傳到 PVE 主機</li>
+<li>使用 qemu-img 轉換成 PVE 支援的格式: qemu-img convert -f vdi -O qcow2 source.vdi destination.qcow2</li>
+<li>在 PVE 中創建新的虛擬機</li>
+<li>選擇使用轉換後的磁碟映像檔</li>
+</ol>
 <p style="padding-left: 30px;"></p>
 <p></p>
 <p></p><h3>Environment</h3>
@@ -1071,7 +1082,7 @@ for i in range(n):  # 對於每一行
 <p>詢問 ChatGPT, 希望讓 <span>put_cubes_into_scene_1.py 中的所有 cubes 擺放後, 接著能夠全數朝負 Y 方向緩慢移動:</span></p>
 <p><span>提問內容: "以下為 CoppeliaSim ZMQ remote API Python 程式, 請在生成 cute 列隊之後, 設法讓所有 cubes 緩緩朝負 Y 的方向移動:" 隨後加上的程式碼</span></p>
 <p>接著測試是否可以得到正確的答案?</p>
-<hr/>
+<hr>
 <p><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/eb2e4327b65a0fe5c307ea329ef2f69c/raw/18b3cdd1f9bbef6ff913cc88293a8ebb7e028520/1a_w3_site_repo_brython.py">1a site and repo</a></p>
 <p><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/eb2e4327b65a0fe5c307ea329ef2f69c/raw/502faba5a396f671622c3ff2b89d741a466752be/1b_w3_site_repo_brython.py">1b site and repo</a></p><h3>String</h3>
 <p><a href="https://mde.tw/cp2024/downloads/learn_python_with_jupyter.pdf#chapter.1">https://mde.tw/cp2024/downloads/learn_python_with_jupyter.pdf#chapter.1</a></p>
@@ -1893,7 +1904,7 @@ doc["threejsblock"].bind("click", threejsblock.do)
 <div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console2"></textarea></div>
 <p><!-- Brython 程式執行的結果, 都以 brython_div1 作為切入位置 --></p>
 <div id="brython_div2"></div>
-<!-- editor2 結束 --><hr/>
+<!-- editor2 結束 --><hr>
 <p>
 <script src="https://unpkg.com/three@0.144.0/build/three.js" type="text/javascript"></script>
 </p>
@@ -1947,4 +1958,4 @@ document["brython_div1"] <= dropdown  # 將下拉選單容器添加到 ID 為 "b
 def select_option(option):  # 定義選項選擇的處理函數
     document["brython_div2"].clear()  # 清空 ID 為 "brython_div2" 的內容
     document["brython_div2"] <= f"You selected: {option}"  # 在 ID 為 "brython_div2" 的元素中顯示所選的選項
-</script>
+</script></hr></hr>
