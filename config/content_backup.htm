@@ -105,7 +105,18 @@ IFrame('https://mde.tw', width=700, height=350)</pre>
 <p>將 .ipynb 檔案內容放入個人 Github 帳號下的 Gist 後, , 將連結附加在 <a href="https://nbviewer.org/urls/">https://nbviewer.org/urls/</a> 之後.</p>
 <p>例如: 以下提供 Gist 中的 .ipynb</p>
 <p style="padding-left: 30px;"><a href="https://nbviewer.org/urls/gist.githubusercontent.com/mdecycu/eb2e4327b65a0fe5c307ea329ef2f69c/raw/a7f40c0fd78b7f969021fdcf234087c9d21d7ad3/01_string_input_print.ipynb">01_string_input_print.ipynb</a></p>
-<h2>W&amp;H</h2>
+<h2>Wink</h2>
+<p>wink_ffmpeg.reg 設定檔案內容:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">Windows Registry Editor Version 5.00
+ 
+[HKEY_CURRENT_USER\SOFTWARE\Debugmode]
+ 
+[HKEY_CURRENT_USER\SOFTWARE\Debugmode\Wink\Settings]
+"FfmpegPath"="y:\\sharex\\ffmpeg.exe"</pre>
+<p><a href="/downloads/start_ipv6_wink_reg.7z">start_ipv6_wink_reg.7z</a></p>
+<p>頁面中嵌入 Wink 影片 html:</p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">&lt;div class="winkVideoContainerClass"&gt;&lt;video autoplay="autoplay" class="winkVideoClass" controls="controls" data-dirname="/cmsimde/static" data-varname="winkVideoData_your_wink" height="630" muted="true" width="1008"&gt;
+&lt;source src="/downloads/your_wink.mp4" type="video/mp4"/&gt;&lt;/video&gt;&lt;/div&gt;</pre><h2>W&amp;H</h2>
 <p>為什麼學習 Python, 如何應用 Python?</p>
 <p><a href="http://229.cycu.org/40723210_2018.7z">40723210_2018.7z</a> (<a href="https://github.com/s40723210/cp2018">https://github.com/s40723210/cp2018</a>)</p>
 <p><a href="https://www.verytechnology.com/iot-insights/why-mechanical-engineers-should-embrace-python-programming">https://www.verytechnology.com/iot-insights/why-mechanical-engineers-should-embrace-python-programming</a></p>
@@ -145,8 +156,7 @@ IFrame('https://mde.tw', width=700, height=350)</pre>
 <p style="padding-left: 30px;"><a href="https://github.com/mdecycu/pj5073">https://github.com/mdecycu/pj5073</a> (內容管理系統)</p>
 <p>CAD 套件應用延伸:</p>
 <p style="padding-left: 30px;"><a href="https://mde.tw/cad2024/content/NXOpen.html">https://mde.tw/cad2024/content/NXOpen.html</a> (利用程式建立零組件)</p>
-<p style="padding-left: 30px;"><a href="https://github.com/mdecycu/nxopen">https://github.com/mdecycu/nxopen</a></p>
-<h3>DC</h3>
+<p style="padding-left: 30px;"><a href="https://github.com/mdecycu/nxopen">https://github.com/mdecycu/nxopen</a></p><h3>DC</h3>
 <p>Design Calculation</p>
 <p>設計運算:</p>
 <p><a href="https://www.studysmarter.co.uk/explanations/engineering/design-engineering/design-calculation/">https://www.studysmarter.co.uk/explanations/engineering/design-engineering/design-calculation/</a> (一般工程運算)</p>
@@ -357,7 +367,9 @@ https_proxy=http://p4.cycu.org:3128</pre>
 <p><a href="/downloads/tcc_wscite_gd_library.7z.001">tcc_wscite_gd_library.7z.001</a></p>
 <p><a href="/downloads/tcc_wscite_gd_library.7z.002">tcc_wscite_gd_library.7z.002</a></p>
 <p><a href="/downloads/tcc_wscite_gd_library.7z.003">tcc_wscite_gd_library.7z.003</a></p>
-<p><a href="/downloads/tcc_wscite_gd_library.7z.004">cc_wscite_gd_library.7z.004</a></p><h1>Topics</h1>
+<p><a href="/downloads/tcc_wscite_gd_library.7z.004">tcc_wscite_gd_library.7z.004</a></p>
+<p>利用 .exe 解開壓縮後, 取得 tcc 與 wscite, 可以使用 tcc roc_flag_in_gd.c -lgd 建立 roc_flag_in_gd.exe, 結合 tcc\gd_needed_dll 目錄中的 .dll 動態連結程式庫, 可以利用 gd 程式庫, 以 Tiny C 編譯器完成 ANSI C 程式繪圖.</p>
+<p></p><h1>Topics</h1>
 <p>HW Template:</p>
 <p style="padding-left: 30px;"><a href="https://github.com/mdecp2024/hw-mdecycu">https://github.com/mdecp2024/hw-mdecycu</a></p>
 <p style="padding-left: 30px;"><a href="https://mdecp2024.github.io/hw-mdecycu">https://mdecp2024.github.io/hw-mdecycu</a></p>
@@ -489,7 +501,7 @@ flaskapp.app.run(host=ip, port=port, debug=True, ssl_context=('cert.pem', 'key.p
 <li>目前 cp2024 使用 cmsimde 子模組, 學員的 mdecp2024 下作業倉儲則直接將 cmsimde 作為目錄 (差別?)</li>
 <li>目前進度為 print() 與 for 迴圈的應用, 除了基本格式化字串列印, 相同程式邏輯, 可以將 3D 方塊放入機電模擬環境</li>
 </ol>
-<hr>
+<hr/>
 <p>如何登入 Github 後, 顯示出帳號:</p>
 <p>how to show account after login to github?</p>
 <p>After logging into GitHub, you can view your account details and repositories by following these steps:</p>
@@ -527,7 +539,7 @@ flaskapp.app.run(host=ip, port=port, debug=True, ssl_context=('cert.pem', 'key.p
 <p>計算機程式 1b 座位表:</p>
 <p><img alt="" height="286" src="/images/cp2024_1b_seat_table.png" width="800"/></p>
 <p>上述程式透過與 claude.ai 進行以下對話後產生：</p>
-<p>問題: <br/><br/>https://mde.tw/2024/1a.txt 為一行學員的學號資料, 請用 Brython open().read() 讀取後, 利用 Canvas 在 id 為 brython_div 的超文件位置上, 採由上而下, 由右而左的次序, 用每一個學員除畫出學號外, 還加上外方框線, 且每一列共列出 9 位學員, 畫完後,以print() 印出 "done"<br/><br/>問: 怎麼只列出一位學員? (因為 AI 沒有用跳行隔開學員學號, 而是用 "," 隔開資料)<br/><br/>說明: 因為 AI 沒能正確解讀資料, 因此提供資料格式供其參考:<br/><br/>問: <br/><br/>40831154<br/>40932134<br/>41023249<br/>41031136<br/>41036112 這是前面五行資料, 請修改程式<br/><br/>說明: 接下來 AI 已經能夠正確解讀資料, 但因為提供錯誤的 html id 字串因此產生下列錯誤,<br/><br/>File "&lt;string&gt;", line 8, in draw_students<br/>KeyError: brython_div<br/><br/>問: id 為 brython_div1, x 方向的框寬可以小一點, 否則最左邊顯示不出來<br/><br/>說明: 這時 AI 已經正確完成任務 (也就是修正各學員外框寬度後, 存為 group1), 但因所選的外框太寬, 因此最左邊的學號沒有完全顯示出來, 要求針對這個問題進行處理<br/><br/>問: 可不可以從最右邊開始, 第一列前三個與第二列前三個學員為同一組, 其框內背景請塗上同一個淡顏色辨識, 若至最後一列, 並沒有前三與後三作為同一組, 請就剩下的組員若少於 6 名則設為同一組, 若大於 6 則儘量平均方為兩組.<br/><br/>問: 是原則上同一列三位與下一列對齊的三位為同一組<br><br/>問: 每一列不是有 9 位學員, 第二列也是有 9 位學員, 第一列的前三個學員與第二列的前三位為同一組, 接下來則是第一列的第 4, 5,6 位學員與第二列的第 4,5,6 位學員則也是同一組, 然後剩下的學員依照這個次序分組, 同一組的塗上相同的背景顏色. 最後因為可能剩下一個列的組員, 因此沒有辦法與下一列的組員進行分組, 因此只能就同一列每六位學員一組, 但若只剩下假設 9 位, 則一組 5 位同學,另一組 4 位, 表示一組至少要有 4 位學員的意思.<br/><br/>問: 原先的學員位置弄亂了, 目前第一列至第六列,只有從右邊算來前 6 位學員進行分組塗色, 各列 7,8,9 並沒有進行分組塗色<br/><br/>說明: 結果 AI 完成 group2 Brython 程式的編寫</br></p>
+<p>問題: <br/><br/>https://mde.tw/2024/1a.txt 為一行學員的學號資料, 請用 Brython open().read() 讀取後, 利用 Canvas 在 id 為 brython_div 的超文件位置上, 採由上而下, 由右而左的次序, 用每一個學員除畫出學號外, 還加上外方框線, 且每一列共列出 9 位學員, 畫完後,以print() 印出 "done"<br/><br/>問: 怎麼只列出一位學員? (因為 AI 沒有用跳行隔開學員學號, 而是用 "," 隔開資料)<br/><br/>說明: 因為 AI 沒能正確解讀資料, 因此提供資料格式供其參考:<br/><br/>問: <br/><br/>40831154<br/>40932134<br/>41023249<br/>41031136<br/>41036112 這是前面五行資料, 請修改程式<br/><br/>說明: 接下來 AI 已經能夠正確解讀資料, 但因為提供錯誤的 html id 字串因此產生下列錯誤,<br/><br/>File "&lt;string&gt;", line 8, in draw_students<br/>KeyError: brython_div<br/><br/>問: id 為 brython_div1, x 方向的框寬可以小一點, 否則最左邊顯示不出來<br/><br/>說明: 這時 AI 已經正確完成任務 (也就是修正各學員外框寬度後, 存為 group1), 但因所選的外框太寬, 因此最左邊的學號沒有完全顯示出來, 要求針對這個問題進行處理<br/><br/>問: 可不可以從最右邊開始, 第一列前三個與第二列前三個學員為同一組, 其框內背景請塗上同一個淡顏色辨識, 若至最後一列, 並沒有前三與後三作為同一組, 請就剩下的組員若少於 6 名則設為同一組, 若大於 6 則儘量平均方為兩組.<br/><br/>問: 是原則上同一列三位與下一列對齊的三位為同一組<br/><br/>問: 每一列不是有 9 位學員, 第二列也是有 9 位學員, 第一列的前三個學員與第二列的前三位為同一組, 接下來則是第一列的第 4, 5,6 位學員與第二列的第 4,5,6 位學員則也是同一組, 然後剩下的學員依照這個次序分組, 同一組的塗上相同的背景顏色. 最後因為可能剩下一個列的組員, 因此沒有辦法與下一列的組員進行分組, 因此只能就同一列每六位學員一組, 但若只剩下假設 9 位, 則一組 5 位同學,另一組 4 位, 表示一組至少要有 4 位學員的意思.<br/><br/>問: 原先的學員位置弄亂了, 目前第一列至第六列,只有從右邊算來前 6 位學員進行分組塗色, 各列 7,8,9 並沒有進行分組塗色<br/><br/>說明: 結果 AI 完成 group2 Brython 程式的編寫</p>
 <p>以下為 group1 Brython 程式碼:</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 從 Brython 的瀏覽器模組中導入所需的功能
 from browser import document, ajax, html
@@ -2060,4 +2072,4 @@ document["brython_div1"] <= dropdown  # 將下拉選單容器添加到 ID 為 "b
 def select_option(option):  # 定義選項選擇的處理函數
     document["brython_div2"].clear()  # 清空 ID 為 "brython_div2" 的內容
     document["brython_div2"] <= f"You selected: {option}"  # 在 ID 為 "brython_div2" 的元素中顯示所選的選項
-</script></hr>
+</script>
