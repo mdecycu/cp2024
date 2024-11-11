@@ -310,8 +310,39 @@ New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Enabled Tru
 
 Get-Service sshd
 </pre>
-<p></p>
-<h1>Topics</h1>
+<h3>Linux</h3>
+<p>以下為 vi 編輯器的基本使用說明:</p>
+<div class="winkVideoContainerClass"><video autoplay="autoplay" class="winkVideoClass" controls="controls" data-dirname="/cmsimde/static" data-varname="winkVideoData_vi" height="800" muted="true" width="1000">
+<source src="/downloads/vi_editor.mp4" type="video/mp4"/></video></div>
+<h4>SSH keys</h4>
+<p>在 Windows 或 Linux 建立 openssh keys 都可以使用 ssh-keygen 指令</p>
+<p>在 Windows 環境下, 希望遠端登入 (remote login) 到另外一台已經啟動 ssh server 的主機, 可以使用 ssh 指令外 (此地的 ssh 指令為 client) , 在 Windows 也可以使用 putty 套件工具進行遠端登入.</p>
+<p>另外 Windows  sftp (安全的檔案傳輸協定 client) <span>除了透過命令列指令, 在 Windows 也可以使用 filezilla 套件工具, 能夠以 sftp client 指令遠端登入到 s1511.cycu.org, 表示遠端伺服器已經安裝 sftp 伺服器並且啟動.</span></p>
+<p>在 s1511.cycu.org 建立 keys 的原因, 是希望能夠直接利用 OpenSSH 的協定, 對 github 中的倉儲 push.</p>
+<p>因為 github.com 只支援 IPv4, 而 s1511.cycu.org 只支援 IPv6, 因此在 s1511 主機上要利用各種網路 client 對 github.com 進行連結或交換檔案, 都必須針對各種 client 設定代理主機, 其中包括 ssh client, sftp client, git client, https client (也就是全球資訊網瀏覽器)等.</p>
+<p>但 s1511.cycu.org 主機中已經透過 /etc/environment 設定 http 與 https 連線所需的代理主機, 使用者只需要自行處理 ~.ssh/config 中的 ssh 協定代理主機設定即可.</p>
+<p>/etc/environment 中有關 http 與 https 的代理主機設定:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
+http_proxy=http://p4.cycu.org:3128
+https_proxy=http://p4.cycu.org:3128</pre>
+<h4>git clone</h4>
+<p>SSH 代理主機與 https 代理主機設定</p>
+<p>假如處理好 .ssh/config, .ssh/id_rsa 與 .ssh/id_rsa.pub 的設定, 各用戶就可以利用下列指令, 以 SSH 協定取下 cp2023:</p>
+<p style="padding-left: 30px;">git clone --recurse-submodules <a href="mailto:git@github.com:scrum-1/cp2023.git">git@github.com:scrum-1/cp2023.git</a></p>
+<p>取下的倉儲內容, 包含子模組將會放入 cp2023 目錄.</p>
+<h4>server.py</h4>
+<p>內部埠號與外部埠號</p>
+<p>列出使用 python3 啟動的服務:</p>
+<p>ps -ef | grep python3</p>
+<p>當使用 python3 server.py &amp; 執行 process 後, ps -axo pid,comm,uname | grep "python3" 的指令, 可以列出各自帳號下所 background 執行的 process pid, 若需要列出執行 process 對應目錄, 則可以利用 pwdx 加上 pid 後執行取得.</p>
+<p>ps -axo : <a href="https://explainshell.com/explain?cmd=ps+-axo+pid%2Crss%2Ccommand">https://explainshell.com/explain?cmd=ps+-axo+pid%2Crss%2Ccommand</a></p>
+<p>pwdx : <a href="https://www.cyberciti.biz/faq/unix-linux-pwdx-command-examples-usage-syntax/">https://www.cyberciti.biz/faq/unix-linux-pwdx-command-examples-usage-syntax/</a></p>
+<p>kill: <a href="https://www.geeksforgeeks.org/kill-command-in-linux-with-examples/">https://www.geeksforgeeks.org/kill-command-in-linux-with-examples/</a></p>
+<h4>git commit</h4>
+<p>git config --global user.email and user.name</p>
+<p>acp 權限與 public_html 目錄中的倉儲內容</p>
+<p>使用者目錄 (711) 與 public_html (755) 目錄權限</p>
+<p><a href="https://link.springer.com/content/pdf/10.1007/978-1-4842-5064-8_1.pdf">Intro to C</a> (on Springer)</p><h1>Topics</h1>
 <p>HW Template:</p>
 <p style="padding-left: 30px;"><a href="https://github.com/mdecp2024/hw-mdecycu">https://github.com/mdecp2024/hw-mdecycu</a></p>
 <p style="padding-left: 30px;"><a href="https://mdecp2024.github.io/hw-mdecycu">https://mdecp2024.github.io/hw-mdecycu</a></p>
@@ -1090,7 +1121,7 @@ for i in range(n):  # 對於每一行
 <p><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/eb2e4327b65a0fe5c307ea329ef2f69c/raw/18b3cdd1f9bbef6ff913cc88293a8ebb7e028520/1a_w3_site_repo_brython.py">1a site and repo</a></p>
 <p><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/eb2e4327b65a0fe5c307ea329ef2f69c/raw/502faba5a396f671622c3ff2b89d741a466752be/1b_w3_site_repo_brython.py">1b site and repo</a></p><h3>String</h3>
 <p><a href="https://mde.tw/cp2024/downloads/learn_python_with_jupyter.pdf#chapter.1">https://mde.tw/cp2024/downloads/learn_python_with_jupyter.pdf#chapter.1</a></p>
-<p>在 Python 中，字串（strings）就是用引號括起來的文本。它們是處理文字數據的基本方式。字串可以用單引號 (')、雙引號 (")，或三重引號 (''' 或 """) 括起來。這些引號的使用方式有各自的特點和用途：<br/>1. 單引號 (')<br/><br/>單引號用於定義簡單的字串，適合沒有包含單引號字符的情境。<br/><br/>python<br/><br/># 定義一個單引號字串<br/>single_quote_string = 'Hello, World!'<br/>print(single_quote_string)<br/><br/>2. 雙引號 (")<br/><br/>雙引號也用於定義字串，它們的主要好處是當字串中包含單引號時，可以避免使用轉義字符。<br/><br/>python<br/><br/># 定義一個雙引號字串<br/>double_quote_string = "Python's syntax is simple."<br/>print(double_quote_string)<br/><br/>3. 三重引號 (''' 或 """)<br/><br/>三重引號用於定義多行字串，也可以用於包含單引號和雙引號的情境。<br/><br/>python<br/><br/># 使用三重單引號定義多行字串<br/>multi_line_string = '''This is a string<br/>that spans multiple lines.<br/>It can also include 'single' and "double" quotes.'''<br/>print(multi_line_string)<br/><br/># 使用三重雙引號定義多行字串<br/>another_multi_line_string = """Here is another example<br/>of a multi-line string.<br/>It also allows for 'single' and "double" quotes."""<br/>print(another_multi_line_string)<br/><br/>常見字串操作<br/><br/>    拼接字串<br/><br/>    使用 + 來拼接多個字串。<br/><br/>    python<br/><br/>greeting = "Hello, " + "World!"<br/>print(greeting)<br/><br/>重複字串<br/><br/>使用 * 來重複字串。<br/><br/>python<br/><br/>echo = "Hello! " * 3<br/>print(echo)<br/><br/>字串長度<br/><br/>使用 len() 函數來獲取字串的長度。<br/><br/>python<br/><br/>length = len("Hello, World!")<br/>print(length)  # 13<br/><br/>字串方法<br/><br/>Python 字串有許多內建的方法，如 upper(), lower(), strip(), replace(), find() 等。<br/><br/>python<br/><br/># 轉換為大寫<br/>upper_case = "hello".upper()<br/>print(upper_case)  # "HELLO"<br/><br/># 移除首尾空白字符<br/>stripped_string = "   text with spaces   ".strip()<br/>print(stripped_string)  # "text with spaces"<br/><br/># 替換字串中的字符<br/>replaced_string = "hello world".replace("world", "Python")<br/>print(replaced_string)  # "hello Python"<br/><br/>格式化字串<br/><br/>使用 f-strings（Python 3.6 及更高版本）或 format() 方法進行格式化。<br/><br/>python<br/><br/>    name = "Alice"<br/>    age = 30<br>    formatted_string = f"Name: {name}, Age: {age}"<br/>    print(formatted_string)<br/><br/>    # 使用 format() 方法<br/>    formatted_string = "Name: {}, Age: {}".format(name, age)<br/>    print(formatted_string)<br/><br/>結論<br><br/>字串是 Python 中處理文字的基本單位，無論是單行還是多行，都可以用不同的引號來表示。了解如何操作字串是掌握 Python 的重要基礎。</br></br></p>
+<p>在 Python 中，字串（strings）就是用引號括起來的文本。它們是處理文字數據的基本方式。字串可以用單引號 (')、雙引號 (")，或三重引號 (''' 或 """) 括起來。這些引號的使用方式有各自的特點和用途：<br/>1. 單引號 (')<br/><br/>單引號用於定義簡單的字串，適合沒有包含單引號字符的情境。<br/><br/>python<br/><br/># 定義一個單引號字串<br/>single_quote_string = 'Hello, World!'<br/>print(single_quote_string)<br/><br/>2. 雙引號 (")<br/><br/>雙引號也用於定義字串，它們的主要好處是當字串中包含單引號時，可以避免使用轉義字符。<br/><br/>python<br/><br/># 定義一個雙引號字串<br/>double_quote_string = "Python's syntax is simple."<br/>print(double_quote_string)<br/><br/>3. 三重引號 (''' 或 """)<br/><br/>三重引號用於定義多行字串，也可以用於包含單引號和雙引號的情境。<br/><br/>python<br/><br/># 使用三重單引號定義多行字串<br/>multi_line_string = '''This is a string<br/>that spans multiple lines.<br/>It can also include 'single' and "double" quotes.'''<br/>print(multi_line_string)<br/><br/># 使用三重雙引號定義多行字串<br/>another_multi_line_string = """Here is another example<br/>of a multi-line string.<br/>It also allows for 'single' and "double" quotes."""<br/>print(another_multi_line_string)<br/><br/>常見字串操作<br/><br/>    拼接字串<br/><br/>    使用 + 來拼接多個字串。<br/><br/>    python<br/><br/>greeting = "Hello, " + "World!"<br/>print(greeting)<br/><br/>重複字串<br/><br/>使用 * 來重複字串。<br/><br/>python<br/><br/>echo = "Hello! " * 3<br/>print(echo)<br/><br/>字串長度<br/><br/>使用 len() 函數來獲取字串的長度。<br/><br/>python<br/><br/>length = len("Hello, World!")<br/>print(length)  # 13<br/><br/>字串方法<br/><br/>Python 字串有許多內建的方法，如 upper(), lower(), strip(), replace(), find() 等。<br/><br/>python<br/><br/># 轉換為大寫<br/>upper_case = "hello".upper()<br/>print(upper_case)  # "HELLO"<br/><br/># 移除首尾空白字符<br/>stripped_string = "   text with spaces   ".strip()<br/>print(stripped_string)  # "text with spaces"<br/><br/># 替換字串中的字符<br/>replaced_string = "hello world".replace("world", "Python")<br/>print(replaced_string)  # "hello Python"<br/><br/>格式化字串<br/><br/>使用 f-strings（Python 3.6 及更高版本）或 format() 方法進行格式化。<br/><br/>python<br/><br/>    name = "Alice"<br/>    age = 30<br/>    formatted_string = f"Name: {name}, Age: {age}"<br/>    print(formatted_string)<br/><br/>    # 使用 format() 方法<br/>    formatted_string = "Name: {}, Age: {}".format(name, age)<br/>    print(formatted_string)<br/><br/>結論<br/><br/>字串是 Python 中處理文字的基本單位，無論是單行還是多行，都可以用不同的引號來表示。了解如何操作字串是掌握 Python 的重要基礎。</p>
 <h2>Topic 2</h2>
 <h4>Python 的數列、判斷式與重複迴圈 (20%)<span style="background-color: #ffff99;"><br/></span></h4>
 <p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 2 and Part 3</p>
@@ -1214,8 +1245,21 @@ sim.stopSimulation()
 </pre>
 <p></p>
 <h2>Webots</h2>
-<p><a href="https://cyberbotics.com/doc/guide/controller-programming?tab-language=python">https://cyberbotics.com/doc/guide/controller-programming?tab-language=python</a> </p>
-<h1>Python</h1>
+<p><a href="https://cyberbotics.com/doc/guide/controller-programming?tab-language=python">https://cyberbotics.com/doc/guide/controller-programming?tab-language=python</a></p>
+<p>Stable version: <a href="http://229.cycu.org/Webots_2023b.7z">Webots_2023b.7z</a></p>
+<p><span style="background-color: #ffff00;">1.</span> 與 <a href="http://229.cycu.org/python_2025_lite.7z">python_2025_lite.7z</a> 結合使用, Webots - Tools - Preferences - Python Command 設定為 Y:\Python310\python.exe</p>
+<p><span style="background-color: #ffff00;">2.</span> start_ipv6.bat 必須設定:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">REM for Webots
+set PYTHON_PATH=%Disk%:\Python310
+
+REM for Webots
+set  path_webots=%Disk%:\Webots_2023b\msys64\mingw64\bin
+
+REM 在 path 納入 %path_webots%
+path=~~;%path_webots%;%path%;</pre>
+<p><span style="background-color: #ffff00;">3.</span> pip install opencv-python</p>
+<p>配置完成後, 測試 Python 是否設定正確: <a href="/downloads/Webots_examples.zip">Webots_examples.zip</a> (<a href="https://courses.ideate.cmu.edu/16-375/f2022/ref/text/simulations/index.html">source</a>)</p>
+<p><a href="/downloads/vrml97specification.pdf">vrml97specification.pdf</a> (<a href="http://www.graphics.stanford.edu/courses/cs248-98-fall/Assignments/Assignment3/VRML2_Specification/">VRML 2.0</a>, <a href="https://zh.wikipedia.org/zh-tw/VRML">VRML</a>)</p><h1>Python</h1>
 <p>Python 執行環境</p>
 <p style="padding-left: 30px;">Brython (全球資訊網上的 Python)</p>
 <p style="padding-left: 30px;">Github Codespaces</p>
@@ -1673,7 +1717,7 @@ if __name__ == '__main__':
 <p dir="auto" style="padding-left: 30px;"><a href="https://www.youtube.com/@-kmolab9376" rel="nofollow">https://www.youtube.com/@-kmolab9376</a></p>
 <h1>Brython</h1>
 <p>從 1 累加到 100:</p>
-<p><button id="add1to100">1 add to 100</button></p>
+<p><button id="add1to100">1 add to 100</button><button id="roc_flag">ROC Flag</button><button id="proc_flag">PROC flag</button></p>
 <!-- 導入 brython 程式庫 -->
 <p>
 <script src="/static/brython.js"></script>
@@ -1766,6 +1810,19 @@ def clear_bd1(ev):
 # 利用 ace 中的 Editor 建立 Ace2 物件, 其中的輸入變數分別對應到頁面中的編輯區物件
 Ace2 = ace.Editor(editor_id="kw_editor1", console_id="kw_console1", container_id="kw__container1", storage_id="kw_py_src1" )
 
+# 透過 Ace2 以類別建立一個通用的 button, 可以在多個案例中將 gist 程導入編輯區
+
+class button:
+    def __init__(self, url):
+        self.url = url
+
+    # 記得加入 event 輸入變數
+    def do(self,ev):
+        Ace2.editor.setValue(open(self.url).read())
+        Ace2.editor.scrollToRow(0)
+        Ace2.editor.gotoLine(0)
+        Ace2.run()
+
 add1to100_url = "https://gist.githubusercontent.com/mdecourse/0229a8a017091476a79700b8a190f185/raw/c48e37714f055c3a0027cbfef59e442a6ef659b9/from_1_add_to_100_1.py"
 
 # 從 gist 取得程式碼
@@ -1778,6 +1835,16 @@ def add(ev):
 
 # id 為 "add1to100" 的按鈕點按時, 執行 add 方法
 doc["add1to100"].bind('click', add)
+################################## roc flag start
+roc_flag_url = "https://gist.githubusercontent.com/mdecycu/b2b7076761eb5573032dff8ba639ef7f/raw/44a2939309f12acf5fe33a8c561143240d951c0d/roc_flag_brython.py"
+roc_flag = button(roc_flag_url)
+doc["roc_flag"].bind("click", roc_flag.do)
+################################## roc_flag end
+################################## proc flag start
+proc_flag_url = "https://gist.githubusercontent.com/mdecycu/7464c66475548e9cc41469e36c1dddb2/raw/a68cb31411e493b5d8eac4680d8f927cb515c4bc/proc_flag_in_brython.py"
+proc_flag = button(proc_flag_url)
+doc["proc_flag"].bind("click", proc_flag.do)
+################################## proc_flag end
 </script>
 </p>
 <p><!-- add 1 to 100 結束--></p>
@@ -1919,8 +1986,7 @@ doc["threejsblock"].bind("click", threejsblock.do)
 <!-- editor2 結束 --><hr/>
 <p>
 <script src="https://unpkg.com/three@0.144.0/build/three.js" type="text/javascript"></script>
-</p>
-<h2>Demo</h2>
+</p><h2>Demo</h2>
 <!-- 導入 Brython 解譯程式庫 -->
 <script src="/static/brython.js"></script>
 <script src="/static/brython_stdlib.js"></script>
