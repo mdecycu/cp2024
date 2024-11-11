@@ -342,7 +342,24 @@ https_proxy=http://p4.cycu.org:3128</pre>
 <p>git config --global user.email and user.name</p>
 <p>acp 權限與 public_html 目錄中的倉儲內容</p>
 <p>使用者目錄 (711) 與 public_html (755) 目錄權限</p>
-<p><a href="https://link.springer.com/content/pdf/10.1007/978-1-4842-5064-8_1.pdf">Intro to C</a> (on Springer)</p><h1>Topics</h1>
+<p><a href="https://link.springer.com/content/pdf/10.1007/978-1-4842-5064-8_1.pdf">Intro to C</a> (on Springer)</p><h3>ANSIC</h3>
+<p>利用 MSYS2 編譯 Tiny C Compiler 並配置 gd 程式庫環境:</p>
+<p>從 <a href="https://github.com/Tiny-C-Compiler/mirror-repository">https://github.com/Tiny-C-Compiler/mirror-repository</a> 下載 Tiny C Compiler 0.9.27 原始碼後, 利用 win32 目錄中的 build-tcc.bat 完成編譯.</p>
+<p>在 MSYS2 環境中, 執行 mingw64.exe 後, 以 pacman -S mingw-w64-x86_64-libgd 安裝 gd 程式庫後, 在 Y:\msys64\mingw64\bin 可以取得 2.3.3 版的 libgd.dll</p>
+<p>利用 tcc -impdef -v libgd.dll -o libgd.def 取得 libgd.def 放入 Tiny C Compiler 系統中 win32 目錄中的 lib 後, 配合 gd 系統的 header 檔案後, 就可以利用 tcc gd_roc_flag.c -lgd 編譯連結後取得 gd_roc_flag.exe 可執行檔案. 之後則必須配合 libgd.dll 與 MSYS2 相關 dll 檔案執行 gd_roc_flag.exe</p>
+<p>下載 <a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/yen_nfu_edu_tw/EbKDl4ElS8FDkrBwRbPTQCQBu-KoWRHVabZ79hwE5Woaaw?e=1obiXK">MSYS2 編譯的 Tiny C Compiler 0.9.27 與 gd 程式庫 2.3.3 可攜套件</a> (需要下載密碼)</p>
+<p>假如希望利用 Visual Studio C++ 編譯 gd 2.3.3 版程式庫, 請參考<a href="https://github.com/libgd/libgd/blob/master/windows/readme.md">這裡的說明</a>.</p>
+<p>Reference:</p>
+<p style="padding-left: 30px;"><a href="https://github.com/phoenixthrush/Tiny-C-Compiler">https://github.com/phoenixthrush/Tiny-C-Compiler</a> </p>
+<p style="padding-left: 30px;"><a href="https://packages.msys2.org/package/mingw-w64-x86_64-libgd">https://packages.msys2.org/package/mingw-w64-x86_64-libgd</a> </p>
+<hr/>
+<p><a href="/downloads/tcc_wscite_gd_library.exe">tcc_wscite_gd_library.exe</a></p>
+<p><a href="/downloads/tcc_wscite_gd_library.7z.001">tcc_wscite_gd_library.7z.001</a></p>
+<p><a href="/downloads/tcc_wscite_gd_library.7z.002">tcc_wscite_gd_library.7z.002</a></p>
+<p><a href="/downloads/tcc_wscite_gd_library.7z.003">tcc_wscite_gd_library.7z.003</a></p>
+<p><a href="/downloads/tcc_wscite_gd_library.7z.004">tcc_wscite_gd_library.7z.004</a></p>
+<p>利用 .exe 解開壓縮後, 取得 tcc 與 wscite, 可以使用 tcc roc_flag_in_gd.c -lgd 建立 roc_flag_in_gd.exe, 結合 tcc\gd_needed_dll 目錄中的 .dll 動態連結程式庫, 可以利用 gd 程式庫, 以 Tiny C 編譯器完成 ANSI C 程式繪圖.</p>
+<p></p><h1>Topics</h1>
 <p>HW Template:</p>
 <p style="padding-left: 30px;"><a href="https://github.com/mdecp2024/hw-mdecycu">https://github.com/mdecp2024/hw-mdecycu</a></p>
 <p style="padding-left: 30px;"><a href="https://mdecp2024.github.io/hw-mdecycu">https://mdecp2024.github.io/hw-mdecycu</a></p>
@@ -375,8 +392,7 @@ https_proxy=http://p4.cycu.org:3128</pre>
 <p style="padding-left: 30px;">利用 <a href="https://solvespace.com/">https://solvespace.com/</a> 建立機械系統零組件</p>
 <p style="padding-left: 30px;">利用 <a href="https://www.coppeliarobotics.com/">CoppeliaSim</a> 建立機電模擬系統</p>
 <p style="padding-left: 30px;">利用 <a href="https://manual.coppeliarobotics.com/en/zmqRemoteApiOverview.htm">Python</a> 跨網路控制瀏覽器上的機電模擬系統</p>
-<h4>Final Report: 期末口頭與書面專題報告 (20%)</h4>
-<h2>Repository</h2>
+<h4>Final Report: 期末口頭與書面專題報告 (20%)</h4><h2>Repository</h2>
 <p>計算機程式課程中的作業將透過 Github Classroom 派送, 使用者必須登入 Github 後, 透過作業連結取得倉儲, 而此倉儲帶有採 Python Flask 框架所編寫的內容管理系統, 使用者可以利用 Github Codespaces 或近端的可攜程式套件進行網頁、網誌以及簡報檔的編輯與管理.</p>
 <p>採 Github Codespaces 維護作業網站內容:</p>
 <ol>
