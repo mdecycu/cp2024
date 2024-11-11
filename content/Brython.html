@@ -143,7 +143,7 @@ img.add_border {
         </header>
     <div id="tipue_search_content">References << <a href='References.html'>Previous</a> <a href='Demo.html'>Next</a> >> Demo<br /><h1>Brython</h1>
 <p>從 1 累加到 100:</p>
-<p><button id="add1to100">1 add to 100</button><button id="roc_flag">ROC Flag</button><button id="proc_flag">PROC flag</button><button id="usa_flag">USA Flag</button></p>
+<p><button id="add1to100">1 add to 100</button><button id="roc_flag">ROC Flag</button><button id="proc_flag">PROC flag</button><button id="usa_flag">USA Flag</button><button id="gd_in_brython">GD in Brython</button></p>
 <!-- 導入 brython 程式庫 -->
 <p>
 <script src="./../cmsimde/static/brython.js"></script>
@@ -276,6 +276,11 @@ usa_flag_url = "https://gist.githubusercontent.com/mdecycu/7464c66475548e9cc4146
 usa_flag = button(usa_flag_url)
 doc["usa_flag"].bind("click", usa_flag.do)
 ################################## usa_flag end
+################################## gd in brython start
+gd_brython_url = "https://gist.githubusercontent.com/mdecycu/5705fc2a67aa1db0c0d44d6d0478b08b/raw/bb965ee8e64af4094371833b67ac0f3bbbb620a5/gd_in_brython.py"
+gd_brython = button(gd_brython_url)
+doc["gd_in_brython"].bind("click", gd_brython.do)
+################################## gd in brython end
 </script>
 </p>
 <p><!-- add 1 to 100 結束--></p>

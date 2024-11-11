@@ -1717,7 +1717,7 @@ if __name__ == '__main__':
 <p dir="auto" style="padding-left: 30px;"><a href="https://www.youtube.com/@-kmolab9376" rel="nofollow">https://www.youtube.com/@-kmolab9376</a></p>
 <h1>Brython</h1>
 <p>從 1 累加到 100:</p>
-<p><button id="add1to100">1 add to 100</button><button id="roc_flag">ROC Flag</button><button id="proc_flag">PROC flag</button></p>
+<p><button id="add1to100">1 add to 100</button><button id="roc_flag">ROC Flag</button><button id="proc_flag">PROC flag</button><button id="usa_flag">USA Flag</button></p>
 <!-- 導入 brython 程式庫 -->
 <p>
 <script src="/static/brython.js"></script>
@@ -1845,6 +1845,11 @@ proc_flag_url = "https://gist.githubusercontent.com/mdecycu/7464c66475548e9cc414
 proc_flag = button(proc_flag_url)
 doc["proc_flag"].bind("click", proc_flag.do)
 ################################## proc_flag end
+################################## usa flag start
+usa_flag_url = "https://gist.githubusercontent.com/mdecycu/7464c66475548e9cc41469e36c1dddb2/raw/a68cb31411e493b5d8eac4680d8f927cb515c4bc/usa_flag_in_brython.py"
+usa_flag = button(usa_flag_url)
+doc["usa_flag"].bind("click", usa_flag.do)
+################################## usa_flag end
 </script>
 </p>
 <p><!-- add 1 to 100 結束--></p>
