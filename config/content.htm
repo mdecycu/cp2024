@@ -972,101 +972,7 @@ Exit</pre>
 '''</pre>
 <p>print 與 for 重複迴圈</p>
 <p>help(print)</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">Help on built-in function print in module builtins:
-
-print(...)
-    print(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
-    
-    Prints the values to a stream, or to sys.stdout by default.
-    Optional keyword arguments:
-    file:  a file-like object (stream); defaults to the current sys.stdout.
-    sep:   string inserted between values, default a space.
-    end:   string appended after the last value, default a newline.
-    flush: whether to forcibly flush the stream.</pre>
 <p>help(range)</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">Help on class range in module builtins:
-
-class range(object)
- |  range(stop) -&gt; range object
- |  range(start, stop[, step]) -&gt; range object
- |  
- |  Return an object that produces a sequence of integers from start (inclusive)
- |  to stop (exclusive) by step.  range(i, j) produces i, i+1, i+2, ..., j-1.
- |  start defaults to 0, and stop is omitted!  range(4) produces 0, 1, 2, 3.
- |  These are exactly the valid indices for a list of 4 elements.
- |  When step is given, it specifies the increment (or decrement).
- |  
- |  Methods defined here:
- |  
- |  __bool__(self, /)
- |      True if self else False
- |  
- |  __contains__(self, key, /)
- |      Return key in self.
- |  
- |  __eq__(self, value, /)
- |      Return self==value.
- |  
- |  __ge__(self, value, /)
- |      Return self&gt;=value.
- |  
- |  __getattribute__(self, name, /)
- |      Return getattr(self, name).
- |  
- |  __getitem__(self, key, /)
- |      Return self[key].
- |  
- |  __gt__(self, value, /)
- |      Return self&gt;value.
- |  
- |  __hash__(self, /)
- |      Return hash(self).
- |  
- |  __iter__(self, /)
- |      Implement iter(self).
- |  
- |  __le__(self, value, /)
- |      Return self&lt;=value.
- |  
- |  __len__(self, /)
- |      Return len(self).
- |  
- |  __lt__(self, value, /)
- |      Return self&lt;value.
- |  
- |  __ne__(self, value, /)
- |      Return self!=value.
- |  
- |  __reduce__(...)
- |      Helper for pickle.
- |  
- |  __repr__(self, /)
- |      Return repr(self).
- |  
- |  __reversed__(...)
- |      Return a reverse iterator.
- |  
- |  count(...)
- |      rangeobject.count(value) -&gt; integer -- return number of occurrences of value
- |  
- |  index(...)
- |      rangeobject.index(value) -&gt; integer -- return index of value.
- |      Raise ValueError if the value is not present.
- |  
- |  ----------------------------------------------------------------------
- |  Static methods defined here:
- |  
- |  __new__(*args, **kwargs) from builtins.type
- |      Create and return a new object.  See help(type) for accurate signature.
- |  
- |  ----------------------------------------------------------------------
- |  Data descriptors defined here:
- |  
- |  start
- |  
- |  step
- |  
- |  stop</pre>
 <p>與 ChatGPT 對話:</p>
 <p style="padding-left: 30px;">可以解釋一下help(range) 傳回來的內容嗎?</p>
 <p>將 help(range) 傳回的內容貼給 ChatGPT, 然後問:</p>
@@ -1079,48 +985,6 @@ class range(object)
 <p data-pm-slice="0 0 []" style="padding-left: 30px;">請舉 10 個可以協助使用者理解 for range 與 print 等關鍵字的範例</p>
 <p data-pm-slice="0 0 []" style="padding-left: 30px;">請用 Python 的 for 跟 print 印出五行的 * 排列成的三角形金字塔, 也就是 * 在最中間, 第二行為正中央的 *** 然後第三行 *****, 總共五行.</p>
 <p data-pm-slice="0 0 []" style="padding-left: 30px;">請詳細解釋你的解法過程</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">問題分析
-
-我們希望生成一個由星號 * 組成的金字塔，總共 5 行，並且使星號在每一行中間對齊。金字塔的形狀如下：
-
-    *
-   ***
-  *****
- *******
-*********
-
-解法步驟
-
-    設定行數： 我們首先定義金字塔的行數。這裡我們設置 n = 5，代表金字塔有 5 行。
-
-    使用 for 迴圈： 我們將使用 for 迴圈來迭代每一行。range(n) 會生成從 0 到 4 的整數，對應於每一行的索引。
-
-    計算空格數： 為了使星號在每一行中間對齊，我們需要在星號前面印出一些空格。
-        在第 i 行，前面需要印出 n - i - 1 個空格。這樣可以確保每一行的星號都在金字塔的中間位置。
-        例如，在第 0 行（第一行）需要 4 個空格，在第 1 行需要 3 個空格，以此類推。
-
-    計算星號數： 每一行的星號數量是 2 * i + 1。
-        在第 0 行有 1 個星號，第一行有 3 個星號，第二行有 5 個星號，依此類推，這樣的模式使得每行的星號數量都是奇數並且增加。
-
-    印出結果： 使用 print() 函數印出計算得出的空格和星號。在第一個 print 中使用 end='' 是為了避免換行，使得空格和星號能在同一行內輸出。
-
-程式碼實現
-
-以下是完整的程式碼和註解：
-
-python
-
-n = 5  # 總共的行數
-
-for i in range(n):  # 對於每一行
-    # 印出空格
-    print(' ' * (n - i - 1), end='')  # 在每行前面印出空格
-    # 印出星號
-    print('*' * (2 * i + 1))  # 每行印出 2*i + 1 個星號
-
-執行結果
-
-當你執行這段程式碼時，它會輸出一個對稱的金字塔，每一行的星號數量和位置都符合我們的要求。</pre>
 <p><a href="/downloads/help_print.txt">help_print.txt</a></p>
 <p><a href="/downloads/help_range.txt">help_range.txt</a> (<a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/f18194c5712971ba9a89123d74378cfa/raw/d3b2374917b6fb25dd9a7f83cbd4f371fd8caa85/help_range.py">在 Brython 環境執行</a>)</p>
 <p><a href="/downloads/triangle_star_2.txt">triangle_star_2.txt</a> (<a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/f18194c5712971ba9a89123d74378cfa/raw/c44b9f215f131d426d5ec7d8c4f1c3366c08c218/triangle_print_2.py">在 Brython 環境執行</a>)</p>
@@ -1173,7 +1037,90 @@ for i in range(n):  # 對於每一行
 <p style="padding-left: 30px;">利用 <a href="https://manual.coppeliarobotics.com/en/zmqRemoteApiOverview.htm">Python</a> 跨網路控制瀏覽器上的機電模擬系統</p>
 <p><a href="/downloads/cd2023_pj3ag4_zmq_football_4.7.7z">cd2023_pj3ag4_zmq_football_4.7.7z</a></p>
 <p><a href="/downloads/cd2024_2b_g6_steel_ball_platform_nxopen_copsim.7z">cd2024_2b_g6_steel_ball_platform_nxopen_copsim.7z</a></p>
-<h1>CAD</h1>
+<h1>Exam</h1>
+<h4><span>出席 (10%) - 自行舉證評分</span></h4>
+<h4>Topic 1: 基於瀏覽器的分散式版次管理與整合程式開發環境 (10%)</h4>
+<p style="padding-left: 30px;">瀏覽器</p>
+<p style="padding-left: 30px;">分散式</p>
+<p style="padding-left: 30px;">版次管理</p>
+<p style="padding-left: 60px;">Local 有三種方式: HTTPS, SSH 與 Github CLI</p>
+<p style="padding-left: 60px;">Codespace</p>
+<p style="padding-left: 30px;">程式開發(執行)環境 - Python 變數命名原則?</p>
+<p style="padding-left: 60px;">Brython</p>
+<p style="padding-left: 60px;">SciTE</p>
+<p style="padding-left: 60px;">命令提示字元</p>
+<p style="padding-left: 60px;">Jupyter lab</p>
+<p style="padding-left: 60px;">Visual Studio Code - <a href="https://link.springer.com/book/10.1007/978-1-4842-7344-9">電子書</a></p>
+<h4>Topic 2: Python 的數列、判斷式與重複迴圈 (20%)</h4>
+<p style="padding-left: 30px;"><a href="https://www.learnpythonwithjupyter.com/">Learn Python with Jupyter</a> </p>
+<p style="padding-left: 30px;"><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5e6eda7a004c15fa7262b9a80bfa4af6/raw/c2225ac22f32ee8485a630b42cf3f4d8567bb661/up_to_down_pyramid.py">由上往下列印三角形 *</a></p>
+<p style="padding-left: 30px;"><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5e6eda7a004c15fa7262b9a80bfa4af6/raw/56793c72d4495d564e3cc6214ed5fb68dbd2b21d/left_to_right_pyramid.py">由左往右列印三角形 *</a></p>
+<p style="padding-left: 30px;">列印圓型區域?</p>
+<p style="padding-left: 30px;"><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5705fc2a67aa1db0c0d44d6d0478b08b/raw/f95909804a1f134963cade8463eeb9bd32129ea8/grid_line_and_fill_in_Brython.py">網頁上的方格與塗色</a></p>
+<h4>Topic 3: Python 的數字、演算法與迴圈 (20%)</h4>
+<p style="padding-left: 30px;"><a href="https://www.learnpythonwithjupyter.com/">Learn Python with Jupyter</a></p>
+<h4>Topic 4: 利用 Python 控制機電模擬系統 (20%)</h4>
+<p style="padding-left: 30px;">CoppeliaSim</p>
+<p style="padding-left: 30px;">Webots</p>
+<p style="padding-left: 30px;">RoboDK</p>
+<h4>Final Report: 期末口頭與書面專題報告 (20%)</h4>
+<p style="padding-left: 30px;">Powerpoint vs Reveal</p>
+<p style="padding-left: 30px;">Word vs LaTeX</p>
+<h3>Problem_set</h3>
+<p>以下方程式列印採用 <a href="https://www.mathjax.org/#gettingstarted">Mathjax Version 3 格式</a>.</p>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<h4>set1 - Physics</h4>
+<p><span style="background-color: #ccffcc;">Use python to solve the problem: A jet touches down at velocity 310 km/h. Find the constant acceleration required to stop the aircraft 1000 m down the runway.</span></p>
+<p style="padding-left: 30px;">To solve this problem, we'll use the kinematic equations of motion under constant acceleration. The question asks for the constant acceleration required to stop the jet after a certain distance, which means we are looking for the deceleration.</p>
+<p style="padding-left: 30px;">Step 1: Problem Breakdown</p>
+<p style="padding-left: 30px;">We are given:<br/>- Initial velocity \( v_0 = 310 \, \text{km/h} \)<br/>- Final velocity \( v = 0 \, \text{m/s} \) (since the jet stops)<br/>- Distance \( d = 1000 \, \text{m} \)</p>
+<p style="padding-left: 30px;">We are asked to find the constant acceleration \( a \) that brings the jet to a stop.</p>
+<p style="padding-left: 30px;">Step 2: Kinematic Equation</p>
+<p style="padding-left: 30px;">The appropriate kinematic equation for this problem, where the object is decelerating (i.e., stopping), is:</p>
+<p style="padding-left: 30px;">\[<br/>v^2 = v_0^2 + 2ad<br/>\]</p>
+<p style="padding-left: 30px;">Where:<br/>- \( v \) is the final velocity (which is 0 since the jet stops),<br/>- \( v_0 \) is the initial velocity,<br/>- \( a \) is the constant acceleration (which we need to solve for),<br/>- \( d \) is the distance traveled.</p>
+<p style="padding-left: 30px;">Step 3: Solving for Acceleration \( a \)</p>
+<p style="padding-left: 30px;">Rearranging the equation to solve for \( a \):</p>
+<p style="padding-left: 30px;">\[<br/>a = \frac{v^2 - v_0^2}{2d}<br/>\]</p>
+<p style="padding-left: 30px;">Since \( v = 0 \), this simplifies to:</p>
+<p style="padding-left: 30px;">\[<br/>a = \frac{-v_0^2}{2d}<br/>\]</p>
+<p style="padding-left: 30px;">Step 4: Converting Units</p>
+<p style="padding-left: 30px;">The velocity \( v_0 = 310 \, \text{km/h} \) needs to be converted to meters per second (m/s) because the distance is in meters and we want the acceleration in meters per second squared (m/s²).</p>
+<p style="padding-left: 30px;">\[<br/>v_0 = 310 \, \text{km/h} = \frac{310 \times 1000}{3600} \, \text{m/s} = 86.11 \, \text{m/s}<br/>\]</p>
+<p style="padding-left: 30px;">Step 5: Substituting Known Values</p>
+<p style="padding-left: 30px;">Now we can substitute the values into the equation:</p>
+<p style="padding-left: 30px;">\[<br/>a = \frac{-(86.11)^2}{2 \times 1000}<br/>\]</p>
+<p style="padding-left: 30px;">Let's calculate this using Python.</p>
+<p style="padding-left: 30px;">Python Code Implementation: <a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5705fc2a67aa1db0c0d44d6d0478b08b/raw/d9558707c7e1765c1e6885ddc6919e32265c6d23/problem-set1-1_py.txt">problem-set1-1.py</a></p>
+<p style="padding-left: 30px;"></p>
+<p style="padding-left: 30px;">Use function to solve this kind of problem. <a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5705fc2a67aa1db0c0d44d6d0478b08b/raw/9567804babcc2fa9edc32403d76dcf2af4955bcf/problem-set1-2_py.txt">problem-set1-2.py</a></p>
+<p style="padding-left: 30px;">Extend to be more general to solve all kind of these problems. <a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5705fc2a67aa1db0c0d44d6d0478b08b/raw/9567804babcc2fa9edc32403d76dcf2af4955bcf/problem-set1-3_py.txt">problem-set1-3.py</a></p>
+<h4>set2- Calculus</h4>
+<p><span style="background-color: #ccffcc;">Under ideal conditions a certain bacteria population is known to double every three hours. Suppose that there are initially 100 bacteria. When will the population first reach 50,000 ?</span></p>
+<p style="padding-left: 30px;">We are asked to determine when a bacteria population, starting at 100 bacteria, will first reach 50,000, given that the population doubles every 3 hours.</p>
+<p style="padding-left: 30px;">Exponential Growth Equation:</p>
+<p style="padding-left: 30px;">The population growth can be modeled by the exponential growth formula:</p>
+<p style="padding-left: 30px;">\[<br/>P(t) = P_0 \times 2^{\frac{t}{T}}<br/>\]</p>
+<p style="padding-left: 30px;">Where:<br/>- \( P(t) \) is the population at time \( t \),<br/>- \( P_0 \) is the initial population,<br/>- \( T \) is the doubling time (in hours),<br/>- \( t \) is the time elapsed (in hours).</p>
+<p style="padding-left: 30px;">Given:<br/>- \( P_0 = 100 \) (initial population),<br/>- \( T = 3 \) hours (doubling time),<br/>- \( P(t) = 50,000 \) (target population).</p>
+<p style="padding-left: 30px;">Step 1: Plugging in the known values</p>
+<p style="padding-left: 30px;">We want to find the time \( t \) when the population reaches 50,000. Substituting the known values into the growth equation:</p>
+<p style="padding-left: 30px;">\[<br/>50,000 = 100 \times 2^{\frac{t}{3}}<br/>\]</p>
+<p style="padding-left: 30px;">Step 2: Simplifying the equation</p>
+<p style="padding-left: 30px;">First, divide both sides by 100 to isolate the exponential term:</p>
+<p style="padding-left: 30px;">\[<br/>500 = 2^{\frac{t}{3}}<br/>\]</p>
+<p style="padding-left: 30px;">Step 3: Solving for \( t \)</p>
+<p style="padding-left: 30px;">To solve for \( t \), take the logarithm (base 2) of both sides of the equation:</p>
+<p style="padding-left: 30px;">\[<br/>\log_2(500) = \frac{t}{3}<br/>\]</p>
+<p style="padding-left: 30px;">Now, multiply both sides by 3 to solve for \( t \):</p>
+<p style="padding-left: 30px;">\[<br/>t = 3 \times \log_2(500)<br/>\]</p>
+<p style="padding-left: 30px;">Step 4: Change of Base Formula</p>
+<p style="padding-left: 30px;">To compute \( \log_2(500) \) in Python or any other programming language, we can use the change of base formula:</p>
+<p style="padding-left: 30px;">\[<br/>\log_2(x) = \frac{\log_{10}(x)}{\log_{10}(2)}<br/>\]</p>
+<p style="padding-left: 30px;">Thus, the equation for \( t \) becomes:</p>
+<p style="padding-left: 30px;">\[<br/>t = 3 \times \frac{\log_{10}(500)}{\log_{10}(2)}<br/>\]</p>
+<p style="padding-left: 30px;">Python Code to Calculate \( t \): <a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5705fc2a67aa1db0c0d44d6d0478b08b/raw/d9558707c7e1765c1e6885ddc6919e32265c6d23/problem-set2-1_py.txt">problem-set2-1.py</a></p>
+<p></p><h1>CAD</h1>
 <h4>Solvespace</h4>
 <p style="padding-left: 30px;"><a href="https://solvespace.com/">https://solvespace.com/</a> </p>
 <h4>SolidWorks</h4>
