@@ -130,7 +130,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li><a href='Links.html'>Links</a><li><a href='Office365.html'>Office365</a><li><a href='Evaluate.html'>Evaluate</a><li><a href='Jupyter.html'>Jupyter</a><li class='has-children'><a href='W&H.html'>W&H</a><ul class='dropdown'><li><a href='DC.html'>DC</a></li></ul><li><a href='AI.html'>AI</a><li><a href='Servers.html'>Servers</a></li></ul><li class='has-children'><a href='Topics.html'>Topics</a><ul class='dropdown'><li><a href='Repository.html'>Repository</a><li class='has-children'><a href='Topic 1.html'>Topic 1</a><ul class='dropdown'><li><a href='Codespaces.html'>Codespaces</a><li><a href='Portable.html'>Portable</a></li></ul><li class='has-children'><a href='class_materials.html'>class_materials</a><ul class='dropdown'><li><a href='Seat.html'>Seat</a><li><a href='cmsimde.html'>cmsimde</a><li><a href='Vocabulary.html'>Vocabulary</a><li><a href='Virtualbox.html'>Virtualbox</a><li><a href='Environment.html'>Environment</a><li><a href='String.html'>String</a></li></ul><li><a href='Topic 2.html'>Topic 2</a><li><a href='Topic 3.html'>Topic 3</a><li><a href='Topic 4.html'>Topic 4</a></li></ul><li class='has-children'><a href='CAD.html'>CAD</a><ul class='dropdown'><li><a href='CoppeliaSim.html'>CoppeliaSim</a><li><a href='Webots.html'>Webots</a></li></ul><li><a href='Python.html'>Python</a><li><a href='References.html'>References</a><li class='has-children'><a href='Brython.html'>Brython</a><ul class='dropdown'><li><a href='Demo.html'>Demo</a></li>
+                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li><a href='Links.html'>Links</a><li><a href='Git.html'>Git</a><li><a href='Office365.html'>Office365</a><li><a href='Evaluate.html'>Evaluate</a><li><a href='Jupyter.html'>Jupyter</a><li><a href='Wink.html'>Wink</a><li class='has-children'><a href='W&H.html'>W&H</a><ul class='dropdown'><li><a href='DC.html'>DC</a></li></ul><li><a href='AI.html'>AI</a><li class='has-children'><a href='Servers.html'>Servers</a><ul class='dropdown'><li><a href='Linux.html'>Linux</a><li><a href='ANSIC.html'>ANSIC</a></li></li></ul></ul><li class='has-children'><a href='Topics.html'>Topics</a><ul class='dropdown'><li><a href='Repository.html'>Repository</a><li class='has-children'><a href='Topic 1.html'>Topic 1</a><ul class='dropdown'><li><a href='Codespaces.html'>Codespaces</a><li><a href='Portable.html'>Portable</a></li></ul><li class='has-children'><a href='class_materials.html'>class_materials</a><ul class='dropdown'><li><a href='Seat.html'>Seat</a><li><a href='cmsimde.html'>cmsimde</a><li><a href='Vocabulary.html'>Vocabulary</a><li><a href='Virtualbox.html'>Virtualbox</a><li><a href='Environment.html'>Environment</a><li><a href='String.html'>String</a></li></ul><li><a href='Topic 2.html'>Topic 2</a><li><a href='Topic 3.html'>Topic 3</a><li><a href='Topic 4.html'>Topic 4</a></li></ul><li class='has-children'><a href='Exam.html'>Exam</a><ul class='dropdown'><li class='has-children'><a href='Exam1.html'>Exam1</a><ul class='dropdown'><li><a href='Problem_set.html'>Problem_set</a></li></li></ul></ul><li class='has-children'><a href='CAD.html'>CAD</a><ul class='dropdown'><li><a href='CoppeliaSim.html'>CoppeliaSim</a><li><a href='Webots.html'>Webots</a></li></ul><li><a href='Python.html'>Python</a><li><a href='References.html'>References</a><li class='has-children'><a href='Brython.html'>Brython</a><ul class='dropdown'><li><a href='Demo.html'>Demo</a></li>
                       </ul>
                 </nav>
               </div>
@@ -143,7 +143,7 @@ img.add_border {
         </header>
     <div id="tipue_search_content">References << <a href='References.html'>Previous</a> <a href='Demo.html'>Next</a> >> Demo<br /><h1>Brython</h1>
 <p>從 1 累加到 100:</p>
-<p><button id="add1to100">1 add to 100</button></p>
+<p><button id="add1to100">1 add to 100</button><button id="roc_flag">ROC Flag</button><button id="proc_flag">PROC flag</button><button id="usa_flag">USA Flag</button><button id="gd_in_brython">GD in Brython</button></p>
 <!-- 導入 brython 程式庫 -->
 <p>
 <script src="./../cmsimde/static/brython.js"></script>
@@ -236,6 +236,19 @@ def clear_bd1(ev):
 # 利用 ace 中的 Editor 建立 Ace2 物件, 其中的輸入變數分別對應到頁面中的編輯區物件
 Ace2 = ace.Editor(editor_id="kw_editor1", console_id="kw_console1", container_id="kw__container1", storage_id="kw_py_src1" )
 
+# 透過 Ace2 以類別建立一個通用的 button, 可以在多個案例中將 gist 程導入編輯區
+
+class button:
+    def __init__(self, url):
+        self.url = url
+
+    # 記得加入 event 輸入變數
+    def do(self,ev):
+        Ace2.editor.setValue(open(self.url).read())
+        Ace2.editor.scrollToRow(0)
+        Ace2.editor.gotoLine(0)
+        Ace2.run()
+
 add1to100_url = "https://gist.githubusercontent.com/mdecourse/0229a8a017091476a79700b8a190f185/raw/c48e37714f055c3a0027cbfef59e442a6ef659b9/from_1_add_to_100_1.py"
 
 # 從 gist 取得程式碼
@@ -248,6 +261,26 @@ def add(ev):
 
 # id 為 "add1to100" 的按鈕點按時, 執行 add 方法
 doc["add1to100"].bind('click', add)
+################################## roc flag start
+roc_flag_url = "https://gist.githubusercontent.com/mdecycu/b2b7076761eb5573032dff8ba639ef7f/raw/44a2939309f12acf5fe33a8c561143240d951c0d/roc_flag_brython.py"
+roc_flag = button(roc_flag_url)
+doc["roc_flag"].bind("click", roc_flag.do)
+################################## roc_flag end
+################################## proc flag start
+proc_flag_url = "https://gist.githubusercontent.com/mdecycu/7464c66475548e9cc41469e36c1dddb2/raw/a68cb31411e493b5d8eac4680d8f927cb515c4bc/proc_flag_in_brython.py"
+proc_flag = button(proc_flag_url)
+doc["proc_flag"].bind("click", proc_flag.do)
+################################## proc_flag end
+################################## usa flag start
+usa_flag_url = "https://gist.githubusercontent.com/mdecycu/7464c66475548e9cc41469e36c1dddb2/raw/a68cb31411e493b5d8eac4680d8f927cb515c4bc/usa_flag_in_brython.py"
+usa_flag = button(usa_flag_url)
+doc["usa_flag"].bind("click", usa_flag.do)
+################################## usa_flag end
+################################## gd in brython start
+gd_brython_url = "https://gist.githubusercontent.com/mdecycu/5705fc2a67aa1db0c0d44d6d0478b08b/raw/bb965ee8e64af4094371833b67ac0f3bbbb620a5/gd_in_brython.py"
+gd_brython = button(gd_brython_url)
+doc["gd_in_brython"].bind("click", gd_brython.do)
+################################## gd in brython end
 </script>
 </p>
 <p><!-- add 1 to 100 結束--></p>

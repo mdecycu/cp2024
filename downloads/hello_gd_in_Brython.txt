@@ -1,0 +1,76 @@
+from browser import document as doc
+from browser import html
+import math
+
+width = 800
+height = 600
+
+img = html.IMG(width=width, height=height)
+img.id = "hellogd_image"
+brython_div = doc["brython_div1"]
+brython_div <= img
+
+canvas = html.CANVAS(width=width, height=height)
+canvas.style = {"border": "1px solid #000"}
+canvas.id = "hellogd_canvas"
+brython_div <= canvas
+
+ctx = canvas.getContext("2d")
+
+red = (255, 0, 0)
+blue = (0, 0, 255)
+black = (0, 0, 0)
+white = (255, 255, 255)
+
+# 長方形塗色
+ctx.fillStyle = f'rgb({white[0]}, {white[1]}, {white[2]})'
+ctx.fillRect(0, 0, width, height)
+
+ctx.fillStyle = f'rgb({blue[0]}, {blue[1]}, {blue[2]})'
+ctx.fillRect(0, 0, width // 4, height // 4)
+
+# 橢圓形塗色
+ctx.fillStyle = f'rgb({red[0]}, {red[1]}, {red[2]})'
+ctx.beginPath()
+ctx.ellipse(width * 3 / 4, height / 4, width / 4, width / 4, 0, 0, 2 * math.pi)
+ctx.fill()
+
+# 橢圓形畫線
+ctx.strokeStyle = f'rgb({red[0]}, {red[1]}, {red[2]})'
+ctx.beginPath()
+ctx.ellipse(width * 3 / 4, height * 3 / 4, width / 4, width / 4, 0, 0, 2 * math.pi)
+ctx.stroke()
+
+# 畫直線
+ctx.beginPath()
+ctx.moveTo(width / 2, height / 2)
+ctx.lineTo(width / 2, height / 2 + 100)
+ctx.strokeStyle = f'rgb({blue[0]}, {blue[1]}, {blue[2]})'
+ctx.stroke()
+
+# 多邊形畫線
+points = [(width / 4, height * 3 / 4), (width / 4 + 100, height * 3 / 4), (width / 4 + 100, height * 3 / 4 + 100),
+          (width / 4, height * 3 / 4 + 100)]
+ctx.beginPath()
+for i, point in enumerate(points):
+    if i == 0:
+        ctx.moveTo(point[0], point[1])
+    else:
+        ctx.lineTo(point[0], point[1])
+ctx.strokeStyle = f'rgb({black[0]}, {black[1]}, {black[2]})'
+ctx.stroke()
+
+# 多邊形塗色
+points2 = [(width / 3, height / 2), (width / 3 + 100, height / 2), (width / 3 + 100, height / 2 + 100),
+           (width / 3 - 150, height / 2 + 100)]
+ctx.beginPath()
+for i, point in enumerate(points2):
+    if i == 0:
+        ctx.moveTo(point[0], point[1])
+    else:
+        ctx.lineTo(point[0], point[1])
+ctx.fillStyle = f'rgb({red[0]}, {red[1]}, {red[2]})'
+ctx.fill()
+
+# 將 Canvas 轉為圖片
+img.src = canvas.toDataURL("image/png")
