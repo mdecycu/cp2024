@@ -2,7 +2,7 @@
         <head>
         <title>cp2024</title>
         <meta charset="utf-8">
-<meta property="head" content="H3">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
@@ -141,40 +141,11 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Servers << <a href='Servers.html'>Previous</a> <a href='ANSIC.html'>Next</a> >> ANSIC<br /><h1>Linux</h1>
-<p>以下為 vi 編輯器的基本使用說明:</p>
-<div class="winkVideoContainerClass"><video autoplay="autoplay" class="winkVideoClass" controls="controls" data-dirname="/cmsimde/static" data-varname="winkVideoData_vi" height="800" muted="true" width="1000">
-<source src="./../downloads/vi_editor.mp4" type="video/mp4"/></video></div>
-<h4>SSH keys</h4>
-<p>在 Windows 或 Linux 建立 openssh keys 都可以使用 ssh-keygen 指令</p>
-<p>在 Windows 環境下, 希望遠端登入 (remote login) 到另外一台已經啟動 ssh server 的主機, 可以使用 ssh 指令外 (此地的 ssh 指令為 client) , 在 Windows 也可以使用 putty 套件工具進行遠端登入.</p>
-<p>另外 Windows  sftp (安全的檔案傳輸協定 client) <span>除了透過命令列指令, 在 Windows 也可以使用 filezilla 套件工具, 能夠以 sftp client 指令遠端登入到 s1511.cycu.org, 表示遠端伺服器已經安裝 sftp 伺服器並且啟動.</span></p>
-<p>在 s1511.cycu.org 建立 keys 的原因, 是希望能夠直接利用 OpenSSH 的協定, 對 github 中的倉儲 push.</p>
-<p>因為 github.com 只支援 IPv4, 而 s1511.cycu.org 只支援 IPv6, 因此在 s1511 主機上要利用各種網路 client 對 github.com 進行連結或交換檔案, 都必須針對各種 client 設定代理主機, 其中包括 ssh client, sftp client, git client, https client (也就是全球資訊網瀏覽器)等.</p>
-<p>但 s1511.cycu.org 主機中已經透過 /etc/environment 設定 http 與 https 連線所需的代理主機, 使用者只需要自行處理 ~.ssh/config 中的 ssh 協定代理主機設定即可.</p>
-<p>/etc/environment 中有關 http 與 https 的代理主機設定:</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
-http_proxy=http://p4.cycu.org:3128
-https_proxy=http://p4.cycu.org:3128</pre>
-<h4>git clone</h4>
-<p>SSH 代理主機與 https 代理主機設定</p>
-<p>假如處理好 .ssh/config, .ssh/id_rsa 與 .ssh/id_rsa.pub 的設定, 各用戶就可以利用下列指令, 以 SSH 協定取下 cp2023:</p>
-<p style="padding-left: 30px;">git clone --recurse-submodules <a href="mailto:git@github.com:scrum-1/cp2023.git">git@github.com:scrum-1/cp2023.git</a></p>
-<p>取下的倉儲內容, 包含子模組將會放入 cp2023 目錄.</p>
-<h4>server.py</h4>
-<p>內部埠號與外部埠號</p>
-<p>列出使用 python3 啟動的服務:</p>
-<p>ps -ef | grep python3</p>
-<p>當使用 python3 server.py &amp; 執行 process 後, ps -axo pid,comm,uname | grep "python3" 的指令, 可以列出各自帳號下所 background 執行的 process pid, 若需要列出執行 process 對應目錄, 則可以利用 pwdx 加上 pid 後執行取得.</p>
-<p>ps -axo : <a href="https://explainshell.com/explain?cmd=ps+-axo+pid%2Crss%2Ccommand">https://explainshell.com/explain?cmd=ps+-axo+pid%2Crss%2Ccommand</a></p>
-<p>pwdx : <a href="https://www.cyberciti.biz/faq/unix-linux-pwdx-command-examples-usage-syntax/">https://www.cyberciti.biz/faq/unix-linux-pwdx-command-examples-usage-syntax/</a></p>
-<p>kill: <a href="https://www.geeksforgeeks.org/kill-command-in-linux-with-examples/">https://www.geeksforgeeks.org/kill-command-in-linux-with-examples/</a></p>
-<h4>git commit</h4>
-<p>git config --global user.email and user.name</p>
-<p>acp 權限與 public_html 目錄中的倉儲內容</p>
-<p>使用者目錄 (711) 與 public_html (755) 目錄權限</p>
-<p><a href="https://link.springer.com/content/pdf/10.1007/978-1-4842-5064-8_1.pdf">Intro to C</a> (on Springer)</p>
-<br />Servers << <a href='Servers.html'>Previous</a> <a href='ANSIC.html'>Next</a> >> ANSIC</div>
+    <div id="tipue_search_content">Problem_set << <a href='Problem_set.html'>Previous</a> <a href='CAD.html'>Next</a> >> CAD<br /><h1>w11_hw</h1>
+<p>1.  已知可以用 Python 程式<a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5e6eda7a004c15fa7262b9a80bfa4af6/raw/c2225ac22f32ee8485a630b42cf3f4d8567bb661/up_to_down_pyramid.py">由上往下列印三角形 *</a>, 或<a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5e6eda7a004c15fa7262b9a80bfa4af6/raw/56793c72d4495d564e3cc6214ed5fb68dbd2b21d/left_to_right_pyramid.py">由左往右列印三角形 *</a>, 請將此程式延伸到可以在 10x10 的字元區域中, 以 "*" 字元列印出圓型區域. 完成後請將程式碼存入個人 Gist 後, 直接在個人作業網站中的 Brython 頁面中執行. (提示: ?src=gist_script_URL)</p>
+<p>2. 已知可以在網頁中利用 Brython 繪製方格與塗色, 如下連結, 請設法修改此一程式, 直接將程式存入個人的 Gist, 並利用黑色方塊圍出一個圓形區域.</p>
+<p><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5705fc2a67aa1db0c0d44d6d0478b08b/raw/f95909804a1f134963cade8463eeb9bd32129ea8/grid_line_and_fill_in_Brython.py">網頁上的方格與塗色</a></p>
+<p>3. 完成上列題目後, 請利用 Youtube 影片<span style="background-color: #ffff00;">簡報</span>個人的解題過程與心得.</p><br />Problem_set << <a href='Problem_set.html'>Previous</a> <a href='CAD.html'>Next</a> >> CAD</div>
         
     <!-- footer -->
       <div class="container">
