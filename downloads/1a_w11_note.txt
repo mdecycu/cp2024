@@ -1,0 +1,47 @@
+利用可攜程式在近端維護作業倉儲的要點:
+
+1. 要有可攜程式
+2. 利用 start_ipv6.bat 啟動後, 必須將作業倉儲取下 (git clone 倉儲 URL)
+在命令列 git clone https://github.com/mdecp2024/hw-41323114.git 14
+其中需要在 home_ipv6 目錄下設定 .gitconfig 如下:
+[safe]
+	directory = *
+    
+git config --global safe.directory "*"
+
+[user]
+	email = mdecycuorg@gmail.com
+	name = mdecycu
+
+git config --global user.email "mdecycuorg@gmail.com"
+git config --global user.name "mdecycu"
+
+[http]
+    sslVerify = false
+
+git config --global http.sslVerify "false"
+
+3. 因為目前的作業倉儲為 public, 任何人都可以採 https  git clone, 但只有具備維護權限的使用者, 可以改版.
+    
+4. 作業倉儲的管理者 git clone 之後, 必須在倉儲目錄中的 .git/config 利用 token 宣告權限
+token 可以使用 classic, 登入 github.com 後在帳號 settings 中左邊最底下的 Developer setting 進行, 範例如下:
+
+ghp_token字串@ 前半部為 token 加上"@"
+
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[remote "origin"]
+	url = https://ghp_token字串@github.com/mdecp2024/hw-41323114.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main
+    
+註: 因為之前使用真正的 token 無法通過 github.com 的 push 查驗, 因此改為 ghp_token字串
+
+
