@@ -946,12 +946,6 @@ Exit</pre>
 <p><a href="https://s104.cycu.org/~scrum1/ubuntu24041_vdi_mde.7z">ubuntu24041_vdi_mde.7z</a></p>
 <hr/>
 <h4>網路連線</h4>
-<p>ChatGPT 對話:</p>
-<p style="padding-left: 30px;">問:</p>
-<p style="padding-left: 60px;">同時連結 IPv4 與 IPv6 網路協定, Windows 會如何取捨上網連線?</p>
-<p style="padding-left: 30px;">答:</p>
-<p style="padding-left: 60px;">在 Windows 系統中，同時連接到 IPv4 和 IPv6 網路協定時，系統會根據預設的優先順序來選擇使用哪一個協定來進行網路連線。這個優先順序主要由以下幾個因素決定：<br/><br/> 1. 預設的協定優先順序<br/>   - 根據 IETF (Internet Engineering Task Force) 的標準，Windows 系統通常會優先使用 IPv6，如果可以用 IPv6 成功連線的話，會首先選擇 IPv6 協定。<br/>   - 若 IPv6 無法連線或無法達成某些網路操作，Windows 會退回使用 IPv4。<br/>   - 具體的優先順序是：  <br/>     1. IPv6（如果可用）<br/>     2. IPv4<br/><br/> 2. 如何影響上網連線<br/>   - 在多數情況下，IPv6 網路協定會被優先選擇。這是因為 IPv6 提供了更大範圍的地址空間和一些其他的優勢（如更簡單的地址分配與更有效的路由）。<br/>   - 當 IPv6 無法連線（例如，當 ISP 或目標網站不支持 IPv6），系統會自動回退到 IPv4 進行連線。<br/><br/> 3. 可以調整優先順序<br/>   - 用戶可以手動調整協定的優先順序。如果你想讓系統強制使用 IPv4，可以通過以下步驟進行設定：<br/>     1. 開啟「控制面板」 &gt; 「網路和共享中心」。<br/>     2. 點選當前的網路連線（例如以太網或 Wi-Fi）。<br/>     3. 點擊「內容」，選擇「Internet 協定版本 6 (TCP/IPv6)」或「Internet 協定版本 4 (TCP/IPv4)」並設置啟用或停用。<br/><br/> 4. 實際影響<br/>   - 如果兩個協定都可用，並且有網站或伺服器同時提供 IPv4 和 IPv6 支援，Windows 系統會先嘗試使用 IPv6。若 IPv6 的連線不可用或失敗，它會自動切換到 IPv4。<br/>   - 若網站或伺服器不支持 IPv6，則只能通過 IPv4 進行連線。<br/><br/> 結論<br/>Windows 系統會優先選擇 IPv6 網路協定，除非 IPv6 不可用或無法連線，這時它會回退到 IPv4。這種行為確保了在網路中具有最先進的協定（IPv6）能夠發揮作用，但不會妥協於不支援 IPv6 的情況，系統會自動使用 IPv4。</p>
-<p style="padding-left: 30px;"></p>
 <p></p><h3>Environment</h3>
 <p>說明如何利用 ShareX 與 Zoomit 拍攝電腦操作流程影片:</p>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/4K5yoD4z6OM?si=b9S3w4bbqpE6kk0e" title="YouTube video player" width="560"></iframe></p>
@@ -1046,7 +1040,7 @@ Exit</pre>
 <p><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/eb2e4327b65a0fe5c307ea329ef2f69c/raw/502faba5a396f671622c3ff2b89d741a466752be/1b_w3_site_repo_brython.py">1b site and repo</a></p>
 <h3>String</h3>
 <p><a href="https://mde.tw/cp2024/downloads/learn_python_with_jupyter.pdf#chapter.1">https://mde.tw/cp2024/downloads/learn_python_with_jupyter.pdf#chapter.1</a></p>
-<p>在 Python 中，字串（strings）就是用引號括起來的文本。它們是處理文字數據的基本方式。字串可以用單引號 (')、雙引號 (")，或三重引號 (''' 或 """) 括起來。這些引號的使用方式有各自的特點和用途：<br/>1. 單引號 (')<br/><br/>單引號用於定義簡單的字串，適合沒有包含單引號字符的情境。<br/><br/>python<br/><br/># 定義一個單引號字串<br/>single_quote_string = 'Hello, World!'<br/>print(single_quote_string)<br/><br/>2. 雙引號 (")<br/><br/>雙引號也用於定義字串，它們的主要好處是當字串中包含單引號時，可以避免使用轉義字符。<br/><br/>python<br/><br/># 定義一個雙引號字串<br/>double_quote_string = "Python's syntax is simple."<br/>print(double_quote_string)<br/><br/>3. 三重引號 (''' 或 """)<br/><br/>三重引號用於定義多行字串，也可以用於包含單引號和雙引號的情境。<br/><br/>python<br/><br/># 使用三重單引號定義多行字串<br/>multi_line_string = '''This is a string<br/>that spans multiple lines.<br/>It can also include 'single' and "double" quotes.'''<br/>print(multi_line_string)<br/><br/># 使用三重雙引號定義多行字串<br/>another_multi_line_string = """Here is another example<br/>of a multi-line string.<br/>It also allows for 'single' and "double" quotes."""<br/>print(another_multi_line_string)<br/><br/>常見字串操作<br/><br/>    拼接字串<br/><br/>    使用 + 來拼接多個字串。<br/><br/>    python<br/><br/>greeting = "Hello, " + "World!"<br/>print(greeting)<br/><br/>重複字串<br/><br/>使用 * 來重複字串。<br/><br/>python<br/><br/>echo = "Hello! " * 3<br/>print(echo)<br/><br/>字串長度<br/><br/>使用 len() 函數來獲取字串的長度。<br/><br/>python<br/><br/>length = len("Hello, World!")<br/>print(length)  # 13<br/><br/>字串方法<br/><br>Python 字串有許多內建的方法，如 upper(), lower(), strip(), replace(), find() 等。<br><br>python<br><br># 轉換為大寫<br>upper_case = "hello".upper()<br>print(upper_case)  # "HELLO"<br><br># 移除首尾空白字符<br>stripped_string = "   text with spaces   ".strip()<br>print(stripped_string)  # "text with spaces"<br><br># 替換字串中的字符<br>replaced_string = "hello world".replace("world", "Python")<br>print(replaced_string)  # "hello Python"<br><br>格式化字串<br><br>使用 f-strings（Python 3.6 及更高版本）或 format() 方法進行格式化。<br><br>python<br><br>    name = "Alice"<br/>    age = 30<br/>    formatted_string = f"Name: {name}, Age: {age}"<br/>    print(formatted_string)<br/><br/>    # 使用 format() 方法<br/>    formatted_string = "Name: {}, Age: {}".format(name, age)<br/>    print(formatted_string)<br/><br/>結論<br/><br/>字串是 Python 中處理文字的基本單位，無論是單行還是多行，都可以用不同的引號來表示。了解如何操作字串是掌握 Python 的重要基礎。</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></p>
+<p>在 Python 中，字串（strings）就是用引號括起來的文本。它們是處理文字數據的基本方式。字串可以用單引號 (')、雙引號 (")，或三重引號 (''' 或 """) 括起來。這些引號的使用方式有各自的特點和用途：<br/>1. 單引號 (')<br/><br/>單引號用於定義簡單的字串，適合沒有包含單引號字符的情境。<br/><br/>python<br/><br/># 定義一個單引號字串<br/>single_quote_string = 'Hello, World!'<br/>print(single_quote_string)<br/><br/>2. 雙引號 (")<br/><br/>雙引號也用於定義字串，它們的主要好處是當字串中包含單引號時，可以避免使用轉義字符。<br/><br/>python<br/><br/># 定義一個雙引號字串<br/>double_quote_string = "Python's syntax is simple."<br/>print(double_quote_string)<br/><br/>3. 三重引號 (''' 或 """)<br/><br/>三重引號用於定義多行字串，也可以用於包含單引號和雙引號的情境。<br/><br/>python<br/><br/># 使用三重單引號定義多行字串<br/>multi_line_string = '''This is a string<br/>that spans multiple lines.<br/>It can also include 'single' and "double" quotes.'''<br/>print(multi_line_string)<br/><br/># 使用三重雙引號定義多行字串<br/>another_multi_line_string = """Here is another example<br/>of a multi-line string.<br/>It also allows for 'single' and "double" quotes."""<br/>print(another_multi_line_string)<br/><br/>常見字串操作<br/><br/>    拼接字串<br/><br/>    使用 + 來拼接多個字串。<br/><br/>    python<br/><br/>greeting = "Hello, " + "World!"<br/>print(greeting)<br/><br/>重複字串<br/><br/>使用 * 來重複字串。<br/><br/>python<br/><br/>echo = "Hello! " * 3<br/>print(echo)<br/><br/>字串長度<br/><br/>使用 len() 函數來獲取字串的長度。<br/><br/>python<br/><br/>length = len("Hello, World!")<br/>print(length)  # 13<br/><br/>字串方法<br/><br/>Python 字串有許多內建的方法，如 upper(), lower(), strip(), replace(), find() 等。<br/><br/>python<br/><br/># 轉換為大寫<br/>upper_case = "hello".upper()<br/>print(upper_case)  # "HELLO"<br/><br/># 移除首尾空白字符<br/>stripped_string = "   text with spaces   ".strip()<br/>print(stripped_string)  # "text with spaces"<br/><br/># 替換字串中的字符<br/>replaced_string = "hello world".replace("world", "Python")<br/>print(replaced_string)  # "hello Python"<br/><br/>格式化字串<br/><br/>使用 f-strings（Python 3.6 及更高版本）或 format() 方法進行格式化。<br/><br/>python<br/><br/>    name = "Alice"<br/>    age = 30<br/>    formatted_string = f"Name: {name}, Age: {age}"<br/>    print(formatted_string)<br/><br/>    # 使用 format() 方法<br/>    formatted_string = "Name: {}, Age: {}".format(name, age)<br/>    print(formatted_string)<br/><br/>結論<br/><br/>字串是 Python 中處理文字的基本單位，無論是單行還是多行，都可以用不同的引號來表示。了解如何操作字串是掌握 Python 的重要基礎。</p>
 <h2>Topic 2</h2>
 <h4>Python 的數列、判斷式與重複迴圈 (20%)<span style="background-color: #ffff99;"><br/></span></h4>
 <p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 2 and Part 3</p>
@@ -1300,32 +1294,30 @@ path=~~;%path_webots%;%path%;</pre>
 <h1>Python</h1>
 <p>Python 執行環境</p>
 <p style="padding-left: 30px;">Brython (全球資訊網上的 Python)</p>
-<p style="padding-left: 30px;">Github Codespaces</p>
-<p style="padding-left: 30px;">Windows 操作系統</p>
-<p style="padding-left: 60px;">制式安裝 (VSCode and SciTE)</p>
-<p style="padding-left: 60px;">可攜設定 (VSCode and SciTE)</p>
 <p style="padding-left: 30px;">USB 隨身碟:</p>
 <p style="padding-left: 60px;">下載 <a href="http://229.cycu.org/python_2025_lite.7z">python_2025_lite.7z</a> (428 MB, 解開壓縮後約 1.5 GB)</p>
 <p style="padding-left: 60px;"><a href="http://229.cycu.org/kmolab_ex.7z">kmolab_ex.7z</a> (314MB)</p>
-<p style="padding-left: 30px;">Ubuntu 操作系統</p>
-<p><a href="https://docs.python.org/zh-tw/3/library/stdtypes.html">Types</a>: Integers, Floats, Strings and Booleans</p>
-<p>Type Conversion</p>
-<p>Variables and Assignment</p>
-<p>Arithmetic Operators</p>
-<p>Comparison Operators</p>
-<p>Logical Operators</p>
-<p>Conditional Statements (if, elif, else)</p>
-<p>Loops (for, while)</p>
-<p>break, continue and pass</p>
-<p>Lists</p>
-<p>Tuples</p>
-<p>Sets</p>
-<p>Dictionaries</p>
-<p>Defining and Calling Functions</p>
-<p>Arguments and Return Values</p>
-<p>Local and Global Variables</p>
-<p>Importing <a href="https://docs.python.org/zh-tw/3/tutorial/modules.html">Modules</a></p>
-<p><a href="https://docs.python.org/zh-tw/3/library/index.html">Standard Library</a></p>
+<p>變數 (Variables) 命名規則 - 以底線或英文字母大小寫開頭, 隨後可以加上數字、英文字母或底線, 但不可以使用保留關鍵字 (<a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5705fc2a67aa1db0c0d44d6d0478b08b/raw/9d7d4227cc13cdad06544e3960c90a1adfb5c388/python_keywords.py">Keywords</a>) 作為變數名稱. (<span style="background-color: #ccffcc;"><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/722d181972f94ffc238af912cb97d09d/raw/73bdeb87cd569ce0b3dc14534d46ca2e1cfb57ef/variables_ex1_python.txt" style="background-color: #ccffcc;">變數命名範例</a></span>)</p>
+<p>資料型別 (<a href="https://docs.python.org/zh-tw/3/library/stdtypes.html">Types</a>) - 包含整數 (Integers)、浮點數 (Floats)、字串 (Strings) 與布林 (Booleans)</p>
+<p>型別轉換 - int()、str()、float() (<span style="background-color: #ccffcc;"><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/722d181972f94ffc238af912cb97d09d/raw/3eb94e886fff7d4dfe80be04f9b06c4fa15784d4/data_type_and_conversion_ex1_python.txt" style="background-color: #ccffcc;">資料型別與轉換範例</a></span>)</p>
+<p>變數賦值 (Assignment) (<span style="background-color: #ccffcc;"><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/722d181972f94ffc238af912cb97d09d/raw/397d8b653af41151e59255d410211124768c7dbd/var_assignment_ex1_python.txt" style="background-color: #ccffcc;">變數賦值範例</a></span>)</p>
+<p>算數運算符 (Arithmetic Operators) (<span style="background-color: #ccffcc;"><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/722d181972f94ffc238af912cb97d09d/raw/4099f6463ac21e50acb63583a5435392b66a3d6e/arithmatic_ex1_python.txt" style="background-color: #ccffcc;">算數運算範例</a></span>)</p>
+<p>比較運算符 (Comparison Operators) (<span style="background-color: #ccffcc;"><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/722d181972f94ffc238af912cb97d09d/raw/0f11edc374a5a35f6c8269835ef33d04ad6087be/comparison_ex1_python.txt" style="background-color: #ccffcc;">比較運算範例</a></span>)</p>
+<p>邏輯運算符 (Logical Operators)</p>
+<p>條件語句 (Conditional Statements) (if, elif, else)</p>
+<p>迴圈 (Loops) (for, while)</p>
+<p>中斷 (break), 繼續 (continue) and 跳過 (pass)</p>
+<p>列表 (Lists)</p>
+<p>元組 (Tuples)</p>
+<p>集合 (Sets)</p>
+<p>字典 (Dictionaries)</p>
+<p>定義與呼叫函式 (Defining and Calling Functions)</p>
+<p>參數與返回值 (Arguments and Return Values)</p>
+<p>區域與全域變數 (Local and Global Variables)</p>
+<p>導入模組 (Importing <a href="https://docs.python.org/zh-tw/3/tutorial/modules.html">Modules</a>)</p>
+<p>標準程式庫 (<a href="https://docs.python.org/zh-tw/3/library/index.html">Standard Library</a>)</p>
+<p>演算法 (Algorithms)</p>
+<p>在 Python 程式中，常見的演算法包括：<br/><br/>    排序演算法：<br/>        冒泡排序（Bubble Sort）、選擇排序（Selection Sort）、插入排序（Insertion Sort）、快速排序（Quick Sort）和合併排序（Merge Sort）。這些算法通常用於對數據進行排序。<br/><br/>    搜尋演算法：<br/>        線性搜尋（Linear Search）和二分搜尋（Binary Search）是常見的搜尋算法，用於查找數據。<br/><br/>    圖演算法：<br/>        深度優先搜尋（DFS）、廣度優先搜尋（BFS）用於圖的內容逐一訪問。<br/><br/>    動態規劃：<br/>        用於解決具有重疊子問題的問題，如費波那契數列、背包問題等。<br/><br/>這些演算法能幫助提高程式的效率和解決各類問題。</p>
 <p><a href="https://github.com/TheAlgorithms/Python">https://github.com/TheAlgorithms/Python</a> </p>
 <p><a href="/downloads/nxopen_base_and_center_pole_python.txt">nxopen_base_and_center_pole_python.txt</a></p>
 <h4>qrcode</h4>
@@ -1396,8 +1388,7 @@ print("已經將 " + filenameString+ " 合併為: "+ newFileName + ".pdf")
 <p>Python 程式也能用來控制 Webots 機電模擬系統: <a href="https://cyberbotics.com/doc/guide/using-python">https://cyberbotics.com/doc/guide/using-python</a></p>
 <h4>Python 與 CAD 有關的其他應用</h4>
 <p><a href="https://pypi.org/project/python-solvespace/">https://pypi.org/project/python-solvespace/</a></p>
-<p><a href="https://github.com/jimy-byerley/pymadcad">https://github.com/jimy-byerley/pymadcad</a></p>
-<h1>References</h1>
+<p><a href="https://github.com/jimy-byerley/pymadcad">https://github.com/jimy-byerley/pymadcad</a></p><h1>References</h1>
 <p>已知:</p>
 <ol>
 <li>修課學員經由 @nfu.edu.tw 網域, 可利用"學號@nfu.edu.tw"經由 <a href="https://login.microsoftonline.com/">https://login.microsoftonline.com/</a> 登入 MS 365.</li>
