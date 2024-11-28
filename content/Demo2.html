@@ -141,48 +141,12 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Brython << <a href='Brython.html'>Previous</a> <a href='Demo2.html'>Next</a> >> Demo2<br /><h1>Demo</h1>
-<p>在網頁中建立 Brython 程式環境:</p>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">&lt;!-- 導入 brython 程式庫 --&gt;
-&lt;p&gt;
-&lt;script src="./../cmsimde/static/brython.js"&gt;&lt;/script&gt;
-&lt;script src="./../cmsimde/static/brython_stdlib.js"&gt;&lt;/script&gt;
-&lt;/p&gt;
-&lt;!-- 啟動 Brython --&gt;
-&lt;p&gt;
-&lt;script&gt;
-window.onload=function(){
-brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
-}
-&lt;/script&gt;
-&lt;script type="text/python"&gt;
-# write your Brython codes here
-&lt;/script&gt;</pre>
-<p>Brython <a href="https://docs.python.org/3/tutorial/modules.html"> modules </a> or <a href="https://docs.python.org/3/tutorial/modules.html#packages"> packages </a> can put into downloads/py directory</p>
-<p>A Python module is like a file containing special Python instructions that can be used by other Python files or programs. On the other hand, a script is a Python file that is meant to be directly run or executed.</p>
-<p>Python Modules 範例:</p>
-<p>例如: 將 point.py 放入 downloads/py 目錄中:</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">#point.py
-def point():
-    return "可以傳回 point"</pre>
-<p>一旦導入上列引用 Brython 的頁面, 其中已經宣告 pythonpath 位於 static 與 downloads/py 目錄中, 因此 Brython 在頁面啟動時將導入當時位於這兩個目錄中的 .py 模組, 之後就可以透過 import 導入 point.py 作為模組:</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import point
-print(point.point())
- 
-# 執行後的結果將會印出 downloads/py/point.py 中的 point() 函式執行內容, 也就是"可以傳回 point".</pre>
-<p>Python Packages 範例:</p>
-<p>例如: 將 point2.py 放入 downloads/py/line/ 目錄中, 且在 line 目錄中加入一個空的 __init__.py 檔案.</p>
-<p>且 point2.py 的內容與先前 point.py 的內容相同. 一旦上列導入 Brython 且宣告 pythonpath 位於 downloads/py 之後, 之後頁面中的 Brython 程式就可以採 import 的方式導入 line package, 並且使用 package 中的 point2.py modules.</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 引用 line package 的範例
-from line import point2
-print(point2.point())
- 
-# 執行結果會印出"可以傳回 point"</pre>
-<p>透過 <a href="https://betterprogramming.pub/three-js-with-python-syntax-pyweb3d-2152bed1a43d"> PyWeb3d </a> ( <a href="https://github.com/Bruno-Odinukweze/PyWeb3D"> on Github </a> ), 能不能利用 Brython 建立一個 3D 的貪食蛇或俄羅斯方塊?</p>
-<p><a href="./../downloads/ajax.7z">ajax.7z</a></p>
-<!-- 導入 Brython 解譯程式庫 -->
+    <div id="tipue_search_content">Demo << <a href='Demo.html'>Previous</a> <br /><h1>Demo2</h1>
+<!-- 導入 brython 程式庫 -->
+<p>
 <script src="./../cmsimde/static/brython.js"></script>
 <script src="./../cmsimde/static/brython_stdlib.js"></script>
+</p>
 <!-- 啟動 Brython -->
 <p>
 <script>
@@ -191,46 +155,65 @@ brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
 }
 </script>
 </p>
-<!-- 設定 id, 讓 Canvas 繪圖資料可以插入 -->
-<div id="brython_div1"></div>
-<div id="brython_div2"></div>
-<!-- 以下為 Brython 程式 -->
-<script type="text/python3">
-from browser import document  # 從瀏覽器模組導入 document，便於操作網頁的 DOM 元素
+<div id="output"></div>
+<div id="output1"></div>
+<p>
+<script>
+// JavaScript 函數，用於測量字符的寬度
+    function get_char_width(char) {
+        var container = document.createElement("div");
+        container.className = "char-container";
+        container.innerText = char;
+        document.body.appendChild(container);
+        var width = container.offsetWidth;
+        document.body.removeChild(container);
+        return width;
+    }
 
-# 建立下拉選單
-dropdown = document.createElement("div")  # 創建一個新的 div 元素作為下拉選單的容器
-dropdown.className = "dropdown"  # 設定 div 的類名為 "dropdown"，用於 CSS 樣式
+    // 這個函數將會在 Brython 中被調用
+    function getWidthFromJS(char) {
+        return get_char_width(char);
+    }
 
-button = document.createElement("button")  # 創建一個新的按鈕元素
-button.textContent = "Select an Option"  # 設定按鈕的文本為 "Select an Option"
-button.className = "dropbtn"  # 設定按鈕的類名為 "dropbtn"，用於 CSS 樣式
+    // JavaScript 函數：讀取現有的 CSS 設定（如 line-height）
+    function get_line_height_of_element(element_id) {
+        var element = document.getElementById(element_id); // 獲取指定的元素
+        var style = window.getComputedStyle(element); // 獲取元素的計算後樣式
+        return style.lineHeight;  // 返回 line-height 的屬性值
+    }
 
-dropdown_content = document.createElement("div")  # 創建一個新的 div 元素用來放置下拉內容
-dropdown_content.className = "dropdown-content"  # 設定下拉內容 div 的類名為 "dropdown-content"
-
-# 創建選項
-options = ["Option 1 ", "Option 2 ", "Option 3 "]  # 定義一個包含選項的列表
-
-for option in options:  # 遍歷每一個選項
-    link = document.createElement("a")  # 創建一個新的 a 元素用來表示每個選項
-    link.href = "#"  # 設定鏈接的 href 屬性為 "#"
-    link.textContent = option  # 將鏈接的文本設置為當前選項的名稱
-
-    # 綁定點擊事件，調用 select_option 函數並傳遞當前選項
-    link.bind("click", lambda event, selected_option=option: select_option(selected_option))  
-    dropdown_content <= link  # 將鏈接添加到下拉內容中
-
-dropdown <= button  # 將按鈕添加到下拉選單容器中
-dropdown <= dropdown_content  # 將下拉內容添加到下拉選單容器中
-document["brython_div1"] <= dropdown  # 將下拉選單容器添加到 ID 為 "brython_div1" 的元素中
-
-# 處理選項選擇的函數
-def select_option(option):  # 定義選項選擇的處理函數
-    document["brython_div2"].clear()  # 清空 ID 為 "brython_div2" 的內容
-    document["brython_div2"] <= f"You selected: {option}"  # 在 ID 為 "brython_div2" 的元素中顯示所選的選項
+    // 這個函數會被 Brython 調用來獲取行距
+    function getLineHeightFromJS() {
+        return get_line_height_of_element('output');  // 'text' 是段落元素的 id
+    }
 </script>
-<br />Brython << <a href='Brython.html'>Previous</a> <a href='Demo2.html'>Next</a> >> Demo2</div>
+<script type="text/python3">
+from browser import document, window
+
+def get_char_width_from_js(char):
+    # 呼叫 JavaScript 函數來獲取字符寬度
+    return window.getWidthFromJS(char)
+
+def get_line_height_from_js():
+    # 呼叫 JavaScript 函數來獲取行距
+    return window.getLineHeightFromJS()
+
+# 示例: 輸出英文字母和符號的寬度
+output = document["output"]
+output.html = "<h4>Character Widths (in pixels):</h4>"
+
+# 測試的字符範圍 (ASCII 符號)
+for char in "*abcdefghijklmnopqrstuvwxyz_ ":
+    width = get_char_width_from_js(char)
+    output <= f"{char}: {width}px" + "\n"
+
+output1 = document["output1"]
+output1.html = "<h4>Character Height (in pixels):</h4>"
+# 測量並顯示行距
+line_height = get_line_height_from_js()
+output1 <= f"Line height: {line_height}"
+</script>
+</p><br />Demo << <a href='Demo.html'>Previous</a> </div>
         
     <!-- footer -->
       <div class="container">

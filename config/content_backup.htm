@@ -1169,8 +1169,7 @@ Exit</pre>
 <p>3. 完成上列題目後, 請利用 Youtube 影片<span style="background-color: #ffff00;">簡報</span>個人的解題過程與心得.</p>
 <p>參考資料:</p>
 <p style="padding-left: 30px;"><a href="/downloads/1a_w11_note.txt">1a_w11_note.txt</a></p><h2>w12_hw</h2>
-<p>1. 請各組將執行<a href="http://229.cycu.org/python_2025_lite.7z">可攜程式</a>中 notebook 目錄中的 01_string_input_print.ipynb 至 10_for_search.ipynb,</p>
-<p>將各組員分別利用 Brython 以及 Jupyter lab 執行的過程拍成影片, 並將 Brython 執行程式存入個人 Gist 後, 呈現在 w12_hw 網頁上. 最後列出各範例所使用的指令用法, 以及心得.</p>
+<p>1. 請各組組員分別利用 <span style="background-color: #ccffcc;">Brython 以及 Jupyter lab</span> 環境, 執行<a href="http://229.cycu.org/python_2025_lite.7z">可攜程式</a> notebook 目錄中的 <span style="background-color: #ccffcc;">01_string_input_print.ipynb 至 10_for_search.ipynb</span> 筆記本程式, 完成後請將能在 Brython 執行的程式碼存入個人 <span style="background-color: #ccffcc;">Gist</span> 後, 將各程式執行連結放入 w12_hw 網頁上. 最後請說明各範例中所使用的程式語法以及執行心得.</p>
 <p></p><h1>CAD</h1>
 <h4>Solvespace</h4>
 <p style="padding-left: 30px;"><a href="https://solvespace.com/">https://solvespace.com/</a> </p>
@@ -2119,3 +2118,76 @@ def select_option(option):  # 定義選項選擇的處理函數
     document["brython_div2"].clear()  # 清空 ID 為 "brython_div2" 的內容
     document["brython_div2"] <= f"You selected: {option}"  # 在 ID 為 "brython_div2" 的元素中顯示所選的選項
 </script>
+<h2>Demo2</h2>
+<!-- 導入 brython 程式庫 -->
+<p>
+<script src="/static/brython.js"></script>
+<script src="/static/brython_stdlib.js"></script>
+</p>
+<!-- 啟動 Brython -->
+<p>
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['/static/','./../downloads/py/']});
+}
+</script>
+</p>
+<div id="output"></div>
+<div id="output1"></div>
+<p>
+<script>
+// JavaScript 函數，用於測量字符的寬度
+    function get_char_width(char) {
+        var container = document.createElement("div");
+        container.className = "char-container";
+        container.innerText = char;
+        document.body.appendChild(container);
+        var width = container.offsetWidth;
+        document.body.removeChild(container);
+        return width;
+    }
+
+    // 這個函數將會在 Brython 中被調用
+    function getWidthFromJS(char) {
+        return get_char_width(char);
+    }
+
+    // JavaScript 函數：讀取現有的 CSS 設定（如 line-height）
+    function get_line_height_of_element(element_id) {
+        var element = document.getElementById(element_id); // 獲取指定的元素
+        var style = window.getComputedStyle(element); // 獲取元素的計算後樣式
+        return style.lineHeight;  // 返回 line-height 的屬性值
+    }
+
+    // 這個函數會被 Brython 調用來獲取行距
+    function getLineHeightFromJS() {
+        return get_line_height_of_element('output');  // 'text' 是段落元素的 id
+    }
+</script>
+<script type="text/python3">
+from browser import document, window
+
+def get_char_width_from_js(char):
+    # 呼叫 JavaScript 函數來獲取字符寬度
+    return window.getWidthFromJS(char)
+
+def get_line_height_from_js():
+    # 呼叫 JavaScript 函數來獲取行距
+    return window.getLineHeightFromJS()
+
+# 示例: 輸出英文字母和符號的寬度
+output = document["output"]
+output.html = "<h4>Character Widths (in pixels):</h4>"
+
+# 測試的字符範圍 (ASCII 符號)
+for char in "*abcdefghijklmnopqrstuvwxyz_ ":
+    width = get_char_width_from_js(char)
+    output <= f"{char}: {width}px" + "\n"
+
+output1 = document["output1"]
+output1.html = "<h4>Character Height (in pixels):</h4>"
+# 測量並顯示行距
+line_height = get_line_height_from_js()
+output1 <= f"<p>Line height: {line_height}</p>"
+</script>
+</p>
