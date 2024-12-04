@@ -2,7 +2,7 @@
         <head>
         <title>cp2024</title>
         <meta charset="utf-8">
-<meta property="head" content="H2">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
@@ -141,17 +141,60 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">About << <a href='About.html'>Previous</a> <a href='Git.html'>Next</a> >> Git<br /><h1>Links</h1>
-<p><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/eb2e4327b65a0fe5c307ea329ef2f69c/raw/f64ab3abdda2967cdf82a9ac00edcf3b83c8346e/1a_w3_site_repo_brython.py">1a site and repo</a></p>
-<p><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/eb2e4327b65a0fe5c307ea329ef2f69c/raw/f64ab3abdda2967cdf82a9ac00edcf3b83c8346e/1b_w3_site_repo_brython.py">1b site and repo</a></p>
-<p>上列學員的作業網站與倉儲連結資料, 取自 <a href="https://github.com/mdecycu/list">https://github.com/mdecycu/list</a> 倉儲中各班名單的 Github Pages, 若學員的 Github 帳號有異動, 必須重新領取作業倉儲並透過 Pull Requests 加入或修改與本身學號對應的 Github 帳號.</p>
-<p>學號與 Github 帳號間的分隔符號為 Tab, 也就是 \t, Pull Requests 是一種允許任何 Github 使用者透過軟性且間接的方式, 提出修改任何公開倉儲中的任何資料.</p>
-<p>所謂軟性, 意即針對任何公開倉儲, 雖然任何 Github 使用者, 都可以透過 Pull Requests 提議修改內容, 但是否將修改的內容合併入目標倉儲的決定權, 並不在提出 Pull Requests 的用戶, 而是掌握在對目標倉儲有直接修改權的 Github 用戶.</p>
-<p>所謂間接, 指的是 Pull Requests 並非直接對目標倉儲的內容進行修改, 而是必須先登入 Github 帳號後, 連線到目標倉儲的網址, 然後透過 Fork 功能, 將目標倉儲"插"一份到自己的帳號下, 由於"插"回來的倉儲是位於自己的帳號下, 因此可以對 Forked 倉儲內容進行修改.</p>
-<p>但是修改 Forked 倉儲內容之後, 必須透過建立 Pull Requests, 將此 PR 通報到目標倉儲, 然後再由目標倉儲的管理者決定是否接受此"拉回"合併的"請求".</p>
-<p>上面所說明的所謂 Pull Requests 是希望從 Forked 倉儲的版本資料, 合併至目標倉儲, 其決定權在目標倉儲的管理者. 但另外一種使用情境則是, 當目標倉儲被某一使用者 Fork 之後, 目標倉儲的內容因為改版而變更後, 若先前 Forked 倉儲希望取得目標倉儲所進行的修改內容, 需要在建立所謂 Pull Requests 流程時的 URL, 將目標倉儲的管理者帳號與 Forked 倉儲用戶帳號對調, 要求執行所謂的"逆向" Pull Requests.</p>
-<p>由於"逆向" Pull Requests 的合併, 是希望將目標倉儲的修改內容, 合併至 Forked 倉儲, 其決定權自然屬於 Forked 倉儲的用戶, 因此該用戶可以自行同意該"逆向" Pull Requests 的合併請求, 讓 Forked 倉儲的內容與目標倉儲保持同步.</p>
-<br />About << <a href='About.html'>Previous</a> <a href='Git.html'>Next</a> >> Git</div>
+    <div id="tipue_search_content">w13 << <a href='w13.html'>Previous</a> <a href='CAD.html'>Next</a> >> CAD<br /><h1>w13_ai</h1>
+<div id="brython_div1"></div>
+<!-- 導入 brython 程式庫 -->
+<p>
+<script src="./../cmsimde/static/brython.js"></script>
+<script src="./../cmsimde/static/brython_stdlib.js"></script>
+</p>
+<!-- 啟動 Brython -->
+<p>
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
+}
+</script>
+<script type="text/python3">
+from browser import html
+from browser import document as doc
+
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width=600, height=600)  # 調整畫布大小以容納圓形
+brython_div = doc["brython_div1"]
+brython_div <= canvas
+
+ctx = canvas.getContext("2d")
+ctx.lineWidth = 1
+
+# 1. 繪製兩個矩形 (紅色邊框)
+ctx.strokeStyle = 'red'  # 設定矩形的邊框顏色為紅色
+ctx.beginPath()
+ctx.rect(100, 100, 200, 200)  # 第一個正方形的左上角在(100, 100)，邊長200
+ctx.rect(200, 200, 200, 200)  # 第二個正方形的左上角在(200, 200)，邊長200
+ctx.stroke()
+
+# 2. 繪製對角線 (藍色) - 只連接第一個矩形的左上角和第一個矩形的右下角
+ctx.strokeStyle = 'blue'  # 設定對角線顏色為藍色
+ctx.beginPath()
+ctx.moveTo(100, 100)  # 起點為第一個矩形的左上角 (100, 100)
+ctx.lineTo(300, 300)  # 終點為第一個矩形的右下角 (300, 300)
+ctx.stroke()
+
+# 3. 繪製兩個外切圓 (黑色)
+ctx.strokeStyle = 'black'  # 設定圓的顏色為黑色
+
+# 第一個矩形的外切圓
+ctx.beginPath()
+ctx.arc(200, 200, 141.4, 0, 2 * 3.14)  # 圓心在(200, 200)，半徑為141.4（sqrt(2) * 邊長的一半）
+ctx.stroke()
+
+# 第二個矩形的外切圓
+ctx.beginPath()
+ctx.arc(300, 300, 141.4, 0, 2 * 3.14)  # 圓心在(300, 300)，半徑為141.4
+ctx.stroke()
+</script>
+</p><br />w13 << <a href='w13.html'>Previous</a> <a href='CAD.html'>Next</a> >> CAD</div>
         
     <!-- footer -->
       <div class="container">
