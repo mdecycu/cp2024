@@ -2,6 +2,7 @@
         <head>
         <title>cp2024</title>
         <meta charset="utf-8">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
@@ -94,6 +95,7 @@ img.add_border {
 </head>
 <body>
 <div class='container'><nav>
+        
     <div class="site-wrap">
 
     <div class="site-mobile-menu">
@@ -139,4 +141,96 @@ img.add_border {
           </div>
           
         </header>
-    </nav><section><h1>SMap</h1><div id="tipue_search_content"></div><ul><li><a href='About.html'>About</a><ul><li><a href='Links.html'>Links</a><li><a href='Git.html'>Git</a><li><a href='Office365.html'>Office365</a><li><a href='Evaluate.html'>Evaluate</a><li><a href='Jupyter.html'>Jupyter</a><ul><li><a href='Notebook.html'>Notebook</a></li></ul><li><a href='Wink.html'>Wink</a><li><a href='W&H.html'>W&H</a><ul><li><a href='DC.html'>DC</a></li></ul><li><a href='AI.html'>AI</a><li><a href='Servers.html'>Servers</a><ul><li><a href='Linux.html'>Linux</a><li><a href='ANSIC.html'>ANSIC</a></li></li></ul></ul><li><a href='Topics.html'>Topics</a><ul><li><a href='Repository.html'>Repository</a><li><a href='Topic 1.html'>Topic 1</a><ul><li><a href='Codespaces.html'>Codespaces</a><li><a href='Portable.html'>Portable</a></li></ul><li><a href='class_materials.html'>class_materials</a><ul><li><a href='Seat.html'>Seat</a><li><a href='cmsimde.html'>cmsimde</a><li><a href='Vocabulary.html'>Vocabulary</a><li><a href='Computer.html'>Computer</a><li><a href='Environment.html'>Environment</a><li><a href='String.html'>String</a></li></ul><li><a href='Topic 2.html'>Topic 2</a><li><a href='Topic 3.html'>Topic 3</a><li><a href='Topic 4.html'>Topic 4</a></li></ul><li><a href='Exam.html'>Exam</a><ul><li><a href='Exam1.html'>Exam1</a><ul><li><a href='Problem_set.html'>Problem_set</a></li></ul><li><a href='w11_hw.html'>w11_hw</a><li><a href='w12_hw.html'>w12_hw</a><li><a href='w13.html'>w13</a></li></ul><li><a href='CAD.html'>CAD</a><ul><li><a href='CoppeliaSim.html'>CoppeliaSim</a><li><a href='Webots.html'>Webots</a></li></ul><li><a href='Python.html'>Python</a><li><a href='References.html'>References</a><li><a href='Brython.html'>Brython</a><ul><li><a href='Demo.html'>Demo</a><li><a href='Demo2.html'>Demo2</a></li></ul></section></div></body></html>
+    <div id="tipue_search_content">w12_hw << <a href='w12_hw.html'>Previous</a> <a href='CAD.html'>Next</a> >> CAD<br /><h1>w13</h1>
+<p>w13 作業:</p>
+<p>請在下列圖形中的兩個正方形外圍, 以黑色畫筆畫圓, 並設法在各線條所圍成的封閉區域塗上不同顏色. 操作過程請拍攝影片, 並在頁面中列出作業心得.</p>
+<div id="brython_div1"></div>
+<!-- 導入 brython 程式庫 -->
+<p>
+<script src="./../cmsimde/static/brython.js"></script>
+<script src="./../cmsimde/static/brython_stdlib.js"></script>
+</p>
+<!-- 啟動 Brython -->
+<p>
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
+}
+</script>
+<script type="text/python3">
+from browser import html
+from browser import document as doc
+
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width=400, height=400)
+brython_div = doc["brython_div1"]
+brython_div <= canvas
+
+ctx = canvas.getContext("2d")
+ctx.lineWidth = 1
+
+# 繪製兩個矩形
+ctx.strokeStyle = 'red'  # 設定矩形顏色為紅色
+ctx.beginPath() 
+ctx.rect(10, 10, 200, 200)
+ctx.rect(110, 110, 200, 200)
+ctx.stroke()
+
+# 繪製對角線，顏色設定為藍色
+ctx.strokeStyle = 'blue'  # 設定對角線顏色為藍色
+ctx.beginPath() 
+ctx.moveTo(10, 10)
+ctx.lineTo(210, 210)
+ctx.stroke()
+</script>
+</p><br />w12_hw << <a href='w12_hw.html'>Previous</a> <a href='CAD.html'>Next</a> >> CAD</div>
+        
+    <!-- footer -->
+      <div class="container">
+        <div class="row pt-3 mx-auto">
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+        </div>
+      </div>
+    <!-- for footer -->
+    
+        </div> <!-- for site wrap -->
+            <!-- <script src="../cmsimde/static/chimper/js/jquery-3.3.1.min.js"></script> -->
+            <script src="../cmsimde/static/chimper/js/jquery-migrate-3.0.1.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery-ui.js"></script>
+            <script src="../cmsimde/static/chimper/js/popper.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/bootstrap.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/owl.carousel.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.stellar.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.countdown.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.magnific-popup.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/bootstrap-datepicker.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/aos.js"></script>
+            <!--
+            <script src="../cmsimde/static/chimper/js/typed.js"></script>
+                    <script>
+                    var typed = new Typed('.typed-words', {
+                    strings: ["Web Apps"," WordPress"," Mobile Apps"],
+                    typeSpeed: 80,
+                    backSpeed: 80,
+                    backDelay: 4000,
+                    startDelay: 1000,
+                    loop: true,
+                    showCursor: true
+                    });
+                    </script>
+            -->
+            <script src="../cmsimde/static/chimper/js/main.js"></script>
+        
+<!-- 啟用 LaTeX equations 編輯 -->
+  <!-- <script>
+  MathJax = {
+    tex: {inlineMath: [['$', '$'], ['\(', '\)']]}
+  };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>-->
+    </body></html>
+        
