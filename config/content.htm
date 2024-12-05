@@ -1257,7 +1257,8 @@ ctx.moveTo(10, 10)
 ctx.lineTo(210, 210)
 ctx.stroke()
 </script>
-</p><h3>w13_ai</h3>
+</p>
+<h3>w13_ai</h3>
 <div id="brython_div1"></div>
 <!-- 導入 brython 程式庫 -->
 <p>
@@ -1311,81 +1312,20 @@ ctx.arc(300, 300, 141.4, 0, 2 * 3.14)  # 圓心在(300, 300)，半徑為141.4
 ctx.stroke()
 </script>
 </p>
-<h3>Scan_Line</h3>
-<p><canvas height="600" id="canvas" width="600"></canvas></p>
-<script>
-// 設定畫布和上下文
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-
-// 多邊形的頂點 (定義一個簡單的五邊形)
-const polygon = [
-    { x: 100, y: 100 },
-    { x: 500, y: 100 },
-    { x: 400, y: 300 },
-    { x: 200, y: 400 },
-    { x: 50, y: 300 }
-];
-
-// 畫出多邊形
-function drawPolygon() {
-    ctx.beginPath();
-    ctx.moveTo(polygon[0].x, polygon[0].y);
-    for (let i = 1; i < polygon.length; i++) {
-        ctx.lineTo(polygon[i].x, polygon[i].y);
-    }
-    ctx.closePath();
-    ctx.stroke(); // 只畫邊界
-}
-
-// 使用掃描線算法來填充多邊形
-function scanlineFill() {
-    // 計算多邊形的邊界範圍
-    const minY = Math.min(...polygon.map(p => p.y));
-    const maxY = Math.max(...polygon.map(p => p.y));
-
-    // 創建一個空的掃描線區域
-    for (let y = minY; y <= maxY; y++) {
-        const intersections = [];
-
-        // 檢查每一條邊與掃描線的交點
-        for (let i = 0; i < polygon.length; i++) {
-            const p1 = polygon[i];
-            const p2 = polygon[(i + 1) % polygon.length]; // 使用模擬圓形連接最後一個頂點和第一個頂點
-
-            // 檢查是否有交點 (檢查y是否在邊的範圍內)
-            if ((p1.y <= y && p2.y > y) || (p2.y <= y && p1.y > y)) {
-                // 計算交點
-                const xIntersect = p1.x + (y - p1.y) * (p2.x - p1.x) / (p2.y - p1.y);
-                intersections.push(xIntersect);
-            }
-        }
-
-        // 排序交點
-        intersections.sort((a, b) => a - b);
-
-        // 填充交點之間的區域
-        for (let i = 0; i < intersections.length; i += 2) {
-            if (i + 1 < intersections.length) {
-                ctx.beginPath();
-                ctx.moveTo(intersections[i], y);
-                ctx.lineTo(intersections[i + 1], y);
-                ctx.strokeStyle = "green";  // 設定邊界顏色為綠色
-                ctx.lineTo(intersections[i + 1], y);
-                ctx.closePath();
-                ctx.fillStyle = "green";  // 設定填充顏色為綠色
-                ctx.fill();  // 填充區域
-            }
-        }
-    }
-}
-
-// 1. 先畫出多邊形
-drawPolygon();
-
-// 2. 使用掃描線算法填充多邊形
-scanlineFill();
-</script><h1>CAD</h1>
+<h3>w13_hw</h3>
+<p>解題思考: 透過點座標的掃瞄, 先採用尺寸較大格點 (如每 10 pixel 掃描一點), 即可判定點群位於那一個特定區域並<a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5eca62565d509668d731720f1994e127/raw/3148911ad594ac9e5a370cdd06227e972176779c/inside_circle1_brython.py">進行著色</a>. 當掃描細至單一 pixel 時, 就可以完成<a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5eca62565d509668d731720f1994e127/raw/fae5dd0145a7d14926dc7c9807ba2535d4b993c0/inside_circle1_1pixel_brython.py">區域著色</a>.</p>
+<p>另外, 透過 if 判定各點所在區域的條件組合, 可以就是否:</p>
+<p>位於第一個圓內部</p>
+<p>位於第二個圓內部</p>
+<p>位於第一個正方形內部</p>
+<p>位於第二個正方形內部</p>
+<p>位於第一個正方形上方、下方、左方、右方</p>
+<p>位於第二個正方形上方、下方、左方、右方</p>
+<p>位於對角線上方範圍</p>
+<p>位於對角線下方範圍</p>
+<p>等條件<a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5eca62565d509668d731720f1994e127/raw/c885949528f12bfa567ebbd2474d13ef4b5c1e46/if_append_brython.py">區分各區域的不同屬性</a>, 並設法利用這些區域屬性進行<a href="https://stackoverflow.com/questions/50528954/give-each-shape-on-html5-canvas-a-random-colour">顏色運算</a>.</p>
+<p></p>
+<p></p><h1>CAD</h1>
 <h4>Solvespace</h4>
 <p style="padding-left: 30px;"><a href="https://solvespace.com/">https://solvespace.com/</a> </p>
 <h4>SolidWorks</h4>
@@ -1403,7 +1343,8 @@ scanlineFill();
 <h4>CoppeliaSim</h4>
 <p style="padding-left: 30px;"><a href="/downloads/cd2023_pj3ag4_zmq_football_4.7.7z">cd2023_pj3ag4_zmq_football_4.7.7z</a></p>
 <p style="padding-left: 30px;"><a href="/downloads/cad2024_foosball_with_ball_python_script.7z">cad2024_foosball_with_ball_python_script.7z</a></p>
-<h4></h4><h2>CoppeliaSim</h2>
+<h4></h4>
+<h2>CoppeliaSim</h2>
 <p>下載相容於 IPv6 的 CoppeliaSim 4.7.0 rev4: <a href="http://229.cycu.org/CoppeliaSim_Edu_4.7.0_rev4_for_2024Fall.7z">CoppeliaSim_Edu_4.7.0_rev4_for_2024Fall.7z</a>, 已經內建於 <a href="http://229.cycu.org/python_2025_lite.7z">python_2025_lite.7z</a> (428 MB, 解開壓縮後約 1.5 GB)</p>
 <p><a href="https://manual.coppeliarobotics.com/en/versionInfo.htm">https://manual.coppeliarobotics.com/en/versionInfo.htm</a></p>
 <p>user settings file is C:\Users\%USERNAME%\AppData\Roaming/CoppeliaSim/usrset.txt</p>
@@ -2341,7 +2282,8 @@ document["brython_div1"] <= dropdown  # 將下拉選單容器添加到 ID 為 "b
 def select_option(option):  # 定義選項選擇的處理函數
     document["brython_div2"].clear()  # 清空 ID 為 "brython_div2" 的內容
     document["brython_div2"] <= f"You selected: {option}"  # 在 ID 為 "brython_div2" 的元素中顯示所選的選項
-</script><h2>Demo2</h2>
+</script>
+<h2>Demo2</h2>
 <!-- 導入 brython 程式庫 -->
 <p>
 <script src="/static/brython.js"></script>
