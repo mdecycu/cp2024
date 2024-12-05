@@ -2,7 +2,7 @@
         <head>
         <title>cp2024</title>
         <meta charset="utf-8">
-<meta property="head" content="H2">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
@@ -141,7 +141,7 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Demo << <a href='Demo.html'>Previous</a> <br /><h1>Demo2</h1>
+    <div id="tipue_search_content">w13_ai << <a href='w13_ai.html'>Previous</a> <a href='CAD.html'>Next</a> >> CAD<br /><h1>w13_hw</h1>
 <!-- 導入 brython 程式庫 -->
 <p>
 <script src="./../cmsimde/static/brython.js"></script>
@@ -155,65 +155,25 @@ brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
 }
 </script>
 </p>
-<div id="output"></div>
-<div id="output1"></div>
+<div id="brython_div1"></div>
 <p>
-<script>
-// JavaScript 函數，用於測量字符的寬度
-    function get_char_width(char) {
-        var container = document.createElement("div");
-        container.className = "char-container";
-        container.innerText = char;
-        document.body.appendChild(container);
-        var width = container.offsetWidth;
-        document.body.removeChild(container);
-        return width;
-    }
+<script type="text/python">
+from browser import html
+from browser import document as doc
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width=400, height=400)
+brython_div = doc["brython_div1"]
+brython_div <= canvas
+ctx = canvas.getContext("2d")
 
-    // 這個函數將會在 Brython 中被調用
-    function getWidthFromJS(char) {
-        return get_char_width(char);
-    }
-
-    // JavaScript 函數：讀取現有的 CSS 設定（如 line-height）
-    function get_line_height_of_element(element_id) {
-        var element = document.getElementById(element_id); // 獲取指定的元素
-        var style = window.getComputedStyle(element); // 獲取元素的計算後樣式
-        return style.lineHeight;  // 返回 line-height 的屬性值
-    }
-
-    // 這個函數會被 Brython 調用來獲取行距
-    function getLineHeightFromJS() {
-        return get_line_height_of_element('output');  // 'text' 是段落元素的 id
-    }
+ctx.lineWidth = 1
+ctx.strokeStyle = 'blue' 
+ctx.beginPath() 
+ctx.moveTo(10, 10)
+ctx.lineTo(100, 100)
+ctx.stroke()
 </script>
-<script type="text/python3">
-from browser import document, window
-
-def get_char_width_from_js(char):
-    # 呼叫 JavaScript 函數來獲取字符寬度
-    return window.getWidthFromJS(char)
-
-def get_line_height_from_js():
-    # 呼叫 JavaScript 函數來獲取行距
-    return window.getLineHeightFromJS()
-
-# 示例: 輸出英文字母和符號的寬度
-output = document["output"]
-output.html = "<h4>Character Widths (in pixels):</h4>"
-
-# 測試的字符範圍 (ASCII 符號)
-for char in "*abcdefghijklmnopqrstuvwxyz_ ":
-    width = get_char_width_from_js(char)
-    output <= f"{char}: {width}px" + "\n"
-
-output1 = document["output1"]
-output1.html = "<h4>Character Height (in pixels):</h4>"
-# 測量並顯示行距
-line_height = get_line_height_from_js()
-output1 <= f"Line height: {line_height}"
-</script>
-</p><br />Demo << <a href='Demo.html'>Previous</a> </div>
+</p><br />w13_ai << <a href='w13_ai.html'>Previous</a> <a href='CAD.html'>Next</a> >> CAD</div>
         
     <!-- footer -->
       <div class="container">

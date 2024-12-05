@@ -1310,6 +1310,38 @@ ctx.beginPath()
 ctx.arc(300, 300, 141.4, 0, 2 * 3.14)  # 圓心在(300, 300)，半徑為141.4
 ctx.stroke()
 </script>
+</p><h3>w13_hw</h3>
+<!-- 導入 brython 程式庫 -->
+<p>
+<script src="/static/brython.js"></script>
+<script src="/static/brython_stdlib.js"></script>
+</p>
+<!-- 啟動 Brython -->
+<p>
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['/static/','./../downloads/py/']});
+}
+</script>
+</p>
+<div id="brython_div1"></div>
+<p>
+<script type="text/python">
+from browser import html
+from browser import document as doc
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width=400, height=400)
+brython_div = doc["brython_div1"]
+brython_div <= canvas
+ctx = canvas.getContext("2d")
+
+ctx.lineWidth = 1
+ctx.strokeStyle = 'blue' 
+ctx.beginPath() 
+ctx.moveTo(10, 10)
+ctx.lineTo(100, 100)
+ctx.stroke()
+</script>
 </p><h1>CAD</h1>
 <h4>Solvespace</h4>
 <p style="padding-left: 30px;"><a href="https://solvespace.com/">https://solvespace.com/</a> </p>
