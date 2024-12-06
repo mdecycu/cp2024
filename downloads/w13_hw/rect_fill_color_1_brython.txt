@@ -1,0 +1,81 @@
+from browser import html
+from browser import document as doc
+
+# 定義畫布的大小（變數設定）
+canvas_width = 400
+canvas_height = 400
+
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width=canvas_width, height=canvas_height)
+brython_div = doc["brython_div1"]
+brython_div <= canvas
+
+ctx = canvas.getContext("2d")
+ctx.lineWidth = 1
+
+# 定義正方形的起始位置和邊長
+square_x = 50
+square_y = 50
+square_size = 200
+
+# 定義步長（每幾個像素檢查一次）
+step_size = 10
+
+# 計算圓點的大小，並確保最小值為 1
+circle_radius = max(step_size / 2, 1)
+
+# 繪製正方形
+ctx.strokeStyle = 'red'  # 設定正方形的顏色為紅色
+ctx.beginPath()
+ctx.rect(square_x, square_y, square_size, square_size)
+ctx.stroke()
+
+# 定義圓點顏色
+colors = {
+    "square": "blue",       # 正方形內部區域
+    "top": "cyan",          # 上方區域
+    "bottom": "magenta",    # 下方區域
+    "left": "yellow",       # 左側區域
+    "right": "pink",        # 右側區域
+    "top_left": "green",    # 上左交界區域
+    "top_right": "orange",  # 上右交界區域
+    "bottom_left": "purple", # 下左交界區域
+    "bottom_right": "brown" # 下右交界區域
+}
+
+# 計算需要遍歷的範圍
+x_min, y_min = 0, 0
+
+# 以變數控制每 10 像素的間隔，畫出圓點
+for x in range(x_min + step_size, canvas_width, step_size):  # x 從 step_size 開始，步長為 step_size
+    for y in range(y_min + step_size, canvas_height, step_size):  # y 從 step_size 開始，步長為 step_size
+        # 判斷區域，並設定顏色
+        if square_x <= x < square_x + square_size and square_y <= y < square_y + square_size:
+            region = "square"  # 在正方形內部
+        elif y < square_y:
+            if x < square_x:
+                region = "top_left"  # 上左交界區域
+            elif x >= square_x + square_size:
+                region = "top_right"  # 上右交界區域
+            else:
+                region = "top"  # 上方區域
+        elif y >= square_y + square_size:
+            if x < square_x:
+                region = "bottom_left"  # 下左交界區域
+            elif x >= square_x + square_size:
+                region = "bottom_right"  # 下右交界區域
+            else:
+                region = "bottom"  # 下方區域
+        else:
+            if x < square_x:
+                region = "left"  # 左側區域
+            elif x >= square_x + square_size:
+                region = "right"  # 右側區域
+
+        # 設定圓點顏色
+        ctx.fillStyle = colors[region]
+        
+        # 畫圓點
+        ctx.beginPath()
+        ctx.arc(x, y, circle_radius, 0, 2 * 3.14159)  # 半徑為 circle_radius 的圓
+        ctx.fill()

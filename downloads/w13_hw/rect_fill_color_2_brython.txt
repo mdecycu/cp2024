@@ -1,0 +1,84 @@
+from browser import html
+from browser import document as doc
+
+# 定義一個函式來初始化畫布
+def initialize_canvas(canvas_width=400, canvas_height=400):
+    # 創建 canvas 並設置寬度與高度
+    canvas = html.CANVAS(width=canvas_width, height=canvas_height)
+    brython_div = doc["brython_div1"]
+    brython_div <= canvas
+    
+    # 獲取 canvas 的 2D 上下文
+    ctx = canvas.getContext("2d")
+    
+    return canvas, ctx
+
+# 定義函式來設置畫布並繪製正方形與圓點
+def draw_colored_dots_on_canvas(canvas, ctx, square_x=50, square_y=50, square_size=200, step_size=10):
+    # 2. 定義圓點顏色（區域顏色設定 - 使用較為鮮豔的顏色）
+    colors = {
+        "square": "#FF6347",       # 正方形內部區域 (鮮紅色)
+        "top": "#1E90FF",          # 上方區域 (蔚藍色)
+        "bottom": "#FFD700",       # 下方區域 (鮮黃色)
+        "left": "#50F878",         # 左側區域 (翡翠綠)
+        "right": "#FFA500",        # 右側區域 (橙色)
+        "top_left": "#8A2BE2",     # 上左交界區域 (紫色)
+        "top_right": "#FF1493",    # 上右交界區域 (亮粉色)
+        "bottom_left": "#32CD32",  # 下左交界區域 (明綠色)
+        "bottom_right": "#00BFFF"  # 下右交界區域 (亮藍色) 
+    }
+
+    # 3. 計算圓點大小，並確保最小值為 1
+    circle_radius = max(step_size / 2, 1)
+
+    # 4. 繪製正方形
+    ctx.strokeStyle = '#2F4F4F'  # 設定正方形的顏色為深灰色
+    ctx.beginPath()
+    ctx.rect(square_x, square_y, square_size, square_size)
+    ctx.stroke()
+
+    # 5. 判斷區域並繪製圓點的函式
+    def draw_dots():
+        for x in range(0 + step_size, canvas.width, step_size):  # x 從 step_size 開始，步長為 step_size
+            for y in range(0 + step_size, canvas.height, step_size):  # y 從 step_size 開始，步長為 step_size
+                # 判斷區域，並設定顏色
+                if square_x <= x < square_x + square_size and square_y <= y < square_y + square_size:
+                    region = "square"  # 在正方形內部
+                elif y < square_y:
+                    if x < square_x:
+                        region = "top_left"  # 上左交界區域
+                    elif x >= square_x + square_size:
+                        region = "top_right"  # 上右交界區域
+                    else:
+                        region = "top"  # 上方區域
+                elif y >= square_y + square_size:
+                    if x < square_x:
+                        region = "bottom_left"  # 下左交界區域
+                    elif x >= square_x + square_size:
+                        region = "bottom_right"  # 下右交界區域
+                    else:
+                        region = "bottom"  # 下方區域
+                else:
+                    if x < square_x:
+                        region = "left"  # 左側區域
+                    elif x >= square_x + square_size:
+                        region = "right"  # 右側區域
+
+                # 設定圓點顏色
+                ctx.fillStyle = colors[region]
+                
+                # 畫圓點
+                ctx.beginPath()
+                ctx.arc(x, y, circle_radius, 0, 2 * 3.14159)  # 半徑為 circle_radius 的圓
+                ctx.fill()
+
+    # 6. 呼叫繪製圓點的函式
+    draw_dots()
+
+# 呼叫初始化函式來創建畫布和上下文
+canvas_width = 400
+canvas_height = 400
+canvas, ctx = initialize_canvas(canvas_width, canvas_height)
+
+# 呼叫繪製正方形與圓點的函式
+draw_colored_dots_on_canvas(canvas, ctx, square_x=50, square_y=50, square_size=200, step_size=10)
