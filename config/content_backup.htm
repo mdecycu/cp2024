@@ -33,14 +33,17 @@
 <h2>Links</h2>
 <p><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/eb2e4327b65a0fe5c307ea329ef2f69c/raw/f64ab3abdda2967cdf82a9ac00edcf3b83c8346e/1a_w3_site_repo_brython.py">1a site and repo</a></p>
 <p><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/eb2e4327b65a0fe5c307ea329ef2f69c/raw/f64ab3abdda2967cdf82a9ac00edcf3b83c8346e/1b_w3_site_repo_brython.py">1b site and repo</a></p>
+<hr/>
+<p>1b</p>
+<p style="padding-left: 30px;"><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/722d181972f94ffc238af912cb97d09d/raw/2dbc73e836424561e34cf05b7a91eaa0c6e7076c/1b_weekly_brython.py&amp;page_title=w10">w10</a></p>
+<hr/>
 <p>上列學員的作業網站與倉儲連結資料, 取自 <a href="https://github.com/mdecycu/list">https://github.com/mdecycu/list</a> 倉儲中各班名單的 Github Pages, 若學員的 Github 帳號有異動, 必須重新領取作業倉儲並透過 Pull Requests 加入或修改與本身學號對應的 Github 帳號.</p>
 <p>學號與 Github 帳號間的分隔符號為 Tab, 也就是 \t, Pull Requests 是一種允許任何 Github 使用者透過軟性且間接的方式, 提出修改任何公開倉儲中的任何資料.</p>
 <p>所謂軟性, 意即針對任何公開倉儲, 雖然任何 Github 使用者, 都可以透過 Pull Requests 提議修改內容, 但是否將修改的內容合併入目標倉儲的決定權, 並不在提出 Pull Requests 的用戶, 而是掌握在對目標倉儲有直接修改權的 Github 用戶.</p>
 <p>所謂間接, 指的是 Pull Requests 並非直接對目標倉儲的內容進行修改, 而是必須先登入 Github 帳號後, 連線到目標倉儲的網址, 然後透過 Fork 功能, 將目標倉儲"插"一份到自己的帳號下, 由於"插"回來的倉儲是位於自己的帳號下, 因此可以對 Forked 倉儲內容進行修改.</p>
 <p>但是修改 Forked 倉儲內容之後, 必須透過建立 Pull Requests, 將此 PR 通報到目標倉儲, 然後再由目標倉儲的管理者決定是否接受此"拉回"合併的"請求".</p>
 <p>上面所說明的所謂 Pull Requests 是希望從 Forked 倉儲的版本資料, 合併至目標倉儲, 其決定權在目標倉儲的管理者. 但另外一種使用情境則是, 當目標倉儲被某一使用者 Fork 之後, 目標倉儲的內容因為改版而變更後, 若先前 Forked 倉儲希望取得目標倉儲所進行的修改內容, 需要在建立所謂 Pull Requests 流程時的 URL, 將目標倉儲的管理者帳號與 Forked 倉儲用戶帳號對調, 要求執行所謂的"逆向" Pull Requests.</p>
-<p>由於"逆向" Pull Requests 的合併, 是希望將目標倉儲的修改內容, 合併至 Forked 倉儲, 其決定權自然屬於 Forked 倉儲的用戶, 因此該用戶可以自行同意該"逆向" Pull Requests 的合併請求, 讓 Forked 倉儲的內容與目標倉儲保持同步.</p>
-<h2>Git</h2>
+<p>由於"逆向" Pull Requests 的合併, 是希望將目標倉儲的修改內容, 合併至 Forked 倉儲, 其決定權自然屬於 Forked 倉儲的用戶, 因此該用戶可以自行同意該"逆向" Pull Requests 的合併請求, 讓 Forked 倉儲的內容與目標倉儲保持同步.</p><h2>Git</h2>
 <p>透過與 AI 對話了解 Git:</p>
 <p><span style="background-color: #ccffcc;">使用 git 的常見情境與對應指令有哪些? </span></p>
 <p style="padding-left: 30px;"><span style="background-color: #ccffcc;">請再舉一些例子: </span></p>
@@ -550,7 +553,7 @@ flaskapp.app.run(host=ip, port=port, debug=True, ssl_context=('cert.pem', 'key.p
 <li>目前 cp2024 使用 cmsimde 子模組, 學員的 mdecp2024 下作業倉儲則直接將 cmsimde 作為目錄 (差別?)</li>
 <li>目前進度為 print() 與 for 迴圈的應用, 除了基本格式化字串列印, 相同程式邏輯, 可以將 3D 方塊放入機電模擬環境</li>
 </ol>
-<hr/>
+<hr>
 <p>如何登入 Github 後, 顯示出帳號:</p>
 <p>how to show account after login to github?</p>
 <p>After logging into GitHub, you can view your account details and repositories by following these steps:</p>
@@ -559,7 +562,7 @@ flaskapp.app.run(host=ip, port=port, debug=True, ssl_context=('cert.pem', 'key.p
 <p style="padding-left: 30px;">3. Your Profile: Select "Your profile" from the dropdown menu. This will take you to your profile page, where you can see your repositories, contributions, and other account details.</p>
 <p style="padding-left: 30px;">4. Repositories: To view your repositories, click on the "Repositories" tab on your profile page. This will list all the repositories you own and contribute to.</p>
 <p style="padding-left: 30px;">5. Settings: If you want to manage account settings, click on "Settings" in the dropdown under your profile icon. Here, you can update your profile information, manage notifications, and more.</p>
-<hr/>
+<hr>
 <p>1b w1</p>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/n95FYV0uUg0?si=S_s-Jt0N-pVUtD0S" title="YouTube video player" width="560"></iframe></p>
 <p>作業 template: <a href="https://mde.tw/cp2024_hw">https://mde.tw/cp2024_hw</a> </p>
@@ -1325,6 +1328,8 @@ ctx.stroke()
 <p>位於對角線下方範圍</p>
 <p>等條件<a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5eca62565d509668d731720f1994e127/raw/c885949528f12bfa567ebbd2474d13ef4b5c1e46/if_append_brython.py">區分各區域的不同屬性</a>, 並設法利用這些區域屬性進行<a href="https://stackoverflow.com/questions/50528954/give-each-shape-on-html5-canvas-a-random-colour">顏色運算</a>.</p>
 <p><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5eca62565d509668d731720f1994e127/raw/676c6f27ab33fd18873284c51b4c2c008d312c01/almost_right_brython.py">接近正確</a>以及<a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5eca62565d509668d731720f1994e127/raw/cb369d190d0e69a48e4d44dea5fcab660f4c0f18/almost_right2_brython.py">更細化</a>的著色範例.</p>
+<p><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5eca62565d509668d731720f1994e127/raw/25a616bb5e60e5ca9003d954bb10772d0ab86ae8/rect_fill_color_1_brython.py">rect_fill_1</a></p>
+<p><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5eca62565d509668d731720f1994e127/raw/25a616bb5e60e5ca9003d954bb10772d0ab86ae8/rect_fill_color_2_brython.py">rect_fill_2</a></p>
 <p></p>
 <p></p><h1>CAD</h1>
 <h4>Solvespace</h4>
@@ -2356,4 +2361,4 @@ output1.html = "<h4>Character Height (in pixels):</h4>"
 line_height = get_line_height_from_js()
 output1 <= f"Line height: {line_height}"
 </script>
-</p>
+</p></hr></hr>
