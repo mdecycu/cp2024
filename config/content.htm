@@ -1317,7 +1317,18 @@ ctx.arc(300, 300, 141.4, 0, 2 * 3.14)  # 圓心在(300, 300)，半徑為141.4
 ctx.stroke()
 </script>
 </p>
-<h3>w13_hw</h3>
+<p>我們希望透過<a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5eca62565d509668d731720f1994e127/raw/7a086162a04783664bf64d9abd49da059634a0b4/multiple_circle_interaction_fill.py">這個程式</a>的架構來進行解題過程. 其中包括:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 定義一個函式來初始化畫布
+def initialize_canvas(canvas_width=400, canvas_height=400, id="brython_div1"):
+    # 創建一個 canvas 元素，並設置它的寬度和高度
+    canvas = html.CANVAS(width=canvas_width, height=canvas_height)
+    # 獲取指定 id 的 DOM 元素，將 canvas 元素加到網頁中
+    brython_div = doc[id]
+    brython_div &lt;= canvas  # 將 canvas 加入網頁的 div 中
+    # 獲取 canvas 的 2D 上下文，用於繪圖操作
+    ctx = canvas.getContext("2d")
+    return canvas, ctx  # 返回畫布和上下文
+</pre><h3>w13_hw</h3>
 <p>解題思考: 透過點座標的掃瞄, 先採用尺寸較大格點 (如每 10 pixel 掃描一點), 即可判定點群位於那一個特定區域並<a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5eca62565d509668d731720f1994e127/raw/3148911ad594ac9e5a370cdd06227e972176779c/inside_circle1_brython.py">進行著色</a>. 當掃描細至單一 pixel 時, 就可以完成<a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5eca62565d509668d731720f1994e127/raw/fae5dd0145a7d14926dc7c9807ba2535d4b993c0/inside_circle1_1pixel_brython.py">區域著色</a>.</p>
 <p>另外, 透過 if 判定各點所在區域的條件組合, 可以就是否:</p>
 <p>位於第一個圓內部</p>

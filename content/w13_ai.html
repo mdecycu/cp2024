@@ -195,7 +195,18 @@ ctx.arc(300, 300, 141.4, 0, 2 * 3.14)  # 圓心在(300, 300)，半徑為141.4
 ctx.stroke()
 </script>
 </p>
-<br />w13 << <a href='w13.html'>Previous</a> <a href='w13_hw.html'>Next</a> >> w13_hw</div>
+<p>我們希望透過<a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5eca62565d509668d731720f1994e127/raw/7a086162a04783664bf64d9abd49da059634a0b4/multiple_circle_interaction_fill.py">這個程式</a>的架構來進行解題過程. 其中包括:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 定義一個函式來初始化畫布
+def initialize_canvas(canvas_width=400, canvas_height=400, id="brython_div1"):
+    # 創建一個 canvas 元素，並設置它的寬度和高度
+    canvas = html.CANVAS(width=canvas_width, height=canvas_height)
+    # 獲取指定 id 的 DOM 元素，將 canvas 元素加到網頁中
+    brython_div = doc[id]
+    brython_div &lt;= canvas  # 將 canvas 加入網頁的 div 中
+    # 獲取 canvas 的 2D 上下文，用於繪圖操作
+    ctx = canvas.getContext("2d")
+    return canvas, ctx  # 返回畫布和上下文
+</pre><br />w13 << <a href='w13.html'>Previous</a> <a href='w13_hw.html'>Next</a> >> w13_hw</div>
         
     <!-- footer -->
       <div class="container">
