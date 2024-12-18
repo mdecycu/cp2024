@@ -2,7 +2,7 @@
         <head>
         <title>cp2024</title>
         <meta charset="utf-8">
-<meta property="head" content="H2">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
@@ -141,50 +141,38 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">w12_hw << <a href='w12_hw.html'>Previous</a> <a href='w13_ai.html'>Next</a> >> w13_ai<br /><h1>w13</h1>
-<p>w13 作業:</p>
-<p>請在下列圖形中的兩個正方形外圍, 以黑色畫筆畫圓, 並設法在各線條所圍成的封閉區域塗上不同顏色. 操作過程請拍攝影片, 並在頁面中列出作業心得.</p>
-<div id="brython_div1"></div>
-<!-- 導入 brython 程式庫 -->
-<p>
-<script src="./../cmsimde/static/brython.js"></script>
-<script src="./../cmsimde/static/brython_stdlib.js"></script>
-</p>
-<!-- 啟動 Brython -->
-<p>
-<script>
-window.onload=function(){
-brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
-}
-</script>
-<script type="text/python3">
-from browser import html
+    <div id="tipue_search_content">w13_hw << <a href='w13_hw.html'>Previous</a> <a href='w14_ex.html'>Next</a> >> w14_ex<br /><h1>w13_chatgpt</h1>
+<p>利用與 AI 對話的過程, 學習 Python.</p>
+<p>問:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">已知下列 Brython 程式段可以在網頁中設定 Canvas, 將圖繪至 brython_div 的超文件定位點, 請寫出能在其上繪製一個以亂數產生畫布範圍內的圓心座標點, 以及半徑, 然後採黑色畫筆繪圖:from browser import html
 from browser import document as doc
+import math
 
 # 利用 html 建立 canvas 超文件物件
-canvas = html.CANVAS(width=400, height=400)
+canvas = html.CANVAS(width=600, height=600)  # 調整畫布大小以容納圓形
 brython_div = doc["brython_div1"]
-brython_div <= canvas
+brython_div &lt;= canvas
 
-ctx = canvas.getContext("2d")
-ctx.lineWidth = 1
-
-# 繪製兩個矩形
-ctx.strokeStyle = 'red'  # 設定矩形顏色為紅色
-ctx.beginPath() 
-ctx.rect(10, 10, 200, 200)
-ctx.rect(110, 110, 200, 200)
-ctx.stroke()
-
-# 繪製對角線，顏色設定為藍色
-ctx.strokeStyle = 'blue'  # 設定對角線顏色為藍色
-ctx.beginPath() 
-ctx.moveTo(10, 10)
-ctx.lineTo(210, 210)
-ctx.stroke()
-</script>
-</p>
-<br />w12_hw << <a href='w12_hw.html'>Previous</a> <a href='w13_ai.html'>Next</a> >> w13_ai</div>
+ctx = canvas.getContext("2d")</pre>
+<p><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/c7cbdb83d70d6c2a5c13e99b9b7d9199/raw/ccc9e309c0dd0d21cc6d5b8d8a085531fcc0621e/black_circle1.py">結果</a></p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">先不要塗色, 只要線架構</pre>
+<p><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/c7cbdb83d70d6c2a5c13e99b9b7d9199/raw/24031c403a961a9d6d57a0426c460c27ad920e4d/black_circle_line_only1.py">結果</a></p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">能不能將畫布設定改為函式, 只要輸入長、寬以及 canvas 定位 id 的字串, 隨後就可以將圖畫到這塊畫布上, 至於後續的亂數畫圓線條, 能不能也改為函式, 只要輸入一個變數: 畫圓的個數, 就能夠採亂數方式將指定的圓繪出.</pre>
+<p><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/c7cbdb83d70d6c2a5c13e99b9b7d9199/raw/cf7c70614eaffb0a36503870999de58aae67ad5e/black_circle_def1.py">結果</a></p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">能不能設法讓所繪製的圓不要超出畫布的範圍?</pre>
+<p data-pm-slice="1 1 []"><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/c7cbdb83d70d6c2a5c13e99b9b7d9199/raw/0091917a366c8c091ec74e886999d5da05aab4a1/black_circle_def_bounded.py">結果</a><br/><br/></p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">假如接下來希望先用上面的程式, 在 600x600 的畫布上, 只先以亂數畫一個圓, 然後利用 grid_size = 3 的尺寸在畫布上以水平掃描的方式, 以黑色塗色小圓繪製掃描點位於圓範圍內的座標點, 意即當 grid_size = 1 時, 程式繪圖的結果就如同在亂數畫圓的內部進行塗色.</pre>
+<p data-pm-slice="1 1 []"><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/c7cbdb83d70d6c2a5c13e99b9b7d9199/raw/ef9baab8fdd41cef1e2a0bd22d3479294205516f/scan_circle_to_fill_1.py">結果</a></p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">接下來恢復可以繪製多圓的程式, 然後對所有的圓內部, 同樣採掃描的方式鋪上格點.</pre>
+<p data-pm-slice="1 1 []"><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/c7cbdb83d70d6c2a5c13e99b9b7d9199/raw/6e99f4eaadf93aadc080a313d56499b237259f1a/scan_to_fill_circle_2.py">結果</a></p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">接著每一個圓都希望塗上不同的顏色</pre>
+<p data-pm-slice="1 1 []"><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/c7cbdb83d70d6c2a5c13e99b9b7d9199/raw/033a41c1dc2f2776b324870bbefe2c7cd70fb2ee/scan_to_fill_circle_w_diff_color1.py">結果</a></p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">針對圓有相重疊相交的部分, 所圍成的所有封閉區域, 都要塗上與各未相交圓不相同的顏色</pre>
+<p data-pm-slice="1 1 []">結果:</p>
+<p data-pm-slice="1 1 []">圓形交集區域的精確分割：目前的程式只簡單地為每個圓形內的格點填色，並未進行圓形交集區域的區分。如果您希望每個圓形的交集區域有不同的顏色，這涉及到更為複雜的圖形運算（如求圓形交集、分割多邊形等）。這些操作通常需要使用專門的圖形處理庫或算法來實現。</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">若仍要採用 Python 解決此問題, 有何建議?</pre>
+<p data-pm-slice="1 1 []"><a href="https://gist.githubusercontent.com/mdecycu/c7cbdb83d70d6c2a5c13e99b9b7d9199/raw/ac348313b12d2aa4f68ba1b5b45c35782a372c0f/w13_shapely_numpy_matplotlib_1.py">結果原始碼</a> (在可攜環境中執行)</p>
+<p data-pm-slice="1 1 []"></p><br />w13_hw << <a href='w13_hw.html'>Previous</a> <a href='w14_ex.html'>Next</a> >> w14_ex</div>
         
     <!-- footer -->
       <div class="container">
