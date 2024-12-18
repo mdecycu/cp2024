@@ -1328,98 +1328,7 @@ def initialize_canvas(canvas_width=400, canvas_height=400, id="brython_div1"):
     # 獲取 canvas 的 2D 上下文，用於繪圖操作
     ctx = canvas.getContext("2d")
     return canvas, ctx  # 返回畫布和上下文
-</pre>
-<p>以及:</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 定義隨機顏色生成函式，並確保顏色與已生成顏色不相近
-def random_color_generator(existing_colors=None, min_distance=100):
-    if existing_colors is None:
-        existing_colors = []  # 如果沒有已使用顏色，初始化為空列表
-    
-    attempts = 0
-    # 嘗試生成顏色，直到與現有顏色的距離足夠大
-    while attempts &lt; 100:
-        r = random.randint(0, 255)  # 隨機生成紅色通道值（0-255）
-        g = random.randint(0, 255)  # 隨機生成綠色通道值（0-255）
-        b = random.randint(0, 255)  # 隨機生成藍色通道值（0-255）
-        new_color = (r, g, b)  # 計算出新的顏色
-
-        # 檢查新顏色與所有已使用顏色的距離是否足夠大
-        if all(color_distance(new_color, existing_color) &gt; min_distance for existing_color in existing_colors):
-            existing_colors.append(new_color)  # 如果顏色距離足夠大，則將顏色添加到已使用顏色列表
-            return f"rgb({r}, {g}, {b})"  # 返回該顏色的 RGB 字串
-
-        attempts += 1  # 增加嘗試次數，避免無窮迴圈
-
-    # 如果經過多次嘗試還沒找到合適的顏色，直接返回一個隨機顏色
-    r = random.randint(0, 255)
-    g = random.randint(0, 255)
-    b = random.randint(0, 255)
-    return f"rgb({r}, {g}, {b})"  # 返回新的 RGB 顏色
-
-# 計算兩個顏色之間的歐式距離，用來確保顏色不過於相近
-def color_distance(color1, color2):
-    r1, g1, b1 = color1  # 解析顏色1的 RGB 值
-    r2, g2, b2 = color2  # 解析顏色2的 RGB 值
-    # 計算兩個顏色之間的歐式距離，公式為 (R2-R1)^2 + (G2-G1)^2 + (B2-B1)^2 的平方根
-    return math.sqrt((r1 - r2) ** 2 + (g1 - g2) ** 2 + (b1 - b2) ** 2)
-</pre>
-<p>以及:</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 判斷點 (px, py) 是否在圓內
-def is_point_in_circle(px, py, cx, cy, r):
-    # 根據圓的方程式 (px - cx)^2 + (py - cy)^2 &lt;= r^2 判斷點是否在圓內
-    return (px - cx) ** 2 + (py - cy) ** 2 &lt;= r ** 2</pre>
-<p>以及:</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">def point_in_square(x, y, sx, sy, l, w):
-    return sx &lt;= x &lt;= l and sy &lt;= y &lt;= w</pre>
-<p>以及:</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 使用者設定的圓數量與畫布大小，並進行掃描線填充
-def draw_circles(num_circles, canvas_width, canvas_height):
-    # 初始化畫布，並獲取 2D 畫布上下文
-    canvas, ctx = initialize_canvas(canvas_width, canvas_height)
-    # 清空畫布，防止舊的圖像殘留
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
-    
-    # 隨機生成圓的圓心和半徑
-    circles = generate_random_circles(num_circles, canvas_width, canvas_height)
-    
-    # 用來存儲每個圓的顏色
-    color_dict = {}
-    # 用來存儲交集區域的顏色
-    intersection_colors = {}
-    # 用來存儲所有已經生成的顏色
-    existing_colors = []  
-    
-    # 使用掃描線方法填充區域，逐行掃描畫布上的每個像素
-    for py in range(0, canvas_height):  # 遍歷畫布的每一行（y 座標）
-        for px in range(0, canvas_width):  # 遍歷畫布的每一列（x 座標）
-            in_circle = []  # 初始化該點所屬圓的索引列表
-            # 檢查該點是否位於每個圓內
-            for idx, (cx, cy, r) in enumerate(circles):
-                if is_point_in_circle(px, py, cx, cy, r):  # 如果點在圓內
-                    in_circle.append(idx)  # 記錄該點所在圓的索引
-            
-            # 根據該點所在圓的數量來決定區域顏色
-            if len(in_circle) &gt; 1:
-                # 如果該點位於多個圓的交集區域
-                in_circle_sorted = tuple(sorted(in_circle))  # 用排序的方式避免順序問題
-                # 檢查這個交集區域是否已經有顏色
-                if in_circle_sorted not in intersection_colors:
-                    intersection_colors[in_circle_sorted] = random_color_generator(existing_colors)  # 隨機選擇顏色
-                current_color = intersection_colors[in_circle_sorted]  # 獲取交集區域的顏色
-            elif len(in_circle) == 1:
-                # 如果該點只位於一個圓內
-                if f"circle{in_circle[0]}" not in color_dict:
-                    color_dict[f"circle{in_circle[0]}"] = random_color_generator(existing_colors)  # 隨機選擇顏色
-                current_color = color_dict[f"circle{in_circle[0]}"]  # 獲取該圓的顏色
-            else:
-                # 如果該點不在任何圓內，則是背景
-                current_color = "white"
-            
-            # 設置畫布的填充顏色
-            ctx.fillStyle = current_color
-            # 填充該像素，這裡是填充一個 1x1 的矩形，也就是單一像素
-            ctx.fillRect(px, py, 1, 1)</pre>
-<p></p><h3>w13_hw</h3>
+</pre><h3>w13_hw</h3>
 <p>解題思考: 透過點座標的掃瞄, 先採用尺寸較大格點 (如每 10 pixel 掃描一點), 即可判定點群位於那一個特定區域並<a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5eca62565d509668d731720f1994e127/raw/3148911ad594ac9e5a370cdd06227e972176779c/inside_circle1_brython.py">進行著色</a>. 當掃描細至單一 pixel 時, 就可以完成<a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5eca62565d509668d731720f1994e127/raw/fae5dd0145a7d14926dc7c9807ba2535d4b993c0/inside_circle1_1pixel_brython.py">區域著色</a>.</p>
 <p>另外, 透過 if 判定各點所在區域的條件組合, 可以就是否:</p>
 <p>位於第一個圓內部</p>
@@ -1548,6 +1457,8 @@ x2, y2, r2 = 250, 200, 100  # 圓2：圓心 (250, 200)，半徑 100
 # 呼叫畫圓函式，並繪製兩個圓
 draw_circles(x1, y1, r1, x2, y2, r2)
 </pre>
+<p></p><h2>w15</h2>
+<p>題目一: 請利用 Gist 與 Brython 程式環境, 在個人的課程網站中新增一個頁面, 標題為 w15, 以"從 1 累加到 100"作為 anchor 的連結標題, 使用者點擊該連結之後, 可從各自的 Brython 頁面執行程式.</p>
 <p></p><h2>random</h2>
 <p><a href="https://gist.githubusercontent.com/mdecycu/722d181972f94ffc238af912cb97d09d/raw/07cd9b3bb02a8822a199a0bc4164b7db83b90a58/big_lotto.py">大樂透電腦選號</a> (list() 與 random.sample() 應用)</p><h1>CAD</h1>
 <h4>Solvespace</h4>
