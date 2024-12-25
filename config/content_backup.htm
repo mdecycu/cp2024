@@ -1209,7 +1209,95 @@ Exit</pre>
 <h2>Exam234</h2>
 <p><a href="https://mde.tw/cp2024_hw/content/HW%202%20Exam.html">Exam2</a></p>
 <p><a href="https://mde.tw/cp2024_hw/content/HW%203%20Exam.html">Exam3</a></p>
-<p>Exam4</p><h2>w11_hw</h2>
+<p><a href="https://mde.tw/cp2024_hw/content/HW%204%20Exam.html">Exam4</a></p>
+<h3>Examples</h3>
+<p>Brython 程式允許使用者採用 Python 語法在網頁上編寫程式, 當網頁載入時, 這些 Brython 程式碼透過 Brython 解譯程式庫轉為 Javascript 程式碼, 如此就可以直接在網頁上執行 (因為網頁瀏覽器中內建 Javascript 解譯器).</p>
+<p>其實, 在網頁上編寫 Javascript 程式, 可以直接利用 HTML 語法中的 CANVAS 繪圖, 而 Brython 也可以採用相同的方式在網頁中進行靜態或動態繪圖.</p>
+<p>以下將採用 Javascript 程式碼, 利用紅色 pixel=2, 繪製一條直線:</p>
+<p><canvas height="10" id="jsCanvas" width="500"></canvas></p>
+<script>
+// 使用 JavaScript 引用 canvas 並畫一條水平線
+        var canvas = document.getElementById('jsCanvas'); // 引用 canvas 元素
+        var ctx = canvas.getContext('2d'); // 獲取 2D 上下文
+
+        ctx.beginPath(); // 開始一條新的路徑
+        ctx.moveTo(0, 0); // 起點 (x=0, y=0)
+        ctx.lineTo(450, 0); // 終點 (x=450, y=0)
+        ctx.strokeStyle = '#FF0000'; // 設置畫筆顏色為紅色
+        ctx.lineWidth = 2; // 設置線條寬度
+        ctx.stroke(); // 畫出線條
+</script>
+<p>程式設計的流程為: 先設法在網頁上設定一個標註, 並且將此標註的 id 設為 jsCanvas, 之後的繪圖就可以將畫布插入此帶有 id 的標註所在位置. 接著再利用 Javascript 程式標註編寫繪圖程式碼. 上列<a href="https://gist.githubusercontent.com/mdecycu/c7cbdb83d70d6c2a5c13e99b9b7d9199/raw/f07266e8f416cbacec6fe12c06288ce09eeb68a9/jscanvas1">繪圖 html 內容</a>.</p>
+<p>了解上述利用 Javascript Canvas 繪圖流程後, 將程式語法改用 Brython, 也可以達到相同結果:</p>
+<p>首先, 將標註 id 設為 pyCanvas, 然後進行 Brython 程式繪圖, 但是由於 Brython 解譯程式庫並沒有內建在網頁瀏覽器中, 因此必須利用 script 標註從外部導入網頁, 否則無法在網頁中以 Brython 畫圖.</p>
+<p>有關在網頁中導入 Brython 解譯程式庫, 以及啟動的 HTML, 可以參考編輯環境中的 Brython 頁面 (也就是動態編輯網頁中的 Brython 頁面 HTML 原始碼). 以下<a href="https://gist.githubusercontent.com/mdecycu/c7cbdb83d70d6c2a5c13e99b9b7d9199/raw/ceb2c410cb0e02040d7b9029c69f3ce6b53f0fc0/brythonCanvas">繪圖的 html 內容</a>.</p>
+<!-- 導入 brython 程式庫 -->
+<p>
+<script src="/static/brython.js"></script>
+<script src="/static/brython_stdlib.js"></script>
+</p>
+<!-- 啟動 Brython -->
+<p>
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['/static/','./../downloads/py/']});
+}
+</script>
+<canvas height="10" id="pyCanvas" width="500"></canvas>
+<script type="text/python">
+from browser import document
+canvas = document['pyCanvas']
+ctx = canvas.getContext('2d')
+ctx.beginPath()
+ctx.moveTo(0, 0)
+ctx.lineTo(450, 0)
+ctx.strokeStyle = '#FF0000'
+ctx.lineWidth = 2
+ctx.stroke()
+</script>
+</p>
+<p>接下來繪製多邊形, 以及多邊形塗色:</p>
+<div id="pyCanvas2"></div>
+<script type="text/python">
+from browser import document, html
+import math
+
+# 利用 html 物件中的 CANVAS() 建立畫布標註
+canvas = html.CANVAS(width = 600, height = 400)
+div = document["pyCanvas2"]
+# 利用 Brython 特殊的 <= 符號將 canvas 標註插在 pyCanvas2 對應的標註後面
+div <= canvas
+ctx = canvas.getContext('2d')
+
+# 圓心與半徑
+center_x, center_y, radius = 200, 200, 100
+
+# 計算六邊形的頂點，根據圓的半徑來確保六邊形位於圓內
+def draw_hexagon(center_x, center_y, radius, fill=False):
+    ctx.beginPath()
+    for i in range(6):
+        angle = i * math.pi / 3  # 六邊形每個頂點的角度 (60度)
+        x = center_x + radius * math.cos(angle)
+        y = center_y + radius * math.sin(angle)
+        if i == 0:
+            ctx.moveTo(x, y)
+        else:
+            ctx.lineTo(x, y)
+    ctx.closePath()
+    if fill:
+        ctx.fillStyle = 'orange'
+        ctx.fill()
+    else:
+        ctx.strokeStyle = 'orange'
+        ctx.stroke()
+
+# 1. 在圓內繪製橙色六邊形，僅顯示線段
+draw_hexagon(center_x, center_y, radius, fill=False)
+
+# 2. 在右邊距離10的地方繪製第二個橙色六邊形，並填充顏色
+offset = radius * 2 + 10  # 右邊六邊形的偏移量 (圓半徑*2 + 10)
+draw_hexagon(center_x + offset, center_y, radius, fill=True)
+</script><h2>w11_hw</h2>
 <p>以下影片說明如何利用近端可攜系統維護個人作業網站:</p>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/hAe4qMGC1hE?si=h8t7hbJitHkgVQ-M" title="YouTube video player" width="560"></iframe></p>
 <p>1.  已知可以用 Python 程式<a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5e6eda7a004c15fa7262b9a80bfa4af6/raw/c2225ac22f32ee8485a630b42cf3f4d8567bb661/up_to_down_pyramid.py">由上往下列印三角形 *</a>, 或<a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5e6eda7a004c15fa7262b9a80bfa4af6/raw/56793c72d4495d564e3cc6214ed5fb68dbd2b21d/left_to_right_pyramid.py">由左往右列印三角形 *</a>, 請將此程式延伸到可以在 10x10 的字元區域中, 以 "*" 字元列印出圓型區域. 完成後請將程式碼存入個人 Gist 後, 直接在個人作業網站中的 Brython 頁面中執行. (提示: ?src=gist_script_URL)</p>
@@ -1766,6 +1854,7 @@ print("已經將 " + filenameString+ " 合併為: "+ newFileName + ".pdf")
 <p><a href="https://pypi.org/project/python-solvespace/">https://pypi.org/project/python-solvespace/</a></p>
 <p><a href="https://github.com/jimy-byerley/pymadcad">https://github.com/jimy-byerley/pymadcad</a></p>
 <h1>References</h1>
+<p><a href="https://com-pute.com/brython_tutorial/">https://com-pute.com/brython_tutorial/</a> </p>
 <p><a href="/downloads/peer_review_project.7z">peer_review_project.7z</a></p>
 <p>已知:</p>
 <ol>

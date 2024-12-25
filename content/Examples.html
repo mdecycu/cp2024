@@ -2,7 +2,7 @@
         <head>
         <title>cp2024</title>
         <meta charset="utf-8">
-<meta property="head" content="H2">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
@@ -141,10 +141,27 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">w12_hw << <a href='w12_hw.html'>Previous</a> <a href='w13_ai.html'>Next</a> >> w13_ai<br /><h1>w13</h1>
-<p>w13 作業:</p>
-<p>請在下列圖形中的兩個正方形外圍, 以黑色畫筆畫圓, 並設法在各線條所圍成的封閉區域塗上不同顏色. 操作過程請拍攝影片, 並在頁面中列出作業心得.</p>
-<div id="brython_div1"></div>
+    <div id="tipue_search_content">Exam234 << <a href='Exam234.html'>Previous</a> <a href='w11_hw.html'>Next</a> >> w11_hw<br /><h1>Examples</h1>
+<p>Brython 程式允許使用者採用 Python 語法在網頁上編寫程式, 當網頁載入時, 這些 Brython 程式碼透過 Brython 解譯程式庫轉為 Javascript 程式碼, 如此就可以直接在網頁上執行 (因為網頁瀏覽器中內建 Javascript 解譯器).</p>
+<p>其實, 在網頁上編寫 Javascript 程式, 可以直接利用 HTML 語法中的 CANVAS 繪圖, 而 Brython 也可以採用相同的方式在網頁中進行靜態或動態繪圖.</p>
+<p>以下將採用 Javascript 程式碼, 利用紅色 pixel=2, 繪製一條直線:</p>
+<p><canvas height="10" id="jsCanvas" width="500"></canvas></p>
+<script>
+// 使用 JavaScript 引用 canvas 並畫一條水平線
+        var canvas = document.getElementById('jsCanvas'); // 引用 canvas 元素
+        var ctx = canvas.getContext('2d'); // 獲取 2D 上下文
+
+        ctx.beginPath(); // 開始一條新的路徑
+        ctx.moveTo(0, 0); // 起點 (x=0, y=0)
+        ctx.lineTo(450, 0); // 終點 (x=450, y=0)
+        ctx.strokeStyle = '#FF0000'; // 設置畫筆顏色為紅色
+        ctx.lineWidth = 2; // 設置線條寬度
+        ctx.stroke(); // 畫出線條
+</script>
+<p>程式設計的流程為: 先設法在網頁上設定一個標註, 並且將此標註的 id 設為 jsCanvas, 之後的繪圖就可以將畫布插入此帶有 id 的標註所在位置. 接著再利用 Javascript 程式標註編寫繪圖程式碼. 上列<a href="https://gist.githubusercontent.com/mdecycu/c7cbdb83d70d6c2a5c13e99b9b7d9199/raw/f07266e8f416cbacec6fe12c06288ce09eeb68a9/jscanvas1">繪圖 html 內容</a>.</p>
+<p>了解上述利用 Javascript Canvas 繪圖流程後, 將程式語法改用 Brython, 也可以達到相同結果:</p>
+<p>首先, 將標註 id 設為 pyCanvas, 然後進行 Brython 程式繪圖, 但是由於 Brython 解譯程式庫並沒有內建在網頁瀏覽器中, 因此必須利用 script 標註從外部導入網頁, 否則無法在網頁中以 Brython 畫圖.</p>
+<p>有關在網頁中導入 Brython 解譯程式庫, 以及啟動的 HTML, 可以參考編輯環境中的 Brython 頁面 (也就是動態編輯網頁中的 Brython 頁面 HTML 原始碼). 以下<a href="https://gist.githubusercontent.com/mdecycu/c7cbdb83d70d6c2a5c13e99b9b7d9199/raw/ceb2c410cb0e02040d7b9029c69f3ce6b53f0fc0/brythonCanvas">繪圖的 html 內容</a>.</p>
 <!-- 導入 brython 程式庫 -->
 <p>
 <script src="./../cmsimde/static/brython.js"></script>
@@ -157,34 +174,61 @@ window.onload=function(){
 brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
 }
 </script>
-<script type="text/python3">
-from browser import html
-from browser import document as doc
-
-# 利用 html 建立 canvas 超文件物件
-canvas = html.CANVAS(width=400, height=400)
-brython_div = doc["brython_div1"]
-brython_div <= canvas
-
-ctx = canvas.getContext("2d")
-ctx.lineWidth = 1
-
-# 繪製兩個矩形
-ctx.strokeStyle = 'red'  # 設定矩形顏色為紅色
-ctx.beginPath() 
-ctx.rect(10, 10, 200, 200)
-ctx.rect(110, 110, 200, 200)
-ctx.stroke()
-
-# 繪製對角線，顏色設定為藍色
-ctx.strokeStyle = 'blue'  # 設定對角線顏色為藍色
-ctx.beginPath() 
-ctx.moveTo(10, 10)
-ctx.lineTo(210, 210)
+<canvas height="10" id="pyCanvas" width="500"></canvas>
+<script type="text/python">
+from browser import document
+canvas = document['pyCanvas']
+ctx = canvas.getContext('2d')
+ctx.beginPath()
+ctx.moveTo(0, 0)
+ctx.lineTo(450, 0)
+ctx.strokeStyle = '#FF0000'
+ctx.lineWidth = 2
 ctx.stroke()
 </script>
 </p>
-<br />w12_hw << <a href='w12_hw.html'>Previous</a> <a href='w13_ai.html'>Next</a> >> w13_ai</div>
+<p>接下來繪製多邊形, 以及多邊形塗色 (以下使用 div 標註作為畫布定位的<a href="https://gist.githubusercontent.com/mdecycu/c7cbdb83d70d6c2a5c13e99b9b7d9199/raw/87bc7709b779340c1ab796832e80e6cff7c94120/brythonCanvas2">繪圖 html 內容</a>):</p>
+<div id="pyCanvas2"></div>
+<script type="text/python">
+from browser import document, html
+import math
+
+# 利用 html 物件中的 CANVAS() 建立畫布標註
+canvas = html.CANVAS(width = 600, height = 400)
+div = document["pyCanvas2"]
+# 利用 Brython 特殊的 <= 符號將 canvas 標註插在 pyCanvas2 對應的標註後面
+div <= canvas
+ctx = canvas.getContext('2d')
+
+# 圓心與半徑
+center_x, center_y, radius = 200, 200, 100
+
+# 計算六邊形的頂點，根據圓的半徑來確保六邊形位於圓內
+def draw_hexagon(center_x, center_y, radius, fill=False):
+    ctx.beginPath()
+    for i in range(6):
+        angle = i * math.pi / 3  # 六邊形每個頂點的角度 (60度)
+        x = center_x + radius * math.cos(angle)
+        y = center_y + radius * math.sin(angle)
+        if i == 0:
+            ctx.moveTo(x, y)
+        else:
+            ctx.lineTo(x, y)
+    ctx.closePath()
+    if fill:
+        ctx.fillStyle = 'orange'
+        ctx.fill()
+    else:
+        ctx.strokeStyle = 'orange'
+        ctx.stroke()
+
+# 1. 在圓內繪製橙色六邊形，僅顯示線段
+draw_hexagon(center_x, center_y, radius, fill=False)
+
+# 2. 在右邊距離10的地方繪製第二個橙色六邊形，並填充顏色
+offset = radius * 2 + 10  # 右邊六邊形的偏移量 (圓半徑*2 + 10)
+draw_hexagon(center_x + offset, center_y, radius, fill=True)
+</script><br />Exam234 << <a href='Exam234.html'>Previous</a> <a href='w11_hw.html'>Next</a> >> w11_hw</div>
         
     <!-- footer -->
       <div class="container">
